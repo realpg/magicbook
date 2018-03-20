@@ -21,6 +21,10 @@ class SignController extends Controller
     public function signUp(Request $request){
         return view('home.sign.up');
     }
+    //注册成功
+    public function signSuccess(Request $request){
+        return view('home.sign.success');
+    }
     //退出
     public function signOut(Request $request){
         return view('home.sign.out');

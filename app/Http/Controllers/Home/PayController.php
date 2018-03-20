@@ -12,16 +12,16 @@ use Illuminate\Http\Request;
 
 class PayController extends  Controller{
     //支付
-    public function show(Request $request){
-        return view('home.pay.pay');
+    public function index(Request $request){
+        return view('home.pay.index');
     }
     //支付成功
     public function paySuccess(Request $request){
-        return view('home.pay.paySuccess');
+        return view('home.pay.success');
     }
     //支付失败
-    public function payFinal(Request $request){
-        return view('home.pay.payFinal');
+    public function payFail(Request $request){
+        return view('home.pay.fail');
     }
 
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     <div id="main-body">
-        <div class="container package-card padding-top-40 padding-bottom-40">
+        <div class="container padding-top-40 padding-bottom-40">
             <div>
                 <h3 class="font-color-red margin-bottom-20">魔法路书服务条款</h3>
                 <p>欢迎使用魔法天书提供的服务，本服务条款是魔法天书的经营者美景听听（北京）科技有限公司（以下简称为“美景听听”），与用户（以下称为“您”），共同缔结的对双方具有约束力的有效契约。</p>

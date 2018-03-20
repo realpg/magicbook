@@ -21,11 +21,12 @@ Route::group(['prefix' => '', 'middleware' => []], function () {
     Route::get('/info/tryListen/', 'Home\InfoController@getTryListenInfo');        //个人中心(试听记录)
     Route::get('/info/consume/', 'Home\InfoController@getConsumeInfo');        //个人中心(消费记录)
     Route::get('/info', 'Home\InfoController@getInfos');        //个人中心(个人资料)
-    Route::get('/pay', 'Home\PayController@show');        //支付页面
+    Route::get('/pay', 'Home\PayController@index');        //支付页面
     Route::get('/pay/success', 'Home\PayController@paySuccess');        //支付成功页面
-    Route::get('/pay/final', 'Home\PayController@payFinal');        //支付失败页面
+    Route::get('/pay/fail', 'Home\PayController@payFail');        //支付失败页面
     Route::get('/service', 'Home\ServiceController@index');        //服务条款
     Route::get('/sign/in', 'Home\SignController@signIn');        //登录
     Route::get('/sign/up', 'Home\SignController@signUp');        //注册
     Route::get('/sign/out', 'Home\SignController@signOut');        //退出
+    Route::get('/sign/success', 'Home\SignController@signSuccess');        //注册成功
 });
