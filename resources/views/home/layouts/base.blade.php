@@ -25,7 +25,7 @@
 </head>
 <body>
 @section('header')
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-top margin-bottom-0">
         <div class="container padding-top-10 padding-bottom-10">
            <div class="float-left">
                 <img src="{{URL::asset('img/logo_03.png')}}" class="width-60px height-60px" />
@@ -41,7 +41,7 @@
         </div>
     </nav>
 @show
-<div class="height-80px"></div>
+{{--<div class="height-80px"></div>--}}
 @yield('content')
 @section('footer')
     <footer class="bg-grey height-200px text-algin-center font-color-dark-grey padding-top-10 padding-bottom-10">
@@ -72,7 +72,7 @@
         var winHeight=$(window).height();
         var headerHeight=$('nav').height();
         var footerHeight=$('footer').height();
-        $('#main-body').css('min-height',winHeight-headerHeight-footerHeight-20)
+        $('#main-body').css('min-height',winHeight-headerHeight-footerHeight)
     })
 </script>
 
