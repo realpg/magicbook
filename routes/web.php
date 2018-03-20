@@ -25,4 +25,7 @@ Route::group(['prefix' => '', 'middleware' => []], function () {
     Route::get('/pay/success', 'Home\PayController@paySuccess');        //支付成功页面
     Route::get('/pay/final', 'Home\PayController@payFinal');        //支付失败页面
     Route::get('/service', 'Home\ServiceController@show');        //服务条款
+    Route::get('/sign/in', 'Home\SignController@signIn');        //登录
+    Route::get('/sign/up', 'Home\SignController@signUp');        //注册
+    Route::get('/sign/out', 'Home\SignController@signOut');        //退出
 });

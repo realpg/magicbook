@@ -25,18 +25,26 @@
 </head>
 <body>
 @section('header')
-    <nav class="navbar navbar-default navbar-top margin-bottom-0">
+    <nav class="navbar navbar-default navbar-top margin-bottom-0 border-radius-0">
         <div class="container padding-top-10 padding-bottom-10">
            <div class="float-left">
-                <img src="{{URL::asset('img/logo_03.png')}}" class="width-60px height-60px" />
+               <a href="{{URL::asset('/')}}">
+                   <img src="{{URL::asset('img/logo_03.png')}}" class="width-60px height-60px" />
+               </a>
            </div>
             <div class="padding-top-10 float-left">
-                <div class="font-size-15"><b>魔法路书</b></div>
-                <div class="font-size-15"><b>让路书更智能</b></div>
+                <a href="{{URL::asset('/')}}">
+                    <div class="font-size-15"><b>魔法路书</b></div>
+                    <div class="font-size-15"><b>让路书更智能</b></div>
+                </a>
             </div>
-            <div class="padding-top-15" style="float:right;">
-                <button type="button" class="btn btn-default margin-right-20 border-red font-color-red bg-none">登录</button>
-                <button type="button" class="btn btn-danger bf-none bg-red border-red">注册</button>
+            <div class="padding-top-15 float-right">
+                <a href="{{URL::asset('/sign/in')}}">
+                    <button type="button" class="btn btn-default margin-right-20 border-red font-color-red bg-none">登录</button>
+                </a>
+                <a href="{{URL::asset('/sign/up')}}">
+                    <button type="button" class="btn btn-danger bf-none bg-red border-red">注册</button>
+                </a>
             </div>
         </div>
     </nav>
@@ -72,7 +80,7 @@
         var winHeight=$(window).height();
         var headerHeight=$('nav').height();
         var footerHeight=$('footer').height();
-        $('#main-body').css('min-height',winHeight-headerHeight-footerHeight)
+        $('#main-body').css('min-height',winHeight-headerHeight-footerHeight-22)
     })
 </script>
 
