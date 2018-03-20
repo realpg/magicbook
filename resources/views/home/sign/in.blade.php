@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="main-body">
-    <div class="container package-card padding-top-150 padding-bottom-150" style="color:#7E7E7E;">
+    <div class="container package-card padding-top-150 padding-bottom-150 font-color-light-grey">
         <div class="card-div row border-radius-10px margin-left-10 margin-right-10">
             <div class="height-50px line-height-50" style="background:#F5F5F5;">
                 <div class="col-xs-8 col-sm-8">登录</div>

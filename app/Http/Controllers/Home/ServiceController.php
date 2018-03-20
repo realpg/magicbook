@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller{
     //服务条款
-    public function show(Request $request){
-        return view('home.service.show');
+    public function index(Request $request){
+        return view('home.service.index');
     }
 }
