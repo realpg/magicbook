@@ -12,6 +12,14 @@ a:hover{
     text-decoration: none;
     color:unset;
 }
+a:active{
+    text-decoration: none;
+    color:unset;
+}
+a:after{
+    text-decoration: none;
+    color:unset;
+}
 
 .float-left {
     float: left;
@@ -710,6 +718,14 @@ a:hover{
     width:100%;
 }
 
+.width-90{
+    width:90%;
+}
+
+.width-80{
+    width:80%;
+}
+
 .width-70px{
     width:70px;
 }
@@ -780,6 +796,10 @@ a:hover{
 
 .height-400px{
     height:400px;
+}
+
+.height-350px{
+    height:350px;
 }
 
 .height-200px{
@@ -959,7 +979,60 @@ a:hover{
 .package-card ul li:nth-child(4) {
     border-right: none;
 }
-/*重写*/
+
+/* 修改单选样式 */
+
+input[type="radio"] + label::before {
+    content: "\a0"; /*不换行空格*/
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 1em;
+    height: 1em;
+    margin-right: .4em;
+    border-radius: 50%;
+    /*border: 1px solid #01cd78;*/
+    border: 1px solid #ccc;
+    text-indent: .15em;
+    line-height: 1;
+}
+input[type="radio"]:checked + label::before {
+    border: 1px solid #E21B14;
+    background-color: #E21B14;
+    background-clip: content-box;
+    padding: .2em;
+}
+input[type="radio"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+/* 修改多选样式 */
+input[type="checkbox"] {
+    -webkit-appearance: none;  /*清除复选框默认样式*/
+    content: "\a0"; /*不换行空格*/
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 1em;
+    height: 1em;
+    margin-right: .4em;
+    margin-left: .4em;
+    margin-top:0;
+    /*border: 1px solid #01cd78;*/
+    border: 1px solid #ccc;
+    text-indent: .15em;
+    line-height: 1;
+}
+input[type="checkbox"]:checked {
+    border: 1px solid #E21B14;
+    background-color: #E21B14;
+    background-clip: content-box;
+    padding: .2em;
+    box-shadow: none;
+}
+
+/* 重写 */
 .nav .open > a, .nav .open > a:hover, .nav .open > a {
     color:#000;
 }

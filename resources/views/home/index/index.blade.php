@@ -74,9 +74,9 @@
                 </li>
                 <li class="hover-card-1">
                     <h2>免费版</h2>
-                    <h3>Y</h3>
-                    <h3>X</h3>
-                    <h3>X</h3>
+                    <h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>
+                    <h3><img src="{{URL::asset('img/goucha_06.png')}}" class="height-28px" /></h3>
+                    <h3><img src="{{URL::asset('img/goucha_06.png')}}" class="height-28px" /></h3>
                     <h3>30天</h3>
                     <h3 style="border-bottom: 0;">免费</h3>
                     <h3 id="hover-card-button-1" style="border-bottom: 0;border-top:1px solid #ccc;margin-top:10px;" hidden>
@@ -85,9 +85,9 @@
                 </li>
                 <li class="hover-card-2">
                     <h2>美景版</h2>
-                    <h3>Y</h3>
-                    <h3>Y</h3>
-                    <h3>X</h3>
+                    <h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>
+                    <h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>
+                    <h3><img src="{{URL::asset('img/goucha_06.png')}}" class="height-28px" /></h3>
                     <h3>30天</h3>
                     <h3 style="border-bottom: 0;">2元/城市</h3>
                     <h3 id="hover-card-button-2" style="border-bottom: 0;border-top:1px solid #ccc;margin-top:10px;" hidden>
@@ -96,9 +96,9 @@
                 </li>
                 <li class="hover-card-3">
                     <h2>定制版</h2>
-                    <h3>Y</h3>
-                    <h3>Y</h3>
-                    <h3>Y</h3>
+                    <h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>
+                    <h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>
+                    <h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>
                     <h3>30天</h3>
                     <h3 style="border-bottom: 0;">5元/城市</h3>
                     <h3 id="hover-card-button-3" style="border-bottom: 0;border-top:1px solid #ccc;margin-top:10px;" hidden>
@@ -128,49 +128,49 @@
                 </div>
             </div>
             <div class="navbar margin-top-40 height-80px margin-20 padding-0 bg-none border-0">
-                <div class="navbar-collapse" id="bs-example-navbar-collapse-1 padding-0 bg-none border-0">
-                        <ul class="nav navbar-nav padding-0 width-100 bg-none">
-                            <li class="dropdown float-left border-left border-top border-bottom width-25 text-algin-center bg-white border-radius-left style-ellipsis-1">
-                                <div class="margin-top-15 margin-bottom-15 border-right">
-                                    <a href="#" class="dropdown-toggle font-color-black line-height-50" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        请选择大洲 <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                    </a>
-                                    <ul class="dropdown-menu width-100">
-                                        <li><a href="#">北京</a></li>
-                                        <li><a href="#">上海</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="dropdown float-left border-top border-bottom width-25 text-algin-center bg-white style-ellipsis-1">
-                                <div class="margin-top-15 margin-bottom-15 border-right">
-                                    <a href="#" class="dropdown-toggle font-color-black line-height-50" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        请选择国家 <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                    </a>
-                                    <ul class="dropdown-menu width-100">
-                                        <li><a href="#">北京</a></li>
-                                        <li><a href="#">上海</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="dropdown float-left border-top border-bottom width-25 text-algin-center bg-white style-ellipsis-1">
-                                <div class="margin-top-15 margin-bottom-15">
-                                    <a href="#" class="dropdown-toggle font-color-black line-height-50" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        请选择城市 <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                    </a>
-                                    <ul class="dropdown-menu width-100">
-                                        <li><a href="#">北京</a></li>
-                                        <li><a href="#">上海</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="dropdown float-left width-25 text-algin-center bg-red border-radius-right border-top border-bottom border-red style-ellipsis-1">
+                <div class="navbar-collapse padding-0 bg-none border-0" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav padding-0 width-100 bg-none">
+                        <li class="dropdown float-left border-left border-top border-bottom width-25 text-algin-center bg-white border-radius-left">
+                            <div class="margin-top-15 margin-bottom-15 border-right">
+                                <a href="#" class="dropdown-toggle font-color-black line-height-50" style="text-decoration:none;color:#000;" id="dropdownMenu1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                                    请选择大洲 <img src="{{URL::asset('img/meijing_13.png')}}" />
+                                </a>
+                                <ul class="dropdown-menu width-100" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">北京</a></li>
+                                    <li><a href="#">上海</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="dropdown float-left border-top border-bottom width-25 text-algin-center bg-white">
+                            <div class="margin-top-15 margin-bottom-15 border-right">
+                                <a href="#" class="dropdown-toggle font-color-black line-height-50" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    请选择国家 <img src="{{URL::asset('img/meijing_13.png')}}" />
+                                </a>
+                                <ul class="dropdown-menu width-100">
+                                    <li><a href="#">北京</a></li>
+                                    <li><a href="#">上海</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="dropdown float-left border-top border-bottom width-25 text-algin-center bg-white">
+                            <div class="margin-top-15 margin-bottom-15">
+                                <a href="#" class="dropdown-toggle font-color-black line-height-50" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    请选择城市 <img src="{{URL::asset('img/meijing_13.png')}}" />
+                                </a>
+                                <ul class="dropdown-menu width-100">
+                                    <li><a href="#">北京</a></li>
+                                    <li><a href="#">上海</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="dropdown float-left width-25 text-algin-center bg-red border-radius-right border-top border-bottom border-red style-ellipsis-1">
                                 <div class="margin-top-15 margin-bottom-15">
                                     <a href="#" class="dropdown-toggle font-color-black line-height-50" style="color:#fff;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         立刻生成
                                     </a>
                                 </div>
                             </li>
-                        </ul>
+                    </ul>
                     {{--</div>--}}
                 </div>
             </div>

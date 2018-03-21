@@ -12,10 +12,10 @@
                 <div class="col-xs-8 col-sm-8 padding-top-40 padding-bottom-40 padding-right-50 padding-left-50" style="border-right:1px #ccc solid;">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="请输入手机号">
+                            <input type="text" class="form-control height-50px" placeholder="请输入手机号">
                         </div>
                         <div class="form-group margin-top-30">
-                            <input type="password" class="form-control" placeholder="请输入密码">
+                            <input type="password" class="form-control height-50px" placeholder="请输入密码">
                         </div>
                         <div class="margin-top-30">
                             <div class="col-xs-6 col-sm-6 padding-0">
@@ -30,13 +30,13 @@
                         </div>
                         <div class="clear"></div>
                         <div class="margin-top-30">
-                            <button type="button" class="btn btn-danger bg-none bg-red border-color-red width-100 height-40px font-size-18 border-radius-0">立 即 登 录</button>
+                            <button type="button" class="btn btn-danger bg-none bg-red border-color-red width-100 height-40px font-size-18 border-radius-0 height-50px">立 即 登 录</button>
                         </div>
                     </form>
                 </div>
-                <div class="col-xs-4 col-sm-4 text-center">
+                <div class="col-xs-4 col-sm-4 text-center padding-top-40 padding-bottom-40">
                     <div class="width-200px text-algin-center margin-auto">
-                        <div class="width-200px height-200px bg-light-grey margin-top-20 margin-bottom-20"></div>
+                        <div class="width-200px height-200px bg-light-grey margin-bottom-20"></div>
                         <h4>扫描加魔法路书公众号</h4>
                     </div>
                 </div>
