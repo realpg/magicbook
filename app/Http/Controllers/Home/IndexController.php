@@ -14,8 +14,10 @@ class IndexController extends  Controller{
     //首页
     public function index(Request $request){
         $menu='index';
+        $subsection='index';
         $param=array(
-            'menu'=>$menu
+            'menu'=>$menu,
+            'subsection'=>$subsection
         );
         return view('home.index.index',$param);
     }

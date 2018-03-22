@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap/bootstrap-theme.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/iconfont/iconfont.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/common.css') }}"/>
+    <script type="text/javascript" src="{{ URL::asset('/js/jquery-3.3.1.min.js') }}"></script>
     @section('seo')
         <title>魔法路书</title>
         <meta name="keywords" content="魔法路书" />
@@ -43,7 +44,9 @@
                 </a>
             </div>
             <div class="row float-left text-center height-80px line-height-80" style="width:300px;margin-left:100px;">
-                <div class="col-xs-6 col-sm-6 font-size-16 {{$menu=='video'?'nav-active':''}}">获取音频</div>
+                <a href="{{URL::asset('audition')}}">
+                    <div class="col-xs-6 col-sm-6 font-size-16 {{$menu=='audition'?'nav-active':''}}">获取音频</div>
+                </a>
                 <a href="{{URL::asset('center')}}">
                     <div class="col-xs-6 col-sm-6 font-size-16 {{$menu=='center'?'nav-active':''}}">个人中心</div>
                 </a>
@@ -71,7 +74,6 @@
     </footer>
 @show
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="{{ URL::asset('/js/jquery-3.3.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap/bootstrap.js') }}"></script>
 <!--/_footer 作为公共模版分离出去-->
 {{--doT、md5、七牛等相关--}}

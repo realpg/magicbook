@@ -33,13 +33,13 @@ class CenterController extends  Controller{
         return view('home.center.consumption',$param);
     }
     //获得个人资料
-    public function index(Request $request){
+    public function personal(Request $request){
         $menu='center';
         $subsection='personal';
         $param=array(
             'menu'=>$menu,
             'subsection'=>$subsection
         );
-        return view('home.center.index',$param);
+        return view('home.center.personal',$param);
     }
 }
