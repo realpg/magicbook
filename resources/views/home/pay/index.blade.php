@@ -18,7 +18,7 @@
                     <h4 class="text-algin-center">立即支付扫码</h4>
                 </div>
                 <div class="col-xs-6 col-sm-6 margin-top-70 margin-bottom-70  text-center">
-                    <img src="{{URL::asset('img/pay_ts.png')}}" class="height-350px" >
+                    <img src="{{URL::asset('img/pay_ts.png')}}"  class="height-50" >
                 </div>
             </div>
         </div>

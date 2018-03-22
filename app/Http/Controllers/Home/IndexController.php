@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 class IndexController extends  Controller{
     //首页
     public function index(Request $request){
-        return view('home.index.index');
+        $menu='index';
+        $param=array(
+            'menu'=>$menu
+        );
+        return view('home.index.index',$param);
     }
 }

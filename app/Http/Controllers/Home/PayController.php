@@ -13,15 +13,27 @@ use Illuminate\Http\Request;
 class PayController extends  Controller{
     //支付
     public function index(Request $request){
-        return view('home.pay.index');
+        $menu='pay';
+        $param=array(
+            'menu'=>$menu
+        );
+        return view('home.pay.index',$param);
     }
     //支付成功
     public function paySuccess(Request $request){
-        return view('home.pay.success');
+        $menu='pay';
+        $param=array(
+            'menu'=>$menu
+        );
+        return view('home.pay.success',$param);
     }
     //支付失败
     public function payFail(Request $request){
-        return view('home.pay.fail');
+        $menu='pay';
+        $param=array(
+            'menu'=>$menu
+        );
+        return view('home.pay.fail',$param);
     }
 
 }

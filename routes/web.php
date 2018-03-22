@@ -18,9 +18,9 @@ Route::group(['prefix' => '', 'middleware' => []], function () {
     Route::get('/audition/scenery/', 'Home\AuditionController@scenery');        //获取试听(美景版)
     Route::get('/audition/customization/', 'Home\AuditionController@customization');        //获取试听(定制版)
     Route::get('/audition/free/', 'Home\AuditionController@free');        //获取试听(免费版)
-    Route::get('/info/tryListen/', 'Home\InfoController@getTryListenInfo');        //个人中心(试听记录)
-    Route::get('/info/consume/', 'Home\InfoController@getConsumeInfo');        //个人中心(消费记录)
-    Route::get('/info', 'Home\InfoController@getInfos');        //个人中心(个人资料)
+    Route::get('/center/generate/', 'Home\CenterController@generate');        //个人中心(生成记录)
+    Route::get('/center/consumption/', 'Home\CenterController@consumption');        //个人中心(消费记录)
+    Route::get('/center', 'Home\CenterController@index');        //个人中心(个人资料)
     Route::get('/pay', 'Home\PayController@index');        //支付页面
     Route::get('/pay/success', 'Home\PayController@paySuccess');        //支付成功页面
     Route::get('/pay/fail', 'Home\PayController@payFail');        //支付失败页面

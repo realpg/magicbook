@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller{
     //服务条款
     public function index(Request $request){
-        return view('home.service.index');
+        $menu='service';
+        $param=array(
+            'menu'=>$menu
+        );
+        return view('home.service.index',$param);
     }
 }

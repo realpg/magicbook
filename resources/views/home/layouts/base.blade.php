@@ -25,20 +25,30 @@
 </head>
 <body>
 @section('header')
-    <nav class="navbar navbar-default navbar-top margin-bottom-0 border-radius-0">
-        <div class="container padding-top-10 padding-bottom-10">
-           <div class="float-left">
+    @if($menu=='center')
+        <nav class="navbar navbar-default navbar-top margin-bottom-0 border-radius-0 border-0" style="box-shadow: none;">
+    @else
+        <nav class="navbar navbar-default navbar-top margin-bottom-0 border-radius-0 border-0">
+    @endif
+        <div class="container">
+           <div class="float-left margin-top-10 margin-bottom-10">
                <a href="{{URL::asset('/')}}">
                    <img src="{{URL::asset('img/logo_03.png')}}" class="width-60px height-60px" />
                </a>
            </div>
             <div class="padding-top-10 float-left">
                 <a href="{{URL::asset('/')}}">
-                    <div class="font-size-15"><b>魔法路书</b></div>
+                    <div class="font-size-15 margin-top-10"><b>魔法路书</b></div>
                     <div class="font-size-15"><b>让路书更智能</b></div>
                 </a>
             </div>
-            <div class="padding-top-15 float-right">
+            <div class="row float-left text-center height-80px line-height-80" style="width:300px;margin-left:100px;">
+                <div class="col-xs-6 col-sm-6 font-size-16 {{$menu=='video'?'nav-active':''}}">获取音频</div>
+                <a href="{{URL::asset('center')}}">
+                    <div class="col-xs-6 col-sm-6 font-size-16 {{$menu=='center'?'nav-active':''}}">个人中心</div>
+                </a>
+            </div>
+            <div class="padding-top-15 float-right margin-top-10 margin-bottom-10">
                 <a href="{{URL::asset('/sign/in')}}">
                     <button type="button" class="btn btn-default margin-right-20 border-red font-color-red bg-none">登录</button>
                 </a>

@@ -24,17 +24,23 @@
                         </div>
                         <div class="margin-top-30">
                             <div class="padding-0">
-                                业务类型（多选）
-                                <input type="checkbox" class="vertical-align-top">
-                                <span>定制游</span>
-                                <input type="checkbox" class="vertical-align-top">
-                                <span>跟团游</span>
-                                <input type="checkbox" class="vertical-align-top">
-                                <span>自由行</span>
-                                <input type="checkbox" class="vertical-align-top">
-                                <span>其他</span>
+                                <div class="float-left margin-right-10">
+                                    业务类型<br />
+                                    <span class="font-size-10">（多选）</span>
+                                </div>
+                                <div class="float-left">
+                                    <input type="checkbox" class="vertical-align-top">
+                                    <span>定制游</span>
+                                    <input type="checkbox" class="vertical-align-top">
+                                    <span>跟团游</span>
+                                    <input type="checkbox" class="vertical-align-top">
+                                    <span>自由行</span>
+                                    <input type="checkbox" class="vertical-align-top">
+                                    <span>其他</span>
+                                </div>
                             </div>
                         </div>
+                        <div class="clear"></div>
                         <div class="margin-top-30">
                             <div class="padding-0">
                                 <input type="radio" id="female" name="">
@@ -48,12 +54,12 @@
                     </form>
                 </div>
                 <div class="text-algin-center col-xs-4 col-sm-4 padding-top-40 padding-bottom-40 padding-right-40 padding-left-40">
-                    <h4 class="text-left"><b>注册魔法路书：</b></h4>
-                    <h4 class="margin-top-20 margin-bottom-20 padding-top-10 padding-bottom-10">中文语音导游，让旅行更有内涵</h4>
+                    <div class="text-left font-size-16"><b>注册魔法路书：</b></div>
+                    <div class="margin-top-20 margin-bottom-20 padding-top-10 padding-bottom-10 font-size-16">中文语音导游，让旅行更有内涵</div>
                     <div class="width-200px margin-auto">
                         <img src="{{URL::asset('img/erweima_03.png')}}" class="width-100" />
                     </div>
-                    <h4 class="padding-top-10 padding-bottom-10">扫描加魔法路书公众号</h4>
+                    <div class="padding-top-10 padding-bottom-10 font-size-16">扫描加魔法路书公众号</div>
                 </div>
             </div>
         </div>

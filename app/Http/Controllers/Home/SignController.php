@@ -15,18 +15,34 @@ class SignController extends Controller
 {
     //登录
     public function signIn(Request $request){
-        return view('home.sign.in');
+        $menu='sign';
+        $param=array(
+            'menu'=>$menu
+        );
+        return view('home.sign.in',$param);
     }
     //注册
     public function signUp(Request $request){
-        return view('home.sign.up');
+        $menu='sign';
+        $param=array(
+            'menu'=>$menu
+        );
+        return view('home.sign.up',$param);
     }
     //注册成功
     public function signSuccess(Request $request){
-        return view('home.sign.success');
+        $menu='sign';
+        $param=array(
+            'menu'=>$menu
+        );
+        return view('home.sign.success',$param);
     }
     //退出
     public function signOut(Request $request){
-        return view('home.sign.out');
+        $menu='sign';
+        $param=array(
+            'menu'=>$menu
+        );
+        return view('home.sign.out',$param);
     }
 }
