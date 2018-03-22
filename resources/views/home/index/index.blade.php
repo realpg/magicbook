@@ -91,12 +91,12 @@
                             </div>
                         </li>
                         <li class="dropdown float-left width-25 text-algin-center bg-red border-radius-right border-top border-bottom border-red style-ellipsis-1">
-                                <div class="margin-top-15 margin-bottom-15">
-                                    <a href="#" class="dropdown-toggle font-color-black line-height-50" style="color:#fff;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        立刻生成
-                                    </a>
-                                </div>
-                            </li>
+                            <div class="margin-top-15 margin-bottom-15">
+                                <a href="#" class="dropdown-toggle font-color-black line-height-50" style="color:#fff;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    立刻生成
+                                </a>
+                            </div>
+                        </li>
                     </ul>
                     {{--</div>--}}
                 </div>
