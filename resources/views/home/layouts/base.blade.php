@@ -14,6 +14,7 @@
     <script type="text/javascript" src="{{ URL::asset('dist/lib/respond.min.js') }}"></script>
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap/bootstrap.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap/bootstrapValidator.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap/bootstrap-theme.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/iconfont/iconfont.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/common.css') }}"/>
@@ -75,6 +76,7 @@
 @show
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/bootstrap/bootstrapValidator.js') }}"></script>
 <!--/_footer 作为公共模版分离出去-->
 {{--doT、md5、七牛等相关--}}
 <script type="text/javascript" src="{{ URL::asset('/js/doT.min.js') }}"></script>
@@ -83,7 +85,6 @@
 <script type="text/javascript" src="{{ URL::asset('/js/plupload/moxie.js') }}"></script>
 
 <script type="text/javascript" src="{{ URL::asset('/js/jquery.form.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('/js/jQueryProvinces/area.js') }}"></script>
 {{--common.js--}}
 <script type="text/javascript" src="{{ URL::asset('/js/common.js') }}"></script>
 <script>

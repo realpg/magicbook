@@ -7,15 +7,22 @@
  */
 namespace App\Http\Controllers\Home;
 
+use App\Components\Utils;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller{
     //服务条款
     public function index(Request $request){
+        $request=$request->all();
         $menu='service';
+        $service_param=array();
+        $service=Utils::curl('m/agreement/',$service_param);
+        $service=json_decode($service,true);
+        $service['content']=nl2br($service['content']);
         $param=array(
-            'menu'=>$menu
+            'menu'=>$menu,
+            'service'=>$service,
         );
         return view('home.service.index',$param);
     }

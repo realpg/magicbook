@@ -12,15 +12,15 @@
             </div>
             <div>
                 <div class="col-xs-8 col-sm-8 padding-top-40 padding-bottom-40 padding-right-50 padding-left-50" style="border-right:1px #ccc solid;">
-                    <form>
+                    <form id="form-sign-up" >
                         <div class="form-group">
-                            <input type="text" class="form-control height-50px" placeholder="请输入您的姓名">
+                            <input type="text" required="required" class="form-control height-50px" name="username" id="username" placeholder="请输入您的姓名">
                         </div>
                         <div class="form-group margin-top-30">
-                            <input type="text" class="form-control height-50px" placeholder="请输入您的手机号">
+                            <input type="text" required="required" class="form-control height-50px" name="mobile" id="mobile" placeholder="请输入您的手机号">
                         </div>
                         <div class="form-group margin-top-30">
-                            <input type="password" class="form-control height-50px" placeholder="请输入密码">
+                            <input type="password" required="required" class="form-control height-50px" name="password" id="password" placeholder="请输入密码">
                         </div>
                         <div class="margin-top-30">
                             <div class="padding-0">
@@ -29,27 +29,29 @@
                                     <span class="font-size-10">（多选）</span>
                                 </div>
                                 <div class="float-left">
-                                    <input type="checkbox" class="vertical-align-top">
-                                    <span>定制游</span>
-                                    <input type="checkbox" class="vertical-align-top">
-                                    <span>跟团游</span>
-                                    <input type="checkbox" class="vertical-align-top">
-                                    <span>自由行</span>
-                                    <input type="checkbox" class="vertical-align-top">
-                                    <span>其他</span>
+                                    @if($businesses)
+                                        @foreach($businesses['results'] as $business)
+                                            <label><input type="checkbox" name="businesses" value="{{$business['name']}}" class="vertical-align-top"></label>
+                                            {{$business['code']}}
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
                         <div class="clear"></div>
                         <div class="margin-top-30">
                             <div class="padding-0">
-                                <input type="radio" id="female" name="">
-                                <label for="female" class="font-color-red">我已阅读并同意《魔法路书服务条款》</label>
+                                <input type="radio" id="female" name="agreement_checked">
+                                <label for="female" class="font-color-red">
+                                    <a href="{{URL::asset('service')}}">
+                                        我已阅读并同意《魔法路书服务条款》
+                                    </a>
+                                </label>
                             </div>
                         </div>
                         <div class="clear"></div>
                         <div class="margin-top-30">
-                            <button type="button" class="btn btn-danger bg-none bg-red border-color-red width-100 height-40px font-size-18 border-radius-0 height-50px">立 即 注 册</button>
+                            <button type="submit" id="validateBtn" class="btn btn-danger bg-none bg-red border-color-red width-100 height-40px font-size-18 border-radius-0 height-50px">立 即 注 册</button>
                         </div>
                     </form>
                 </div>
@@ -68,7 +70,59 @@
 @endsection
 @section('script')
 <script>
-    $(function(){
+    $(function() {
+        $('#form-sign-up').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    message: '用户名无效',
+                    validators: {
+                        notEmpty: {
+                            message: '用户名不能为空'
+                        }
+                    }
+                },
+                mobile: {
+                    validators: {
+                        notEmpty: {
+                            message: '手机号不能位空'
+                        },
+                        regexp: {
+                            regexp: /^[1][3,4,5,7,8][0-9]{9}$/,
+                            message: '请输入正确的手机号'
+                        },
+                    }
+                },
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: '密码不能位空'
+                        }
+                    }
+                },
+                businesses: {
+                    validators: {
+                        notEmpty: {
+                            message: '请至少选择一种业务类型'
+                        }
+                    }
+                },
+                agreement_checked: {
+                    validators: {
+                        notEmpty: {
+                            message: '请阅读并同意《魔法路书服务条款》'
+                        }
+                    }
+                },
+            },
+        }).on("success.form.bv",function(e){
+
+        });
     })
 </script>
 @endsection

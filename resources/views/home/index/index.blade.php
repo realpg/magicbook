@@ -126,7 +126,7 @@
 </script>
 @endsection
 @section('script')
-<script>
+    <script>
     function choiceContinent(continent_id,continent_name){
         $('#continent').text(continent_name)
         var param={
