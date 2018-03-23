@@ -673,9 +673,18 @@ a:after{
     height: 50px;
 }
 
+.img-rect-55 {
+    width: 55px;
+    height: 55px;
+}
+
 .img-rect-60 {
     width: 60px;
     height: 60px;
+}
+
+.line-height-20 {
+    line-height: 20px;
 }
 
 .line-height-25 {

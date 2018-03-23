@@ -154,7 +154,7 @@
         var menu='{{$menu}}';
         if(menu=='audition'){
             var subsection='{{$subsection}}';
-            if(subsection=='scenery'){
+            if(subsection=='free'){
                 $('.hover-card-1').css('box-shadow','0px 4px 20px rgba(0,0,0,.3)');
                 $('.hover-card-1').css('transform','scale(1.1)');
                 $('.hover-card-1').css('-webkit-transform','scale(1.1)');
@@ -167,7 +167,7 @@
                 $('.hover-card-1').css('border','1px solid #E21B14');
                 $('#hover-card-button-1').show();
             }
-            else if(subsection=='free'){
+            else if(subsection=='customization'){
                 $('.hover-card-3').css('box-shadow','0px 4px 20px rgba(0,0,0,.3)');
                 $('.hover-card-3').css('transform','scale(1.1)');
                 $('.hover-card-3').css('-webkit-transform','scale(1.1)');
