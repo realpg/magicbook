@@ -6,10 +6,9 @@
  * Time: 10:15
  */
 
-namespace app\Http\Middleware;
+namespace App\Http\Middleware;
 
-use App\Components\BaseManager;
-use App\Components\ServiceManager;
+use App\Components\Utils;
 use App\Http\Controllers\ApiResponse;
 use Closure;
 
@@ -17,11 +16,9 @@ class WebBase
 {
     public function handle($request, Closure $next)
     {
-        $base=BaseManager::getBaseInfo();
-        $services=ServiceManager::getAllServices();
-        $common['base']=$base;
-        $common['services']=$services;
-        $request['common']=$common;
+        $common_param=array();
+        $common=Utils::curl('magic/index/',$common_param);
+        $request['common']=json_decode($common,true);
         return $next($request);
     }
 }

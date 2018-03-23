@@ -27,187 +27,18 @@ function ajaxRequest(url, param, method, callBack) {
     });
 }
 
-//设置管理员状态
-function setAdminStatus(url, param, callBack) {
-    ajaxRequest(url + "admin/admin/setStatus/" + param.id, param, "GET", callBack);
+//选择国家
+function getCountries(url, param, callBack) {
+    ajaxRequest(url + "region/country", param, "GET", callBack);
 }
-//删除管理员
-function delAdmin(url, param, callBack) {
-    ajaxRequest(url + "admin/admin/del", param, "GET", callBack);
+
+//选择城市
+function getCities(url, param, callBack) {
+    ajaxRequest(url + "region/city", param, "GET", callBack);
 }
-//删除Banner
-function delBanner(url, param, callBack) {
-    ajaxRequest(url + "admin/banner/del", param, "GET", callBack);
-}
-//加盟信息标记已联系
+
 function stampLeague(url, param, callBack) {
     $.post(url + "admin/league/stamp",param,callBack);
-}
-//删除加盟信息
-function delLeague(url, param, callBack) {
-    ajaxRequest(url + "admin/league/del", param, "GET", callBack);
-}
-//批量删除加盟信息
-function delMoreLeague(url, param, callBack) {
-    ajaxRequest(url + "admin/league/delMore", param, "GET", callBack);
-}
-//投诉信息标记已联系
-function stampAdvice(url, param, callBack) {
-    $.post(url + "admin/advice/stamp",param,callBack);
-}
-//删除投诉信息
-function delAdvice(url, param, callBack) {
-    ajaxRequest(url + "admin/advice/del", param, "GET", callBack);
-}
-//批量删除投诉信息
-function delMoreAdvice(url, param, callBack) {
-    ajaxRequest(url + "admin/advice/delMore", param, "GET", callBack);
-}
-//找货信息标记已联系
-function stampSearching(url, param, callBack) {
-    $.post(url + "admin/searching/stamp",param,callBack);
-}
-//删除找货信息
-function delSearching(url, param, callBack) {
-    ajaxRequest(url + "admin/searching/del", param, "GET", callBack);
-}
-//批量删除找货信息
-function delMoreSearching(url, param, callBack) {
-    ajaxRequest(url + "admin/searching/delMore", param, "GET", callBack);
-}
-//删除栏目
-function delMenu(url, param, callBack) {
-    ajaxRequest(url + "admin/menu/del", param, "GET", callBack);
-}
-//删除搜索属性
-function delAttribute(url, param, callBack) {
-    ajaxRequest(url + "admin/attribute/del", param, "GET", callBack);
-}
-//删除商品
-function delGoods(url, param, callBack) {
-    ajaxRequest(url + "admin/goods/del", param, "GET", callBack);
-}
-//批量删除商品
-function delMoreGoods(url, param, callBack) {
-    ajaxRequest(url + "admin/goods/delMore", param, "GET", callBack);
-}
-
-//删除化学商品大类
-function delChemClass(url, param, callBack) {
-    ajaxRequest(url + "admin/chem/delClass", param, "GET", callBack);
-}
-//删除化学商品
-function delChem(url, param, callBack) {
-    ajaxRequest(url + "admin/chem/del", param, "GET", callBack);
-}
-//批量删除化学商品
-function delMoreChem(url, param, callBack) {
-    ajaxRequest(url + "admin/chem/delMore", param, "GET", callBack);
-}
-//删除第三方检测商品
-function delTesting(url, param, callBack) {
-    ajaxRequest(url + "admin/testing/del", param, "GET", callBack);
-}
-//批量删除第三方检测商品
-function delMoreTesting(url, param, callBack) {
-    ajaxRequest(url + "admin/testing/delMore", param, "GET", callBack);
-}
-//删除第三方检测商品详情
-function delTestingDetail(url, param, callBack) {
-    ajaxRequest(url + "admin/testingdetail/del", param, "GET", callBack);
-}
-//修改第三方检测商品详情
-function editTestingDetail(url, param, callBack) {
-    $.post(url + "admin/testingdetail/edit",param,callBack);
-}
-//删除机加工商品
-function delMachining(url, param, callBack) {
-    ajaxRequest(url + "admin/machining/del", param, "GET", callBack);
-}
-//批量删除机加工商品
-function delMoreMachining(url, param, callBack) {
-    ajaxRequest(url + "admin/machining/delMore", param, "GET", callBack);
-}
-//删除加工商品详情
-function delMachiningDetail(url, param, callBack) {
-    ajaxRequest(url + "admin/machiningdetail/del", param, "GET", callBack);
-}
-//修改加工商品详情
-function editMachiningDetail(url, param, callBack) {
-    $.post(url + "admin/machiningdetail/edit",param,callBack);
-}
-//删除加工商品案例
-function delMachiningCase(url, param, callBack) {
-    ajaxRequest(url + "admin/machiningcase/del", param, "GET", callBack);
-}
-//修改加工商品案例
-function editMachiningCase(url, param, callBack) {
-    $.post(url + "admin/machiningcase/edit",param,callBack);
-}
-//审核增值税专用发票
-function examineInvoice(url, param, callBack) {
-    $.post(url + "admin/invoice/examine",param,callBack);
-}
-//删除关键字
-function delWord(url, param, callBack) {
-    ajaxRequest(url + "admin/word/del", param, "GET", callBack);
-}
-//删除图纸
-function delDrawing(url, param, callBack) {
-    ajaxRequest(url + "admin/drawing/del", param, "GET", callBack);
-}
-//批量删除图纸
-function delMoreDrawing(url, param, callBack) {
-    ajaxRequest(url + "admin/drawing/delMore", param, "GET", callBack);
-}
-
-
-//下发短信验证码
-function sendSMSCode(url, param, callBack) {
-    ajaxRequest(url + "smscode", param, "GET", callBack);
-}
-//下发邮箱验证码
-function sendEmailCode(url, param, callBack) {
-    ajaxRequest(url + "emailcode", param, "GET", callBack);
-}
-
-
-//删除收货地址
-function delAddress(url, param, callBack) {
-    ajaxRequest(url + "center/address/del", param, "GET", callBack);
-}
-//设置默认收货地址
-function defaultAddress(url, param, callBack) {
-    ajaxRequest(url + "center/address/default", param, "GET", callBack);
-}
-
-//删除发票
-function delInvoice(url, param, callBack) {
-    ajaxRequest(url + "center/invoice/del", param, "GET", callBack);
-}
-//设置默认收货地址
-function defaultInvoice(url, param, callBack) {
-    ajaxRequest(url + "center/invoice/default", param, "GET", callBack);
-}
-
-
-//上传第三方检测的图纸
-function uploadMachiningImages(url, param, callBack) {
-    $.post(url + "machining/upload",param,callBack);
-}
-
-
-//添加购物车执行
-function editShoppingCart(url, param, callBack) {
-    $.post(url + "cart/edit",param,callBack);
-}
-//删除购物车
-function delShoppingCart(url, param, callBack) {
-    ajaxRequest(url + "cart/del", param, "GET", callBack);
-}
-//批量删除购物车
-function delMoreShoppingCart(url, param, callBack) {
-    ajaxRequest(url + "cart/delMore", param, "GET", callBack);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -364,8 +195,3 @@ function getQueryString(name) {
     }
     return null;
 }
-
-
-
-
-© 2018 GitHub, Inc.

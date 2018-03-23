@@ -13,12 +13,14 @@
 
 //前台
 Route::group(['prefix' => '', 'middleware' => []], function () {
-    Route::get('/', 'Home\IndexController@index');        //首页
-    Route::get('/index/', 'Home\IndexController@index');        //首页
-    Route::get('/audition/', 'Home\AuditionController@scenery');        //获取试听(美景版)
-    Route::get('/audition/scenery/', 'Home\AuditionController@scenery');        //获取试听(美景版)
-    Route::get('/audition/customization/', 'Home\AuditionController@customization');        //获取试听(定制版)
-    Route::get('/audition/free/', 'Home\AuditionController@free');        //获取试听(免费版)
+    Route::get('/', 'Home\IndexController@index')->middleware('WebBase');        //首页
+    Route::get('/index/', 'Home\IndexController@index')->middleware('WebBase');        //首页
+    Route::get('/region/country', 'Home\IndexController@getCountries')->middleware('WebBase');        //获取国家列表
+    Route::get('/region/city', 'Home\IndexController@getCities')->middleware('WebBase');        //获取城市列表
+    Route::get('/audition/', 'Home\AuditionController@scenery')->middleware('WebBase');       //获取试听(美景版)
+    Route::get('/audition/scenery/', 'Home\AuditionController@scenery')->middleware('WebBase');        //获取试听(美景版)
+    Route::get('/audition/customization/', 'Home\AuditionController@customization')->middleware('WebBase');        //获取试听(定制版)
+    Route::get('/audition/free/', 'Home\AuditionController@free')->middleware('WebBase');       //获取试听(免费版)
     Route::get('/center', 'Home\CenterController@personal');        //个人中心(个人资料)
     Route::get('/center/personal', 'Home\CenterController@personal');        //个人中心(个人资料)
     Route::get('/center/generate/', 'Home\CenterController@generate');        //个人中心(生成记录)

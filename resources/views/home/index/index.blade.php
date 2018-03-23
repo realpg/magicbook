@@ -4,22 +4,23 @@
 <div id="main-body">
     @include('home.layouts.banner')
     <div class="middle">
+        @if($common['middle_banner'])
         <h2 class="text-algin-center line-height-80 font-color-grey">效果展示</h2>
         <div class="middle_banner">
             <div id="carousel-middel-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-middel-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-middel-generic" data-slide-to="1"></li>
+                    @foreach($common['middle_banner'] as $k=>$middle_banner)
+                    <li data-target="#carousel-middel-generic" data-slide-to="{{$k}}" {{$k==0?'class="active"':''}}></li>
+                    @endforeach
                 </ol>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <img src="{{URL::asset('img/meijing_pic_04.png')}}">
+                    @foreach($common['middle_banner'] as $k=>$middle_banner)
+                    <div class="item {{$k==0?'active':''}}">
+                        <img src="{{$middle_banner['image']}}" alt="{{$middle_banner['title']}}" class="margin-auto">
                     </div>
-                    <div class="item">
-                        <img src="{{URL::asset('img/meijing_pic_04.png')}}">
-                    </div>
+                    @endforeach
                 </div>
                 <!-- Controls -->
                 <a class="left carousel-control" style="background: none;" href="#carousel-middel-generic" role="button" data-slide="prev">
@@ -31,8 +32,8 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            {{--<img src="{{URL::asset('img/meijing_pic_04.png')}}" class="width-100" />--}}
         </div>
+        @endif
         @include('home.layouts.edition')
     </div>
     <div class="bottom">
@@ -60,33 +61,36 @@
                         <li class="dropdown float-left border-left border-top border-bottom width-25 text-algin-center bg-white border-radius-left">
                             <div class="margin-top-15 margin-bottom-15 border-right">
                                 <a href="#" class="dropdown-toggle font-color-black line-height-50" style="text-decoration:none;color:#000;" id="dropdownMenu1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                                    请选择大洲 <img src="{{URL::asset('img/meijing_13.png')}}" />
+                                    <span id="continent">请选择大洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
                                 </a>
                                 <ul class="dropdown-menu width-100" aria-labelledby="dropdownMenu1">
-                                    <li><a href="#">北京</a></li>
-                                    <li><a href="#">上海</a></li>
+                                    @if($common['cities'])
+                                        @foreach($common['cities'] as $continent)
+                                        <li><a href="javascript:" onclick="choiceContinent('{{$continent['id']}}','{{$continent['name']}}')">{{$continent['name']}}</a></li>
+                                        @endforeach
+                                    @else
+                                        <li>请选择大洲</li>
+                                    @endif
                                 </ul>
                             </div>
                         </li>
                         <li class="dropdown float-left border-top border-bottom width-25 text-algin-center bg-white">
                             <div class="margin-top-15 margin-bottom-15 border-right">
                                 <a href="#" class="dropdown-toggle font-color-black line-height-50" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    请选择国家 <img src="{{URL::asset('img/meijing_13.png')}}" />
+                                    <span id="country">请选择国家</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
                                 </a>
-                                <ul class="dropdown-menu width-100">
-                                    <li><a href="#">北京</a></li>
-                                    <li><a href="#">上海</a></li>
+                                <ul class="dropdown-menu width-100" id="countries-content">
+                                    <li class="padding-left-10">请选择国家</li>
                                 </ul>
                             </div>
                         </li>
                         <li class="dropdown float-left border-top border-bottom width-25 text-algin-center bg-white">
                             <div class="margin-top-15 margin-bottom-15">
                                 <a href="#" class="dropdown-toggle font-color-black line-height-50" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    请选择城市 <img src="{{URL::asset('img/meijing_13.png')}}" />
+                                    <span id="city">请选择城市</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
                                 </a>
-                                <ul class="dropdown-menu width-100">
-                                    <li><a href="#">北京</a></li>
-                                    <li><a href="#">上海</a></li>
+                                <ul class="dropdown-menu width-100" id="cities-content">
+                                    <li class="padding-left-10">请选择城市</li>
                                 </ul>
                             </div>
                         </li>
@@ -98,7 +102,6 @@
                             </div>
                         </li>
                     </ul>
-                    {{--</div>--}}
                 </div>
             </div>
             <div class="width-200px text-algin-center margin-auto margin-top-10 margin-bottom-10">
@@ -108,13 +111,64 @@
             </div>
         </div>
         <div class="clear"></div>
+        @if($common['footer_banner'])
         <div class="footer_banner">
-            <img src="{{URL::asset('img/meijing_pic_06.png')}}" style="width:100%;" />
+            <img src="{{$common['footer_banner']['image']}}" class="width-100" />
         </div>
+        @endif
     </div>
 </div>
+<script id="countries-content-template" type="text/x-dot-template">
+    <li><a href="javascript:" onclick="choiceCities('@{{=it.id}}','@{{=it.continent_id}}','@{{=it.name}}')">@{{=it.name}}</a></li>
+</script>
+<script id="cities-content-template" type="text/x-dot-template">
+    <li><a href="javascript:" onclick="determineCity('@{{=it.id}}','@{{=it.name}}')">@{{=it.name}}</a></li>
+</script>
 @endsection
 @section('script')
 <script>
+    function choiceContinent(continent_id,continent_name){
+        $('#continent').text(continent_name)
+        var param={
+            continent_id:continent_id,
+            _token: "{{ csrf_token() }}"
+        }
+        getCountries('{{URL::asset('')}}', param, function (ret) {
+            if (ret.result == true) {
+                var data=ret.ret
+                $('#countries-content').html('');
+                for(var i=0;i<data.length;i++){
+                    data[i]['continent_id']=continent_id
+                    var interText = doT.template($("#countries-content-template").text())
+                    $("#countries-content").append(interText(data[i]))
+                }
+            } else {
+                console.log('getCountry err is :' +JSON.stringify(ret.message))
+            }
+        })
+    }
+    function choiceCities(country_id,continent_id,country_name){
+        $('#country').text(country_name)
+        var param={
+            country_id:country_id,
+            continent_id:continent_id,
+            _token: "{{ csrf_token() }}"
+        }
+        getCities('{{URL::asset('')}}', param, function (ret) {
+            if (ret.result == true) {
+                var data=ret.ret
+                $('#cities-content').html('');
+                for(var i=0;i<data.length;i++){
+                    var interText = doT.template($("#cities-content-template").text())
+                    $("#cities-content").append(interText(data[i]))
+                }
+            } else {
+                console.log('getCountry err is :' +JSON.stringify(ret.message))
+            }
+        })
+    }
+    function determineCity(city_id,city_name){
+        $('#city').text(city_name)
+    }
 </script>
 @endsection

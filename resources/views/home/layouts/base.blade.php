@@ -85,7 +85,7 @@
 <script type="text/javascript" src="{{ URL::asset('/js/jquery.form.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('/js/jQueryProvinces/area.js') }}"></script>
 {{--common.js--}}
-{{--<script type="text/javascript" src="{{ URL::asset('/js/common.js') }}"></script>--}}
+<script type="text/javascript" src="{{ URL::asset('/js/common.js') }}"></script>
 <script>
     $(function(){
         //初始化页面高度
