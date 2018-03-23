@@ -39,65 +39,10 @@
             <h3>30天</h3>
             <h3 style="border-bottom: 0;">5元/城市</h3>
             <h3 id="hover-card-button-3" style="border-bottom: 0;border-top:1px solid #ccc;margin-top:10px;" hidden>
-                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-danger margin-top-25 bg-none bg-red border-color-red width-60 height-50px font-size-18 border-radius-0">立即购买</button>
+                <button type="button" class="btn btn-danger margin-top-25 bg-none bg-red border-color-red width-60 height-50px font-size-18 border-radius-0">立即购买</button>
             </h3>
         </li>
     </ul>
-</div>
-<!-- modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content font-weight" style="max-width: 450px;">
-            <div class="modal-header text-center border-0">
-                <span id="myModalLabel" class="font-color-light-grey font-size-15">是否确定生成以下城市？生成后不可修改，不可撤销</span>
-            </div>
-            <div class="modal-body text-center padding-left-50 padding-right-50 font-color-red line-height-50" style="margin-top: -20px;">
-                <div class="row font-size-15">
-                    <div class="col-xs-3 col-sm-3">
-                        尼斯
-                    </div>
-                    <div class="col-xs-3 col-sm-3">
-                        巴黎
-                    </div>
-                    <div class="col-xs-3 col-sm-3">
-                        凡尔赛
-                    </div>
-                    <div class="col-xs-3 col-sm-3">
-                        马赛
-                    </div>
-                    <div class="col-xs-3 col-sm-3">
-                        尼斯
-                    </div>
-                    <div class="col-xs-3 col-sm-3">
-                        巴黎
-                    </div>
-                    <div class="col-xs-3 col-sm-3">
-                        凡尔赛
-                    </div>
-                    <div class="col-xs-3 col-sm-3">
-                        马赛
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer padding-0 line-height-50">
-                <a href="" type="button" data-dismiss="modal">
-                    <div class="col-xs-6 col-sm-6 text-center">
-                        取消
-                    </div>
-                </a>
-                <a href="{{URL::asset('pay')}}">
-                    <div class="col-xs-6 col-sm-6 bg-red text-center font-color-white">
-                        <div class="col-xs-6 col-sm-6">
-                            共计<span class="font-size-18">99</span>元
-                        </div>
-                        <div class="col-xs-6 col-sm-6">
-                            立即付款
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
 </div>
 <script>
     // $(function(){
