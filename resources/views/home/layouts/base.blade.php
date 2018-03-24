@@ -53,12 +53,22 @@
                 </a>
             </div>
             <div class="padding-top-15 float-right margin-top-10 margin-bottom-10">
-                <a href="{{URL::asset('/sign/in')}}">
-                    <button type="button" class="btn btn-default margin-right-20 border-red font-color-red bg-none">登录</button>
-                </a>
-                <a href="{{URL::asset('/sign/up')}}">
-                    <button type="button" class="btn btn-danger bf-none bg-red border-red">注册</button>
-                </a>
+                @if($common['user'])
+                    <div class="float-left margin-right-20 line-height-30 font-weight">
+                        <img src="{{URL::asset('img/logo.png')}}" class="img-rect-40 border-radius-100 margin-right-10" />
+                        {{$common['user']['username']}}
+                    </div>
+                    <a href="{{URL::asset('/sign/out')}}">
+                        <button type="button" class="btn btn-default margin-right-20 border-red font-color-red bg-none padding-left-20 padding-right-20" style="border-radius: 0;background: #fff;">退出</button>
+                    </a>
+                @else
+                    <a href="{{URL::asset('/sign/in')}}">
+                        <button type="button" class="btn btn-default margin-right-20 border-red font-color-red bg-none padding-left-20 padding-right-20" style="border-radius: 0;background: #fff;">登录</button>
+                    </a>
+                    <a href="{{URL::asset('/sign/up')}}">
+                        <button type="button" class="btn btn-danger bf-none bg-red border-red padding-left-20 padding-right-20" style="border-radius: 0;">注册</button>
+                    </a>
+                @endif
             </div>
         </div>
     </nav>

@@ -10,9 +10,10 @@
                     <div class="col-xs-7 col-sm-7 text-right">
                         按版本选择
                     </div>
-                    <div class="col-xs-2 col-sm-2 padding-7">
-                        <span class="glyphicon glyphicon-menu-up font-size-10 height-10px display-block"></span>
-                        <sapn class="glyphicon glyphicon-menu-down font-size-10 height-10px display-block"></sapn>
+                    <div class="col-xs-2 col-sm-2">
+                        <img src="{{URL::asset('img/xuanxiangka_03.png')}}" class="width-35px vertical-align-middle" />
+                        {{--<span class="glyphicon glyphicon-menu-up font-size-10 height-10px display-block"></span>--}}
+                        {{--<sapn class="glyphicon glyphicon-menu-down font-size-10 height-10px display-block"></sapn>--}}
                     </div>
                     <div class="col-xs-3 col-sm-3 text-right padding-0">
                         <span class="width-100 height-100 border-right"></span>

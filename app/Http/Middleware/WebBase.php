@@ -18,7 +18,9 @@ class WebBase
     {
         $common_param=array();
         $common=Utils::curl('magic/index/',$common_param);
-        $request['common']=json_decode($common,true);
+        $common=json_decode($common,true);
+        $common['user']=$request->cookie('user');
+        $request['common']=$common;
         return $next($request);
     }
 }

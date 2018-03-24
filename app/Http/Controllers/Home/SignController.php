@@ -18,8 +18,11 @@ class SignController extends Controller
 {
     //登录
     public function signIn(Request $request){
+        $request=$request->all();
+        $common=$request['common'];
         $menu='sign';
         $param=array(
+            'common'=>$common,
             'menu'=>$menu
         );
         return view('home.sign.in',$param);
@@ -54,11 +57,13 @@ class SignController extends Controller
     //注册
     public function signUp(Request $request){
         $request=$request->all();
+        $common=$request['common'];
         $menu='sign';
         $businesses_param=array();
         $businesses=Utils::curl('u/business/',$businesses_param);
         $businesses=json_decode($businesses,true);
         $param=array(
+            'common'=>$common,
             'menu'=>$menu,
             'businesses'=>$businesses,
         );
@@ -105,18 +110,18 @@ class SignController extends Controller
     }
     //注册成功
     public function signSuccess(Request $request){
+        $request=$request->all();
+        $common=$request['common'];
         $menu='sign';
         $param=array(
+            'common'=>$common,
             'menu'=>$menu
         );
         return view('home.sign.success',$param);
     }
     //退出
     public function signOut(Request $request){
-        $menu='sign';
-        $param=array(
-            'menu'=>$menu
-        );
-        return view('home.sign.out',$param);
+        setcookie('user', '', -1, '/');
+        return redirect('/');
     }
 }
