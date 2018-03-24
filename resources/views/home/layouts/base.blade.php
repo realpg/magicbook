@@ -77,6 +77,8 @@
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap/bootstrap.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap/bootstrapValidator.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('dist/lib/layer/2.4/layer.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::asset('js/jquery.cookie.js') }}"></script>
 <!--/_footer 作为公共模版分离出去-->
 {{--doT、md5、七牛等相关--}}
 <script type="text/javascript" src="{{ URL::asset('/js/doT.min.js') }}"></script>

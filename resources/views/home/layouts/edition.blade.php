@@ -47,39 +47,6 @@
                 </h3>
             </li>
         @endforeach
-        {{--<li class="hover-card-1">--}}
-            {{--<h2>免费版</h2>--}}
-            {{--<h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>--}}
-            {{--<h3><img src="{{URL::asset('img/goucha_06.png')}}" class="height-28px" /></h3>--}}
-            {{--<h3><img src="{{URL::asset('img/goucha_06.png')}}" class="height-28px" /></h3>--}}
-            {{--<h3>30天</h3>--}}
-            {{--<h3 style="border-bottom: 0;">免费</h3>--}}
-            {{--<h3 id="hover-card-button-1" style="border-bottom: 0;border-top:1px solid #ccc;margin-top:10px;" hidden>--}}
-                {{--<button type="button" class="btn btn-danger margin-top-25 bg-none bg-red border-color-red width-60 height-50px font-size-18 border-radius-0">立即购买</button>--}}
-            {{--</h3>--}}
-        {{--</li>--}}
-        {{--<li class="hover-card-2">--}}
-            {{--<h2>美景版</h2>--}}
-            {{--<h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>--}}
-            {{--<h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>--}}
-            {{--<h3><img src="{{URL::asset('img/goucha_06.png')}}" class="height-28px" /></h3>--}}
-            {{--<h3>30天</h3>--}}
-            {{--<h3 style="border-bottom: 0;">2元/城市</h3>--}}
-            {{--<h3 id="hover-card-button-2" style="border-bottom: 0;border-top:1px solid #ccc;margin-top:10px;" hidden>--}}
-                {{--<button type="button" class="btn btn-danger margin-top-25 bg-none bg-red border-color-red width-60 height-50px font-size-18 border-radius-0">立即购买</button>--}}
-            {{--</h3>--}}
-        {{--</li>--}}
-        {{--<li class="hover-card-3">--}}
-            {{--<h2>定制版</h2>--}}
-            {{--<h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>--}}
-            {{--<h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>--}}
-            {{--<h3><img src="{{URL::asset('img/goucha_03.png')}}" class="height-28px" /></h3>--}}
-            {{--<h3>30天</h3>--}}
-            {{--<h3 style="border-bottom: 0;">5元/城市</h3>--}}
-            {{--<h3 id="hover-card-button-3" style="border-bottom: 0;border-top:1px solid #ccc;margin-top:10px;" hidden>--}}
-                {{--<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-danger margin-top-25 bg-none bg-red border-color-red width-60 height-50px font-size-18 border-radius-0">立即购买</button>--}}
-            {{--</h3>--}}
-        {{--</li>--}}
     </ul>
 </div>
 <!-- modal -->

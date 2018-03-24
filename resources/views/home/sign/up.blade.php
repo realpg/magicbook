@@ -1,8 +1,6 @@
 @extends('home.layouts.base')
 
 @section('content')
-    <style>
-    </style>
 <div id="main-body">
     <div class="container package-card padding-top-150 padding-bottom-150 font-color-light-grey">
         <div class="card-div row border-radius-10px margin-left-10 margin-right-10">
@@ -12,7 +10,8 @@
             </div>
             <div>
                 <div class="col-xs-8 col-sm-8 padding-top-40 padding-bottom-40 padding-right-50 padding-left-50" style="border-right:1px #ccc solid;">
-                    <form id="form-sign-up" >
+                    <form id="form-sign-up" method="post" >
+                        {{csrf_field()}}
                         <div class="form-group">
                             <input type="text" required="required" class="form-control height-50px" name="username" id="username" placeholder="请输入您的姓名">
                         </div>
@@ -20,7 +19,7 @@
                             <input type="text" required="required" class="form-control height-50px" name="mobile" id="mobile" placeholder="请输入您的手机号">
                         </div>
                         <div class="form-group margin-top-30">
-                            <input type="password" required="required" class="form-control height-50px" name="password" id="password" placeholder="请输入密码">
+                            <input type="text" required="required" class="form-control height-50px" name="company" id="company" placeholder="请输入您的公司名称">
                         </div>
                         <div class="margin-top-30">
                             <div class="padding-0">
@@ -31,8 +30,8 @@
                                 <div class="float-left">
                                     @if($businesses)
                                         @foreach($businesses['results'] as $business)
-                                            <label><input type="checkbox" name="businesses" value="{{$business['name']}}" class="vertical-align-top"></label>
-                                            {{$business['code']}}
+                                            <label><input type="checkbox" name="businesses[]" value="{{$business['code']}}" class="vertical-align-top"></label>
+                                            {{$business['name']}}
                                         @endforeach
                                     @endif
                                 </div>
@@ -98,17 +97,10 @@
                         },
                     }
                 },
-                password: {
+                company: {
                     validators: {
                         notEmpty: {
-                            message: '密码不能位空'
-                        }
-                    }
-                },
-                businesses: {
-                    validators: {
-                        notEmpty: {
-                            message: '请至少选择一种业务类型'
+                            message: '公司名称不能为空'
                         }
                     }
                 },
@@ -121,7 +113,24 @@
                 },
             },
         }).on("success.form.bv",function(e){
+            // Prevent form submission
+            e.preventDefault();
 
+            // Get the form instance
+            var $form = $(e.target);
+
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
+
+            // Use Ajax to submit form data
+            $.post("{{ URL::asset('sign/up')}}", $form.serialize(), function(ret) {
+                if(ret.result){
+                    window.location.href = "{{URL::asset('sign/success')}}";
+                }
+                else{
+                    layer.msg(ret.message, {icon: 2, time: 3000});
+                }
+            }, 'json');
         });
     })
 </script>

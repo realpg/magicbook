@@ -7,7 +7,7 @@
                 <img src="{{URL::asset('img/goucha_03.png')}}" />
             </div>
             <h4 class="margin-bottom-20"><b>您已成功注册魔法书路</b></h4>
-            <h4><b><span class="font-color-red margin-left-5 margin-right-5">注：初始密码为手机号后六位</span>立刻去<span class="font-color-red margin-left-5 margin-right-5">登录</span></b></h4>
+            <h4><b><span class="font-color-red margin-left-5 margin-right-5">注：初始密码为手机号后六位</span>立刻去<span class="font-color-red margin-left-5 margin-right-5"><a href="{{URL::asset('sign/in')}}">登录</a></span></b></h4>
         </div>
     </div>
 @endsection
