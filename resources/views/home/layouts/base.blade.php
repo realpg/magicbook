@@ -95,6 +95,7 @@
 {{--doT、md5、七牛等相关--}}
 <script type="text/javascript" src="{{ URL::asset('/js/doT.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('/js/md5.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('/js/qiniu.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('/js/plupload/plupload.full.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('/js/plupload/moxie.js') }}"></script>
 

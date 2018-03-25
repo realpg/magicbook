@@ -10,231 +10,53 @@
         <div class="bottom bg-bright-grey padding-top-50 padding-bottom-50 ">
             @include('home.layouts.choice')
             <div>
-                <div class="container font-color-silver-grey line-height-50 margin-top-20 margin-bottom-20 padding-left-50 padding-right-50">
-                    <div class="row">
-                        <div class="col-xs-1 col-sm-1 text-algin-right">
-                            <input type="checkbox" name="id_array" class="checkSingle" value="0" />
-                        </div>
-                        <div class="col-xs-11 col-sm-11 text-algin-center">
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="continent_0">请选择大洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
-                                </a>
-                                <ul class="dropdown-menu width-100">
-                                    @if($common['cities'])
-                                        @foreach($common['cities'] as $continent)
-                                            <li><a href="javascript:" onclick="choiceContinent(0,'{{$continent['id']}}','{{$continent['name']}}')">{{$continent['name']}}</a></li>
-                                        @endforeach
-                                    @else
-                                        <li>请选择大洲</li>
-                                    @endif
-                                </ul>
+                @for($i=0;$i<5;$i++)
+                    <div class="container font-color-silver-grey line-height-50 margin-top-20 margin-bottom-20 padding-left-50 padding-right-50">
+                        <div class="row">
+                            <div class="col-xs-1 col-sm-1 text-algin-right">
+                                <input type="checkbox" name="id_array" class="checkSingle" value="{{$i}}" />
                             </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="country_0">请选择国家</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                </a>
-                                <ul class="dropdown-menu width-100" id="countries-content-0">
-                                    <li class="padding-left-10">请选择国家</li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="city_0">请选择城市</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                </a>
-                                <ul class="dropdown-menu width-100" id="cities-content-0">
-                                    <li class="padding-left-10">请选择城市</li>
-                                </ul>
-                            </div>
-                            <input id="item_id_0" type="hidden" />
-                            <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16" style="line-height: 53px;">
-                                <a href="javascript:" onclick="submitSingle(0)">
-                                    立刻生成
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container font-color-silver-grey line-height-50 margin-top-20 margin-bottom-20 padding-left-50 padding-right-50">
-                    <div class="row">
-                        <div class="col-xs-1 col-sm-1 text-algin-right">
-                            <input type="checkbox" name="id_array" class="checkSingle" value="1" />
-                        </div>
-                        <div class="col-xs-11 col-sm-11 text-algin-center">
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="continent_1">请选择大洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
-                                </a>
-                                <ul class="dropdown-menu width-100">
-                                    @if($common['cities'])
-                                        @foreach($common['cities'] as $continent)
-                                            <li><a href="javascript:" onclick="choiceContinent(1,'{{$continent['id']}}','{{$continent['name']}}')">{{$continent['name']}}</a></li>
-                                        @endforeach
-                                    @else
-                                        <li>请选择大洲</li>
-                                    @endif
-                                </ul>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="country_1">请选择国家</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                </a>
-                                <ul class="dropdown-menu width-100" id="countries-content-1">
-                                    <li class="padding-left-10">请选择国家</li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="city_1">请选择城市</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                </a>
-                                <ul class="dropdown-menu width-100" id="cities-content-1">
-                                    <li class="padding-left-10">请选择城市</li>
-                                </ul>
-                            </div>
-                            <input id="item_id_1" type="hidden" />
-                            <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16" style="line-height: 53px;">
-                                <a href="javascript:" onclick="submitSingle(1)">
-                                    立刻生成
-                                </a>
+                            <div class="col-xs-11 col-sm-11 text-algin-center">
+                                <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
+                                    <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <span id="continent_{{$i}}">请选择大洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
+                                    </a>
+                                    <ul class="dropdown-menu width-100">
+                                        @if($common['cities'])
+                                            @foreach($common['cities'] as $continent)
+                                                <li><a href="javascript:" onclick="choiceContinent('{{$i}}','{{$continent['id']}}','{{$continent['name']}}')">{{$continent['name']}}</a></li>
+                                            @endforeach
+                                        @else
+                                            <li>请选择大洲</li>
+                                        @endif
+                                    </ul>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
+                                    <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <span id="country_{{$i}}">请选择国家</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
+                                    </a>
+                                    <ul class="dropdown-menu width-100" id="countries-content-{{$i}}">
+                                        <li class="padding-left-10">请选择国家</li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
+                                    <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <span id="city_{{$i}}">请选择城市</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
+                                    </a>
+                                    <ul class="dropdown-menu width-100" id="cities-content-{{$i}}">
+                                        <li class="padding-left-10">请选择城市</li>
+                                    </ul>
+                                </div>
+                                <input id="item_id_{{$i}}" type="hidden" />
+                                <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16" style="line-height: 53px;">
+                                    <a href="javascript:" onclick="submitSingle({{$i}})">
+                                        立刻生成
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="container font-color-silver-grey line-height-50 margin-top-20 margin-bottom-20 padding-left-50 padding-right-50">
-                    <div class="row">
-                        <div class="col-xs-1 col-sm-1 text-algin-right">
-                            <input type="checkbox" name="id_array" class="checkSingle" value="2" />
-                        </div>
-                        <div class="col-xs-11 col-sm-11 text-algin-center">
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="continent_2">请选择大洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
-                                </a>
-                                <ul class="dropdown-menu width-100">
-                                    @if($common['cities'])
-                                        @foreach($common['cities'] as $continent)
-                                            <li><a href="javascript:" onclick="choiceContinent(2,'{{$continent['id']}}','{{$continent['name']}}')">{{$continent['name']}}</a></li>
-                                        @endforeach
-                                    @else
-                                        <li>请选择大洲</li>
-                                    @endif
-                                </ul>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="country_2">请选择国家</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                </a>
-                                <ul class="dropdown-menu width-100" id="countries-content-2">
-                                    <li class="padding-left-10">请选择国家</li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="city_2">请选择城市</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                </a>
-                                <ul class="dropdown-menu width-100" id="cities-content-2">
-                                    <li class="padding-left-10">请选择城市</li>
-                                </ul>
-                            </div>
-                            <input id="item_id_2" type="hidden" />
-                            <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16" style="line-height: 53px;">
-                                <a href="javascript:" onclick="submitSingle(2)">
-                                    立刻生成
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container font-color-silver-grey line-height-50 margin-top-20 margin-bottom-20 padding-left-50 padding-right-50">
-                    <div class="row">
-                        <div class="col-xs-1 col-sm-1 text-algin-right">
-                            <input type="checkbox" name="id_array" class="checkSingle" value="3" />
-                        </div>
-                        <div class="col-xs-11 col-sm-11 text-algin-center">
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="continent_3">请选择大洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
-                                </a>
-                                <ul class="dropdown-menu width-100">
-                                    @if($common['cities'])
-                                        @foreach($common['cities'] as $continent)
-                                            <li><a href="javascript:" onclick="choiceContinent(3,'{{$continent['id']}}','{{$continent['name']}}')">{{$continent['name']}}</a></li>
-                                        @endforeach
-                                    @else
-                                        <li>请选择大洲</li>
-                                    @endif
-                                </ul>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="country_3">请选择国家</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                </a>
-                                <ul class="dropdown-menu width-100" id="countries-content-3">
-                                    <li class="padding-left-10">请选择国家</li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="city_3">请选择城市</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                </a>
-                                <ul class="dropdown-menu width-100" id="cities-content-3">
-                                    <li class="padding-left-10">请选择城市</li>
-                                </ul>
-                            </div>
-                            <input id="item_id_3" type="hidden" />
-                            <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16" style="line-height: 53px;">
-                                <a href="javascript:" onclick="submitSingle(3)">
-                                    立刻生成
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container font-color-silver-grey line-height-50 margin-top-20 margin-bottom-20 padding-left-50 padding-right-50">
-                    <div class="row">
-                        <div class="col-xs-1 col-sm-1 text-algin-right">
-                            <input type="checkbox" name="id_array" class="checkSingle" value="4" />
-                        </div>
-                        <div class="col-xs-11 col-sm-11 text-algin-center">
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="continent_4">请选择大洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
-                                </a>
-                                <ul class="dropdown-menu width-100">
-                                    @if($common['cities'])
-                                        @foreach($common['cities'] as $continent)
-                                            <li><a href="javascript:" onclick="choiceContinent(4,'{{$continent['id']}}','{{$continent['name']}}')">{{$continent['name']}}</a></li>
-                                        @endforeach
-                                    @else
-                                        <li>请选择大洲</li>
-                                    @endif
-                                </ul>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="country_4">请选择国家</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                </a>
-                                <ul class="dropdown-menu width-100" id="countries-content-4">
-                                    <li class="padding-left-10">请选择国家</li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50 font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="city_4">请选择城市</span> <img src="{{URL::asset('img/meijing_13.png')}}" />
-                                </a>
-                                <ul class="dropdown-menu width-100" id="cities-content-4">
-                                    <li class="padding-left-10">请选择城市</li>
-                                </ul>
-                            </div>
-                            <input id="item_id_4" type="hidden" />
-                            <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16" style="line-height: 53px;">
-                                <a href="javascript:" onclick="submitSingle(4)">
-                                    立刻生成
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endfor
             </div>
             <div class="package-card container padding-left-50 padding-right-50 font-size-18">
                 <div class="card-div height-60px line-height-60 text-center">
@@ -439,25 +261,26 @@
                     $('#order').text(ret.ret.data.out_trade_no);
                     $('#payPrice').text(price);
                     $('#qrcode').html('<img src="'+ret.ret.data.qrcode_img_url+'" class="width-100" />');
+                    CountDown()
+                    $('#dismiss_modal').trigger('click');
                 } else {
                     layer.msg(ret.ret, {icon: 2, time: 2000})
                 }
             })
         }
+
+        //倒计时
         var setTime;
-        $(function(){
-            var mjtt_pay=$('#mjtt-pay').length;
-            if(mjtt_pay){
-                var time=parseInt($("#time").text());
-                setTime=setInterval(function(){
-                    if(time<=0){
-                        $('#payInfo').html('<h4>支付二维码已过期，请重新生成！</h4>')
-                        return;
-                    }
-                    time--;
-                    $("#time").text(time);
-                },1000);
-            }
-        })
+        function CountDown(){
+            var time=parseInt($("#time").text());
+            setTime=setInterval(function(){
+                if(time<=0){
+                    $('#payInfo').html('<h4>支付二维码已过期，请重新生成！</h4>')
+                    return;
+                }
+                time--;
+                $("#time").text(time);
+            },1000);
+        }
     </script>
 @endsection

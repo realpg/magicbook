@@ -7,6 +7,7 @@
  */
 namespace App\Http\Controllers\Home;
 
+use App\Components\QNManager;
 use App\Components\Utils;
 use App\Http\Controllers\ApiResponse;
 use App\Http\Controllers\Controller;
@@ -42,10 +43,17 @@ class AuditionController extends  Controller{
         if($common['user']){
             $menu='audition';
             $subsection='customization';
+            $param_version=array();
+            $custom=Utils::curl_token('magic/version/custom/',$param_version,$common['user']['token']);
+            $custom=json_decode($custom,true);
+            //生成七牛token
+            $upload_token = QNManager::uploadToken();
             $param=array(
                 'common'=>$common,
                 'menu'=>$menu,
-                'subsection'=>$subsection
+                'subsection'=>$subsection,
+                'custom'=>$custom,
+                'upload_token'=>$upload_token
             );
             return view('home.audition.customization',$param);
         }

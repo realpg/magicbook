@@ -68,7 +68,7 @@
                 <div class="row font-size-15" id="city_names"></div>
             </div>
             <div class="modal-footer padding-0 line-height-50">
-                <a href="" type="button" data-dismiss="modal">
+                <a href="" type="button" data-dismiss="modal" id="dismiss_modal">
                     <div class="col-xs-6 col-sm-6 text-center">
                         取消
                     </div>

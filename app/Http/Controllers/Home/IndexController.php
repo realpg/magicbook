@@ -10,7 +10,9 @@ namespace App\Http\Controllers\Home;
 use App\Components\Utils;
 use App\Http\Controllers\ApiResponse;
 use App\Http\Controllers\Controller;
+use Faker\Provider\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class IndexController extends  Controller{
     //首页

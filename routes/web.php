@@ -38,4 +38,8 @@ Route::group(['prefix' => '', 'middleware' => ['WebBase']], function () {
     Route::post('/sign/up', 'Home\SignController@signUpDo');        //注册执行
     Route::get('/sign/out', 'Home\SignController@signOut');        //退出
     Route::get('/sign/success', 'Home\SignController@signSuccess');        //注册成功
+
+
+    Route::post('/photo/', 'Home\IndexController@photo');        //上传图片
+    Route::post('upload_img','UploadController@imgUpload');
 });
