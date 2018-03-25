@@ -37,8 +37,8 @@ function getCities(url, param, callBack) {
     ajaxRequest(url + "region/city", param, "GET", callBack);
 }
 
-function stampLeague(url, param, callBack) {
-    $.post(url + "admin/league/stamp",param,callBack);
+function submitFree(url, param, callBack) {
+    $.post(url + "audition/free/do",param,callBack);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -44,6 +44,7 @@
                     <div class="font-size-15"><b>让路书更智能</b></div>
                 </a>
             </div>
+            @if($common['user'])
             <div class="row float-left text-center height-80px line-height-80" style="width:300px;margin-left:100px;">
                 <a href="{{URL::asset('audition')}}">
                     <div class="col-xs-6 col-sm-6 font-size-16 {{$menu=='audition'?'nav-active':''}}">获取音频</div>
@@ -52,6 +53,7 @@
                     <div class="col-xs-6 col-sm-6 font-size-16 {{$menu=='center'?'nav-active':''}}">个人中心</div>
                 </a>
             </div>
+            @endif
             <div class="padding-top-15 float-right margin-top-10 margin-bottom-10">
                 @if($common['user'])
                     <div class="float-left margin-right-20 line-height-30 font-weight">
@@ -88,7 +90,7 @@
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap/bootstrap.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap/bootstrapValidator.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('dist/lib/layer/2.4/layer.js') }}"></script>
-        <script type="text/javascript" src="{{ URL::asset('js/jquery.cookie.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/jquery.cookie.js') }}"></script>
 <!--/_footer 作为公共模版分离出去-->
 {{--doT、md5、七牛等相关--}}
 <script type="text/javascript" src="{{ URL::asset('/js/doT.min.js') }}"></script>

@@ -94,9 +94,10 @@
                                 </ul>
                             </div>
                         </li>
+                        <input id="item_id" type="hidden" />
                         <li class="dropdown float-left width-25 text-algin-center bg-red border-radius-right border-top border-bottom border-red style-ellipsis-1">
                             <div class="margin-top-15 margin-bottom-15">
-                                <a href="#" class="dropdown-toggle font-color-black line-height-50" style="color:#fff;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <a href="#" onclick="submit()" class="dropdown-toggle font-color-black line-height-50" style="color:#fff;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     立刻生成
                                 </a>
                             </div>
@@ -105,9 +106,9 @@
                 </div>
             </div>
             <div class="width-200px text-algin-center margin-auto margin-top-10 margin-bottom-10">
-                <div class="width-200px height-200px bg-light-grey"></div>
+                <div class="width-200px height-200px bg-light-grey" id="rqcode"></div>
                 <h3>扫一扫</h3>
-                <button type="button" class="btn btn-danger margin-top-10 bg-none bg-red border-color-red width-100 height-50px font-size-18 border-radius-5px">复制生成的链接</button>
+                <button type="button" class="btn btn-danger margin-top-10 bg-none bg-red border-color-red width-100 height-50px font-size-18 border-radius-5px" id="copy"  data-clipboard-text="">复制生成的链接</button>
             </div>
         </div>
         <div class="clear"></div>
@@ -126,7 +127,8 @@
 </script>
 @endsection
 @section('script')
-    <script>
+<script type="text/javascript" src="{{ URL::asset('js/clipboard.min.js') }}"></script>
+<script>
     function choiceContinent(continent_id,continent_name){
         $('#continent').text(continent_name)
         var param={
@@ -169,6 +171,39 @@
     }
     function determineCity(city_id,city_name){
         $('#city').text(city_name)
+        $('#item_id').val(city_id)
     }
+    function submit(){
+        var item_id=$('#item_id').val()
+        if(item_id){
+            var param = {
+                item_id: item_id,
+                _token: "{{ csrf_token() }}"
+            }
+            submitFree('{{URL::asset('')}}', param, function (ret) {
+                // console.log('submitFree is : '+JSON.stringify(ret))
+                if (ret.result == true) {
+                    $('#rqcode').html('<img src="'+ret.ret.image+'" class="width-100" />')
+                    $('#copy').attr('data-clipboard-text',ret.ret.url)
+                } else {
+                    layer.msg(ret.message, {icon: 2, time: 2000})
+                }
+            })
+        }
+        else{
+            layer.msg('请选择城市', {icon: 2, time: 2000})
+        }
+    }
+    $("#copy").click(function () {
+        var clipboard = new Clipboard('#copy');
+        clipboard.on('success', function(e) {
+            // console.log(e);
+            layer.msg('复制成功', {icon: 1, time: 2000})
+        });
+        clipboard.on('error', function(e) {
+            // console.log(e);
+            layer.msg('复制失败，请扫描图中二维码', {icon: 2, time: 2000})
+        });
+    });
 </script>
 @endsection
