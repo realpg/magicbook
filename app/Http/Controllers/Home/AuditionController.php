@@ -17,27 +17,41 @@ class AuditionController extends  Controller{
     public function scenery(Request $request){
         $request=$request->all();
         $common=$request['common'];
-        $menu='audition';
-        $subsection='scenery';
-        $param=array(
-            'common'=>$common,
-            'menu'=>$menu,
-            'subsection'=>$subsection,
-        );
-        return view('home.audition.scenery',$param);
+        if($common['user']){
+            $menu='audition';
+            $subsection='scenery';
+            $param_version=array();
+            $mjtt=Utils::curl_token('magic/version/mjtt/',$param_version,$common['user']['token']);
+            $mjtt=json_decode($mjtt,true);
+            $param=array(
+                'common'=>$common,
+                'menu'=>$menu,
+                'subsection'=>$subsection,
+                'mjtt'=>$mjtt
+            );
+            return view('home.audition.scenery',$param);
+        }
+        else{
+            return redirect('sign/in');
+        }
     }
     //获取试听-制定版
     public function customization(Request $request){
         $request=$request->all();
         $common=$request['common'];
-        $menu='audition';
-        $subsection='customization';
-        $param=array(
-            'common'=>$common,
-            'menu'=>$menu,
-            'subsection'=>$subsection
-        );
-        return view('home.audition.customization',$param);
+        if($common['user']){
+            $menu='audition';
+            $subsection='customization';
+            $param=array(
+                'common'=>$common,
+                'menu'=>$menu,
+                'subsection'=>$subsection
+            );
+            return view('home.audition.customization',$param);
+        }
+        else{
+            return redirect('sign/in');
+        }
     }
     //获取试听-免费版
     public function free(Request $request){
@@ -74,6 +88,47 @@ class AuditionController extends  Controller{
                 }
                 else{
                     return ApiResponse::makeResponse(true, $purchase, ApiResponse::SUCCESS_CODE);
+                }
+            }
+            else{
+                return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::UNKNOW_ERROR], ApiResponse::UNKNOW_ERROR);
+            }
+        }
+        else{
+            return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::MISSING_PARAM], ApiResponse::MISSING_PARAM);
+        }
+    }
+    //批量生成收费版试听数据（执行）
+    public function prepayDo(Request $request){
+        $request=$request->all();
+        $common=$request['common'];
+        if(array_key_exists('version',$request)&&array_key_exists('cities',$request)){
+            $version=$request['version'];
+            $cities=json_encode($request['cities'],true);
+            if(array_key_exists('slogans',$request)&&array_key_exists('logos',$request)){
+                $slogans=json_encode($request['slogans'],true);
+                $logos=json_encode($request['logos'],true);
+                $param=array(
+                    'version'=>$version,
+                    'cities'=>$cities,
+                    'slogans'=>$slogans,
+                    'logos'=>$logos
+                );
+            }
+            else{
+                $param=array(
+                    'version'=>$version,
+                    'cities'=>$cities,
+                );
+            }
+            $prepay=Utils::curl_token('pay/prepay/',$param,$common['user']['token'],1);
+            $prepay=json_decode($prepay,true);
+            if($prepay){
+                if(array_key_exists('detail',$prepay)){
+                    return ApiResponse::makeResponse(false, $prepay['detail'], ApiResponse::UNKNOW_ERROR);
+                }
+                else{
+                    return ApiResponse::makeResponse(true, $prepay, ApiResponse::SUCCESS_CODE);
                 }
             }
             else{

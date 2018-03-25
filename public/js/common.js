@@ -40,6 +40,10 @@ function getCities(url, param, callBack) {
 function submitFree(url, param, callBack) {
     $.post(url + "audition/free/do",param,callBack);
 }
+
+function prepay(url, param, callBack) {
+    $.post(url + "audition/prepay/do",param,callBack);
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 

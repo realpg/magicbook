@@ -13,7 +13,11 @@
                     <h4>订单号 :B2018010312301500001</h4>
                     <p>距离二维码过期还剩<span class="font-color-red margin-left-10 margin-right-10 font-size-18">45</span>秒，过期后请刷新页面重新获取二维码</p>
                     <p class="text-algin-center margin-top-40 margin-bottom-40">
-                        <img src="{{URL::asset('img/qrcode.png')}}" class="width-50" >
+                        @if($common['qrcode_img_url'])
+                        <img src="{{$common['qrcode_img_url']}}" class="width-50" >
+                        @else
+                            二维码已失效货生成失败
+                        @endif
                     </p>
                     <h4 class="text-algin-center">立即支付扫码</h4>
                 </div>

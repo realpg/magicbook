@@ -13,11 +13,20 @@ use Illuminate\Http\Request;
 class PayController extends  Controller{
     //支付
     public function index(Request $request){
-        $menu='pay';
-        $param=array(
-            'menu'=>$menu
-        );
-        return view('home.pay.index',$param);
+        $request=$request->all();
+        $common=$request['common'];
+        $common['qrcode_img_url']=$request->cookie('qrcode_img_url');
+        if($common['user']){
+            $menu='pay';
+            $param=array(
+                'common'=>$common,
+                'menu'=>$menu
+            );
+            return view('home.pay.index',$param);
+        }
+        else{
+            return redirect('sign/in');
+        }
     }
     //支付成功
     public function paySuccess(Request $request){

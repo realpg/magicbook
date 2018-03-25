@@ -21,6 +21,10 @@ a:after{
     color:unset;
 }
 
+.text-decoration-none{
+    text-decoration: none;
+}
+
 .display-block{
     display: block;
 }
@@ -1047,30 +1051,30 @@ a:after{
     line-height: 30px;
 }
 
-.package-card ul li a {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    /*height: 60px;*/
-    /*line-height: 60px;*/
-    text-align: center;
-    background: #DA6D0E;
-    border-radius: 10px;
-    transition: all .5s;
-    position: relative;
-    padding: 20px 0;
-    text-decoration: none;
-    color: #fff;
-}
+/*.package-card ul li a {*/
+    /*display: block;*/
+    /*width: 90%;*/
+    /*margin: 10px auto;*/
+    /*!*height: 60px;*!*/
+    /*!*line-height: 60px;*!*/
+    /*text-align: center;*/
+    /*background: #DA6D0E;*/
+    /*border-radius: 10px;*/
+    /*transition: all .5s;*/
+    /*position: relative;*/
+    /*padding: 20px 0;*/
+    /*text-decoration: none;*/
+    /*color: #fff;*/
+/*}*/
 
 .package-card ul li a span {
     display: block;
 }
 
 
-.package-card ul li a:hover {
-    box-shadow: 0px 1px 10px rgba(0,0,0,.8);
-}
+/*.package-card ul li a:hover {*/
+    /*box-shadow: 0px 1px 10px rgba(0,0,0,.8);*/
+/*}*/
 
 .package-card ul li p {
     text-align: center;

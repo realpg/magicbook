@@ -22,6 +22,7 @@ Route::group(['prefix' => '', 'middleware' => ['WebBase']], function () {
     Route::get('/audition/customization/', 'Home\AuditionController@customization');        //获取试听(定制版)
     Route::get('/audition/free/', 'Home\AuditionController@free');       //获取试听(免费版)
     Route::post('/audition/free/do', 'Home\AuditionController@freeDo');       //获取试听(免费版)
+    Route::post('/audition/prepay/do', 'Home\AuditionController@prepayDo');       //批量生成收费版试听数据接口
     Route::get('/center', 'Home\CenterController@personal');        //个人中心(个人资料)
     Route::get('/center/personal', 'Home\CenterController@personal');        //个人中心(个人资料)
     Route::get('/center/generate/', 'Home\CenterController@generate');        //个人中心(生成记录)
