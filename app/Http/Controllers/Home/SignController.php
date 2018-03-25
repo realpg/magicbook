@@ -37,6 +37,7 @@ class SignController extends Controller
             );
             $sign_in_info=Utils::curl('u/login/',$sign_in_param,1);
             $sign_in_info=json_decode($sign_in_info,true);
+//            dd($sign_in_info);
             if($sign_in_info){
                 if(array_key_exists('detail',$sign_in_info)&&!array_key_exists('id',$sign_in_info)){
                     return ApiResponse::makeResponse(false, $sign_in_info['detail'], ApiResponse::UNKNOW_ERROR);
