@@ -155,7 +155,6 @@
         @endif
     </div>
 </div>
-    <div id="test"></div>
 @endsection
 
 @section('script')
