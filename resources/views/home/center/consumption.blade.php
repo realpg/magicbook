@@ -68,19 +68,43 @@
                 @endif
                 </tbody>
             </table>
+            @if($orders['count']>0)
+                <div class="page" style="width:300px;margin:0 auto;"></div>
+            @endif
         </div>
     </div>
 </div>
 @endsection
 
 @section('script')
-    <script>
-        function choiceVersion(code,name){
-            $('#version').val(code);
-            $('#c_version').text(name);
-        }
-        function submitForm(){
-            $('#consumption-form').submit();
-        }
-    </script>
+<script type="text/javascript" src="{{ URL::asset('/js/jquery.page.js') }}"></script>
+<script>
+    //分页
+    $('.page').createPage(function(n){
+        console.log(n);
+    },{
+        // pageCount:20,//总页码,默认10
+        showPrev:false,//是否显示上一页按钮
+        // showNext:false,//是否显示下一页按钮
+        showTurn:false,//是否显示跳转,默认可以
+        showNear:2,//显示当前页码前多少页和后多少页，默认2
+        showSumNum:false//是否显示总页码
+    },{
+        "color":"#000",//字体颜色
+        "borderColor":"#000",//边线颜色
+        "currentColor":"#E21B14",//当前页码的字体颜色
+        "width":"300",//页码盒子总宽度
+        "height":"20",//页码盒子总宽度
+        "pagesMargin":5,//每个页码或按钮之间的间隔
+    });
+
+
+    function choiceVersion(code,name){
+        $('#version').val(code);
+        $('#c_version').text(name);
+    }
+    function submitForm(){
+        $('#consumption-form').submit();
+    }
+</script>
 @endsection

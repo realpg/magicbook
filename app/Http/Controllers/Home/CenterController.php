@@ -94,14 +94,13 @@ class CenterController extends  Controller{
                 $version_search=null;
             }
             $order_param=array(
+                'page'=>2,
+                'page_size'=>1,
                 'version'=>$version_search,
                 'search'=>$search
             );
-//            dd($order_param);
             $orders=Utils::curl_token('pay/user/'.$common['user']['id'].'/order/',$order_param,$common['user']['token']);
-//            dd($common['user']['token']);
             $orders=json_decode($orders,true);
-//            dd($orders);
             $param=array(
                 'common'=>$common,
                 'menu'=>$menu,
