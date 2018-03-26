@@ -109,6 +109,7 @@
         var headerHeight=$('nav').height();
         var footerHeight=$('footer').height();
         $('#main-body').css('min-height',winHeight-headerHeight-footerHeight-22)
+        $('#main-body').css('border',0)
     })
 </script>
 
