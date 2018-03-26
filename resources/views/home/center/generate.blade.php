@@ -61,9 +61,9 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 float-left">
                     <input type="text" name="search" class="form-control border-0 width-90 float-left" style="border-radius:0;border-bottom:1px solid #989898;box-shadow:none;" placeholder="{{$search?$search:'请输入国家或者城市查询'}}" />
-                    <button class="width-10 float-left bg-none border-0" onclick="submitForm()">
-                        <img src="{{URL::asset('img/search_03.png')}}" class="height-40px"  />
-                    </button>
+                    <a href="javascript:" class="width-10 float-left bg-none border-0" style="border:0;box-shadow: none;" onclick="submitForm()">
+                        <img src="{{URL::asset('img/search_03.png')}}" style="border:0;box-shadow: none;" class="height-40px"  />
+                    </a>
                 </div>
             </div>
             </form>
@@ -114,15 +114,16 @@
                             </td>
                         </tr>
                     @endforeach
-                    @if($purchases['count']==0)
-                        <tr>
-                            <td class="text-center" colspan="11">没有数据</td>
-                        </tr>
-                    @endif
+                @endif
+                @if(!$purchases)
+                    <tr>
+                        <td class="text-center" colspan="11">没有数据</td>
+                    </tr>
                 @endif
                 </tbody>
             </table>
         </div>
+        @if($purchases)
         <div class="package-card">
             <div class="card-div height-50px padding-left-10 padding-right-10">
                 <div class="float-left line-height-50">
@@ -134,6 +135,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 </div>
 @endsection
@@ -169,7 +171,7 @@
             statistics()
         });
         //选中一行
-        var checknum = $("input[class=checkSingle]").size();
+        var checknum = 5;
         $(".checkSingle").click(function () {
             if ($(this).is(":checked") == true) {
                 if($(".checkSingle:checked").length == checknum){

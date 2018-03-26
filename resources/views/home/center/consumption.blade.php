@@ -14,10 +14,10 @@
                                     <span id="c_version">按版本选择</span> <img src="{{URL::asset('img/xuanxiangka_03.png')}}" class="width-35px vertical-align-middle" />
                                 </a>
                                 @if($versions)
-                                    <ul class="dropdown-menu width-100" id="countries-content">
-                                        <li class="padding-right-10 text-right" onclick="choiceTimeType('','全部')" style="cursor:pointer;">全部</li>
+                                    <ul class="dropdown-menu width-70" style="margin-left:30%;" id="countries-content">
+                                        <li class="padding-right-10 text-center" onclick="choiceTimeType('','全部')" style="cursor:pointer;">全部</li>
                                         @foreach($versions['results'] as $version)
-                                            <li class="padding-right-10 text-right" onclick="choiceVersion('{{$version['code']}}','{{$version['name']}}')" style="cursor:pointer;">{{$version['name']}}</li>
+                                            <li class="padding-right-10 text-center" onclick="choiceVersion('{{$version['code']}}','{{$version['name']}}')" style="cursor:pointer;">{{$version['name']}}</li>
                                         @endforeach
                                     </ul>
                                 @endif
@@ -30,9 +30,9 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 float-left">
                         <input type="text" name="search" class="form-control border-0 width-90 float-left" style="border-radius:0;border-bottom:1px solid #989898;box-shadow:none;" placeholder="请输入订单号查询" />
-                        <button class="width-10 float-left bg-none border-0" onclick="submitForm()">
-                            <img src="{{URL::asset('img/search_03.png')}}" class="height-40px"  />
-                        </button>
+                        <a href="javascript:" class="width-10 float-left bg-none border-0" style="border:0;box-shadow: none;" onclick="submitForm()">
+                            <img src="{{URL::asset('img/search_03.png')}}" style="border:0;box-shadow: none;" class="height-40px"  />
+                        </a>
                     </div>
                 </div>
             </form>

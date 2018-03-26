@@ -85,20 +85,23 @@ class CenterController extends  Controller{
                 $search=$request['search'];
             }
             else{
-                $search='';
+                $search=null;
             }
             if(array_key_exists('version',$request)){
                 $version_search=$request['version'];
             }
             else{
-                $version_search='';
+                $version_search=null;
             }
             $order_param=array(
                 'version'=>$version_search,
                 'search'=>$search
             );
+//            dd($order_param);
             $orders=Utils::curl_token('pay/user/'.$common['user']['id'].'/order/',$order_param,$common['user']['token']);
+//            dd($common['user']['token']);
             $orders=json_decode($orders,true);
+//            dd($orders);
             $param=array(
                 'common'=>$common,
                 'menu'=>$menu,

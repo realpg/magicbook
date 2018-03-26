@@ -39,13 +39,13 @@
                </a>
            </div>
             <div class="padding-top-10 float-left">
-                <a href="{{URL::asset('/')}}">
+                <a href="{{URL::asset('/')}}" style="color:#000;text-decoration: none;">
                     <div class="font-size-15 margin-top-10"><b>魔法路书</b></div>
                     <div class="font-size-15"><b>让路书更智能</b></div>
                 </a>
             </div>
             @if($common['user'])
-            <div class="row float-left text-center height-80px line-height-80" style="width:300px;margin-left:100px;">
+            <div class="row float-left text-center height-80px line-height-80" style="width:300px;margin-left:7%;">
                 <a href="{{URL::asset('audition')}}">
                     <div class="col-xs-6 col-sm-6 font-size-16 {{$menu=='audition'?'nav-active':''}}">获取音频</div>
                 </a>
@@ -56,7 +56,7 @@
             @endif
             <div class="padding-top-15 float-right margin-top-10 margin-bottom-10">
                 @if($common['user'])
-                    <div class="float-left margin-right-20 line-height-30 font-weight">
+                    <div class="float-left margin-right-20 line-height-30 font-weight" style="margin-top:-3px;">
                         <img src="{{URL::asset('img/logo.png')}}" class="img-rect-40 border-radius-100 margin-right-10" />
                         {{$common['user']['username']}}
                     </div>

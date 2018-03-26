@@ -50,7 +50,7 @@
                     @else
                     <a href="{{URL::asset('audition/customization')}}#choice">
                     @endif
-                        <button type="button" class="btn btn-danger margin-top-25 bg-none bg-red border-color-red width-60 height-50px font-size-18 border-radius-0">立即购买</button>
+                        <button type="button" class="btn btn-danger margin-top-25 bg-none bg-red border-color-red width-60 height-50px font-size-16  style-ellipsis-1 border-radius-0">立即购买</button>
                     </a>
                 </h3>
             </li>

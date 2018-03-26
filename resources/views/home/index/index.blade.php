@@ -97,7 +97,7 @@
                         <input id="item_id" type="hidden" />
                         <li class="dropdown float-left width-25 text-algin-center bg-red border-radius-right border-top border-bottom border-red style-ellipsis-1">
                             <div class="margin-top-15 margin-bottom-15">
-                                <a href="#" onclick="submit()" class="dropdown-toggle font-color-black line-height-50" style="color:#fff;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <a href="#" onclick="submit()" class="dropdown-toggle font-color-black line-height-50" style="color:#fff;text-decoration: none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     立刻生成
                                 </a>
                             </div>
