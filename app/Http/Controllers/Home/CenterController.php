@@ -93,8 +93,14 @@ class CenterController extends  Controller{
             else{
                 $version_search=null;
             }
+            if(array_key_exists('page',$request)){
+                $page_search=$request['page'];
+            }
+            else{
+                $page_search=1;
+            }
             $order_param=array(
-                'page'=>2,
+                'page'=>$page_search,
                 'page_size'=>1,
                 'version'=>$version_search,
                 'search'=>$search
@@ -106,7 +112,62 @@ class CenterController extends  Controller{
                 'menu'=>$menu,
                 'subsection'=>$subsection,
                 'versions'=>$versions,
-                'orders'=>$orders
+                'orders'=>$orders,
+                'version_search'=>$version_search,
+                'search'=>$search,
+                'page'=>$page_search
+            );
+            return view('home.center.consumption',$param);
+        }
+        else{
+            return redirect('sign/in');
+        }
+    }
+    //获得消费记录
+    public function consumptionSearch(Request $request){
+        $request=$request->all();
+        $common=$request['common'];
+        if($common['user']){
+            $menu='center';
+            $subsection='consumption';
+            $version_param=array();
+            $version=Utils::curl('magic/version/',$version_param);
+            $versions=json_decode($version,true);
+            if(array_key_exists('search',$request)){
+                $search=$request['search'];
+            }
+            else{
+                $search=null;
+            }
+            if(array_key_exists('version',$request)){
+                $version_search=$request['version'];
+            }
+            else{
+                $version_search=null;
+            }
+            if(array_key_exists('page',$request)){
+                $page_search=$request['page'];
+            }
+            else{
+                $page_search=1;
+            }
+            $order_param=array(
+                'page'=>$page_search,
+                'page_size'=>1,
+                'version'=>$version_search,
+                'search'=>$search
+            );
+            $orders=Utils::curl_token('pay/user/'.$common['user']['id'].'/order/',$order_param,$common['user']['token']);
+            $orders=json_decode($orders,true);
+            $param=array(
+                'common'=>$common,
+                'menu'=>$menu,
+                'subsection'=>$subsection,
+                'versions'=>$versions,
+                'orders'=>$orders,
+                'version_search'=>$version_search,
+                'search'=>$search,
+                'page'=>$page_search
             );
             return view('home.center.consumption',$param);
         }

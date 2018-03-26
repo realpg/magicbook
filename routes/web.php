@@ -27,7 +27,7 @@ Route::group(['prefix' => '', 'middleware' => ['WebBase']], function () {
     Route::get('/center/personal', 'Home\CenterController@personal');        //个人中心(个人资料)
     Route::get('/center/generate/', 'Home\CenterController@generate');        //个人中心(生成记录)
     Route::get('/center/consumption/', 'Home\CenterController@consumption');        //个人中心(消费记录)
-    Route::post('/center/consumption/', 'Home\CenterController@consumption');        //个人中心(搜索消费记录)
+    Route::post('/center/consumption/search', 'Home\CenterController@consumptionSearch');        //个人中心(搜索消费记录)
     Route::get('/pay', 'Home\PayController@index');        //支付页面
     Route::get('/pay/success', 'Home\PayController@paySuccess');        //支付成功页面
     Route::get('/pay/fail', 'Home\PayController@payFail');        //支付失败页面
