@@ -44,6 +44,16 @@ function submitFree(url, param, callBack) {
 function prepay(url, param, callBack) {
     $.post(url + "audition/prepay/do",param,callBack);
 }
+
+//下载试听二维码
+function downloadQrcodeDo(url, param, callBack) {
+    ajaxRequest(url + "center/downloadQrcode", param, "GET", callBack);
+}
+
+//批量删除试听记录接口
+function delMorePurchase(url, param, callBack) {
+    $.post(url + "center/bulkDeletePurchase",param,callBack);
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 
