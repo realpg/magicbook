@@ -42,7 +42,7 @@
                                     @endif
                                 @endforeach
                             @else
-                                <span id="c_version">按时间选择</span> <img src="{{URL::asset('img/xuanxiangka_03.png')}}" class="width-35px vertical-align-middle" />
+                                <span id="c_version">按版本选择</span> <img src="{{URL::asset('img/xuanxiangka_03.png')}}" class="width-35px vertical-align-middle" />
                             @endif
                         </a>
                         @if($versions)
@@ -149,7 +149,7 @@
                     <input type="checkbox" class="checkAll" id="checkall"  />
                 </div>
                 <div class="float-right line-height-45">
-                    <button class="btn bg-red font-color-white margin-right-20" type="button" style="border-radius: 0; color:#fff;">批量下载二维码</button>
+                    <button class="btn bg-red font-color-white margin-right-20" type="button" style="border-radius: 0; color:#fff;" onclick="downloadMoreQrcodes()">批量下载二维码</button>
                     <button class="btn font-color-red bg-none border border-red" type="button" onclick="delMore()" style="border-radius: 0; color: #E21B14;">批量删除</button>
                 </div>
             </div>
@@ -268,18 +268,74 @@
     }
     //下载二维码
     function downloadQrcode(id){
-        var param={
-            id:id,
-            _token: "{{ csrf_token() }}"
+        {{--var param={--}}
+            {{--id:id,--}}
+            {{--_token: "{{ csrf_token() }}"--}}
+        {{--}--}}
+        {{--downloadQrcodeDo('{{URL::asset('')}}', param, function (ret) {--}}
+            {{--$('#test').html(ret['responseText'])--}}
+            {{--console.log('getCountry err is :' +JSON.stringify(ret))--}}
+            {{--// if (ret.result == true) {--}}
+            {{--// } else {--}}
+            {{--//     console.log('getCountry err is :' +JSON.stringify(ret.message))--}}
+            {{--// }--}}
+        {{--})--}}
+
+        $.ajax({
+            url: 'http://testlushu.gowithtommy.com/api/pay/downloadQrcode/?id='+id,
+            method: 'POST',
+            xhrFields: {
+                responseType: 'blob'
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Token {{$common['user']['token']}}");
+            },
+            success: function (data) {
+                var a = document.createElement('a');
+                var url = window.URL.createObjectURL(data);
+                a.href = url;
+                a.download = setName()+'.png';
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+        });
+    }
+    //批量下载二维码
+    function downloadMoreQrcodes(){
+        var id_array=''
+        $("input:checkbox[name='id_array']:checked").each(function() {
+            id_array=id_array+$(this).val()+',';  // 每一个被选中项的值
+        });
+        id_array=id_array.substring(0,id_array.length-1)
+
+        if(id_array){
+            $.ajax({
+                url: 'http://testlushu.gowithtommy.com/api/pay/bulkDownloadQrcode/?ids=7,8',
+                method: 'POST',
+                xhrFields: {
+                    responseType: 'blob'
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "Token {{$common['user']['token']}}");
+                },
+                success: function (data) {
+                    var a = document.createElement('a');
+                    var url = window.URL.createObjectURL(data);
+                    a.href = url;
+                    a.download = setName()+'.png';
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                }
+            });
         }
-        downloadQrcodeDo('{{URL::asset('')}}', param, function (ret) {
-            $('#test').html(ret['responseText'])
-            console.log('getCountry err is :' +JSON.stringify(ret))
-            // if (ret.result == true) {
-            // } else {
-            //     console.log('getCountry err is :' +JSON.stringify(ret.message))
-            // }
-        })
+        else{
+            layer.msg('请选择要下载的二维码', {icon: 2, time: 2000})
+        }
+    }
+    //给二维码命名
+    function setName(){
+        var timestamp=(new Date().getTime()).toString();
+        return timestamp;
     }
 </script>
 @endsection
