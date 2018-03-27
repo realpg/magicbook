@@ -14,7 +14,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CenterController extends  Controller{
-    const PAGE_SIZE=5;
+    const PAGE_SIZE=10;
     //获得试听记录
     public function generate(Request $request){
         $request=$request->all();

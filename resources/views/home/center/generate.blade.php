@@ -59,6 +59,7 @@
                         <span class="width-100 height-100 border-right"></span>
                     </div>
                 </div>
+                <input name="page" id="page" type="hidden" value="{{$purchases['page_number']}}" />
                 <div class="col-xs-6 col-sm-6 float-left">
                     <input type="text" name="search" class="form-control border-0 width-90 float-left" style="border-radius:0;border-bottom:1px solid #989898;box-shadow:none;" placeholder="请输入国家或者城市查询" value="{{$search?$search:''}}" />
                     <a href="javascript:" class="width-10 float-left bg-none border-0" style="border:0;box-shadow: none;" onclick="submitForm()">
@@ -114,34 +115,35 @@
                             </td>
                         </tr>
                     @endforeach
-                @endif
-                @if(!$purchases)
-                    <tr>
-                        <td class="text-center" colspan="11">没有数据</td>
-                    </tr>
+                    @if($purchases['count']==0)
+                        <tr>
+                            <td class="text-center" colspan="11">没有数据</td>
+                        </tr>
+                    @endif
                 @endif
                 </tbody>
             </table>
-            {{--@if($purchases)--}}
-                {{--@if($purchases['count']>1)--}}
-                    {{--<div class="paging-div margin-auto" >--}}
-                        {{--<div class="tcdPageCode float-left"></div>--}}
-                        {{--<div class="dropdown float-left text-center jumpSelect" style="display:inline;">--}}
-                            {{--<a href="javascript:" id="paging" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--}}
-                                {{--选择页码<span class="caret"></span>--}}
-                            {{--</a>--}}
-                            {{--<ul class="dropdown-menu" aria-labelledby="paging" style="min-width: 100px;">--}}
-                                {{--@for($i=1;$i<=$purchases['count'];$i++)--}}
-                                    {{--<li class="text-center"><a href="javascript:" onclick="jumpPage({{$i}})">{{$i}}</a></li>--}}
-                                {{--@endfor--}}
-                            {{--</ul>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--@endif--}}
-            {{--@endif--}}
         </div>
-        @if($purchases)
-        <div class="package-card margin-bottom-20">
+        <dive>
+            @if($purchases&&$purchases['page_count']>1)
+                <div class="paging-div margin-auto" >
+                    <div class="tcdPageCode float-left"></div>
+                    <div class="dropdown float-left text-center jumpSelect" style="display:inline;">
+                        <a href="javascript:" id="paging" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            选择页码<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu overflow-y-scroll" aria-labelledby="paging" style="min-width: 100px;max-height: 260px;">
+                            @for($i=1;$i<=$purchases['page_count'];$i++)
+                                <li class="text-center"><a href="javascript:" onclick="jumpPage({{$i}})">{{$i}}</a></li>
+                            @endfor
+                        </ul>
+                    </div>
+                </div>
+            @endif
+        </dive>
+        <div class="clear"></div>
+        @if($purchases&&$purchases['count']>0)
+        <div class="package-card margin-bottom-20 margin-top-20">
             <div class="card-div height-50px padding-left-10 padding-right-10">
                 <div class="float-left line-height-50">
                     <input type="checkbox" class="checkAll" id="checkall"  />
@@ -158,8 +160,29 @@
 @endsection
 
 @section('script')
+<script type="text/javascript" src="{{ URL::asset('/js/jquery.page.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/clipboard.min.js') }}"></script>
 <script>
+    $(function(){
+        //分页
+        $(".tcdPageCode").createPage({
+            pageCount:'{{$purchases['page_count']}}',
+            current:'{{$purchases['page_number']}}',
+            backFn:function(p){
+                console.log(p);
+                $('#page').val(p)
+                $('#generate-form').submit();
+            }
+        });
+        var tcdPageCodeWidth=$('.tcdPageCode').width();
+        var jumpSelectWidth=$('.jumpSelect').width();
+        var pagingWidth=tcdPageCodeWidth+jumpSelectWidth+100;
+        $('.paging-div').width(pagingWidth)
+    })
+    function jumpPage(page){
+        $('#page').val(page)
+        $('#generate-form').submit();
+    }
     function choiceTimeType(day,name){
         $('#time_type').val(day);
         $('#c_time_type').text(name);

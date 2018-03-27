@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="col-xs-8 col-sm-8 float-left">
-                        <input name="page" id="page" type="hidden" value="{{$page}}" />
+                        <input name="page" id="page" type="hidden" value="{{$orders['page_number']}}" />
                         <input type="text" name="search" class="form-control border-0 width-90 float-left" style="border-radius:0;border-bottom:1px solid #989898;box-shadow:none;" placeholder="请输入订单号查询" value="{{$search?$search:''}}" />
                         <a href="javascript:" class="width-10 float-left bg-none border-0" style="border:0;box-shadow: none;" onclick="submitForm()">
                             <img src="{{URL::asset('img/search_03.png')}}" style="border:0;box-shadow: none;" class="height-40px"  />
@@ -78,15 +78,15 @@
                 </tbody>
             </table>
         </div>
-        @if($orders['count']>1)
+        @if($orders['page_count']>1)
             <div class="paging-div margin-auto" >
                 <div class="tcdPageCode float-left"></div>
                 <div class="dropdown float-left text-center jumpSelect" style="display:inline;">
                     <a href="javascript:" id="paging" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         选择页码<span class="caret"></span>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="paging" style="min-width: 100px;">
-                        @for($i=1;$i<=$orders['count'];$i++)
+                    <ul class="dropdown-menu overflow-y-scroll" aria-labelledby="paging"  style="min-width: 100px;max-height: 130px;">
+                        @for($i=1;$i<=$orders['page_count'];$i++)
                             <li class="text-center"><a href="javascript:" onclick="jumpPage({{$i}})">{{$i}}</a></li>
                         @endfor
                     </ul>
@@ -103,8 +103,8 @@
     $(function(){
         //分页
         $(".tcdPageCode").createPage({
-            pageCount:'{{$orders['count']}}',
-            current:'{{$page}}',
+            pageCount:'{{$orders['page_count']}}',
+            current:'{{$orders['page_number']}}',
             backFn:function(p){
                 console.log(p);
                 $('#page').val(p)
