@@ -1179,6 +1179,22 @@ input[type="checkbox"]:checked {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 20px rgba(226, 027, 020, 0.75);
 }
 
+.choice-menu a div:hover{
+    color: #E21B14;
+}
+
+.index-menu div:hover{
+    background: #E21B14;
+    color: #fff;
+    border-right:1px solid #fff;
+}
+
+.center-menu div:hover{
+    background: #E21B14;
+    color: #fff;
+    border-right:1px solid #fff;
+}
+
 /* 分页的样式 */
 *{ margin:0; padding:0; list-style:none;}
 a{ text-decoration:none;}

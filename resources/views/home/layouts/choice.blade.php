@@ -1,6 +1,6 @@
 <a name="choice"></a>
 <div class="package-card container padding-left-50 padding-right-50 font-size-18">
-    <div class="card-div height-60px line-height-60 text-center">
+    <div class="card-div height-60px line-height-60 text-center choice-menu">
         <div class="col-xs-3 col-sm-3 bg-grey-white style-ellipsis-1">选择生成类型</div>
         <a href="{{URL::asset('audition/scenery')}}#choice">
             <div class="col-xs-3 col-sm-3 bg-white {{$subsection=='scenery'?'font-color-red':''}}">美景版</div>

@@ -45,7 +45,7 @@
                 </a>
             </div>
             @if($common['user'])
-            <div class="row float-left text-center height-80px line-height-80" style="width:300px;margin-left:7%;">
+            <div class="row float-left text-center height-80px line-height-80 index-menu" style="width:300px;margin-left:7%;">
                 <a href="{{URL::asset('audition')}}">
                     <div class="col-xs-6 col-sm-6 font-size-16 {{$menu=='audition'?'nav-active':''}}">获取音频</div>
                 </a>

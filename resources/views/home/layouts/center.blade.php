@@ -1,4 +1,4 @@
-<div class="height-50px line-height-50 bg-bright-grey text-center margin-bottom-50">
+<div class="height-50px line-height-50 bg-bright-grey text-center margin-bottom-50 center-menu">
     <a href="{{URL::asset('center/generate')}}">
         <div class="col-xs-4 col-sm-4 {{$subsection=='generate'?'nav-active':''}}">
             生成记录
