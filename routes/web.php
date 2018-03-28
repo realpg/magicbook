@@ -48,11 +48,14 @@ Route::group(['prefix' => '', 'middleware' => ['WebBase']], function () {
 //后台
 Route::get('/admin/login', 'Admin\LoginController@login');        //登录
 Route::post('/admin/login', 'Admin\LoginController@loginDo');   //post登录请求
-//Route::get('/admin/loginout', 'Admin\LoginController@loginout');  //注销
+Route::get('/admin/loginout', 'Admin\LoginController@loginout');  //注销
 Route::group(['prefix' => 'admin', 'middleware' => ['admin.login']], function () {
-//
-//    //首页
+    //首页
     Route::get('/', 'Admin\IndexController@index');       //首页
     Route::get('/index', 'Admin\IndexController@index');  //首页
     Route::get('/welcome', 'Admin\IndexController@welcome');  //欢迎页
+
+    //用户相关
+    Route::get('/member/index', 'Admin\MemberController@index');       //用户相关首页
+    Route::post('/member/index', 'Admin\MemberController@index');       //用户搜索
 });

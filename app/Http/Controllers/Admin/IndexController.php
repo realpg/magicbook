@@ -7,31 +7,18 @@
  */
 
 namespace App\Http\Controllers\Admin;
-use App\Components\AdviceManager;
-use App\Components\DrawingManager;
-use App\Components\LeagueManager;
-use App\Components\SearchingManager;
-use App\Http\Controllers\ApiResponse;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Components\RequestValidator;
 
-class IndexController
+class IndexController extends Controller
 {
     //首页
     public function index(Request $request)
     {
         $admin = $request->session()->get('admin');
-        $leagues=LeagueManager::getLeaguesByStatus(0);
-        $advices=AdviceManager::getAdvicesByStatus(0);
-        $searchings=SearchingManager::getSearchingsByStatus(0);
-        $drawings=DrawingManager::getDrawingsByStatus(0);
         $data=array(
             'admin'=>$admin,
-            'leagues'=>$leagues,
-            'advices'=>$advices,
-            'searchings'=>$searchings,
-            'drawings'=>$drawings,
         );
         return view('admin.index.index', $data);
     }
