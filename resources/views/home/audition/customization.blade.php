@@ -766,11 +766,12 @@
                 if(time%5==0){
                     var orderId=$('#order').text();
                     var param={
-                        nowTime: new Date().getTime(),
+                        nowTime: (parseInt(new Date().getTime())).toString(),
                         orderId: orderId,
                         _token: "{{ csrf_token() }}"
                     }
-                    // console.log('getQrcodeState param is : '+JSON.stringify(param))
+                    console.log('getQrcodeState param is : '+JSON.stringify(param))
+
                     getQrcodeState('{{URL::asset('')}}', param, function (ret) {
                         console.log('getQrcodeState is : '+JSON.stringify(ret))
                         if (ret.result == true) {

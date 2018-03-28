@@ -285,7 +285,7 @@
                 if(time%5==0){
                     var orderId=$('#order').text();
                     var param={
-                        nowTime: parseInt(new Date().getTime()),
+                        nowTime: (parseInt(new Date().getTime())).toString(),
                         orderId: orderId,
                         _token: "{{ csrf_token() }}"
                     }
