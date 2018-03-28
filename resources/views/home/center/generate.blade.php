@@ -326,7 +326,7 @@
                     var a = document.createElement('a');
                     var url = window.URL.createObjectURL(data);
                     a.href = url;
-                    a.download = setName()+'.png';
+                    a.download = '试听二维码.zip';
                     a.click();
                     window.URL.revokeObjectURL(url);
                 }
