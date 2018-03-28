@@ -225,4 +225,27 @@ class AuditionController extends  Controller{
             return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::MISSING_PARAM], ApiResponse::MISSING_PARAM);
         }
     }
+
+    //查询支付二维码状态接口
+    public function getQrcodeState(Request $request){
+        $request=$request->all();
+        $common=$request['common'];
+        if(array_key_exists('nowTime',$request)&&array_key_exists('orderId',$request)){
+            $param=array(
+                'nowTime'=>$request['nowTime'],
+                'orderId'=>$request['orderId'],
+            );
+            $state=Utils::curl_token('pay/getQrcodeState/',$param,$common['user']['token'],1);
+            $state=json_decode($state,true);
+            if($state){
+                return ApiResponse::makeResponse(true, $state, ApiResponse::SUCCESS_CODE);
+            }
+            else{
+                return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::UNKNOW_ERROR], ApiResponse::UNKNOW_ERROR);
+            }
+        }
+        else{
+            return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::MISSING_PARAM], ApiResponse::MISSING_PARAM);
+        }
+    }
 }

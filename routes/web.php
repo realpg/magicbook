@@ -23,6 +23,7 @@ Route::group(['prefix' => '', 'middleware' => ['WebBase']], function () {
     Route::get('/audition/free/', 'Home\AuditionController@free');       //获取试听(免费版)
     Route::post('/audition/free/do', 'Home\AuditionController@freeDo');       //获取试听(免费版)
     Route::post('/audition/prepay/do', 'Home\AuditionController@prepayDo');       //批量生成收费版试听数据接口
+    Route::post('/audition/getQrcodeState', 'Home\AuditionController@getQrcodeState');       //查询支付二维码状态接口
     Route::get('/region/country', 'Home\AuditionController@getCountries');        //获取国家列表
     Route::get('/region/city', 'Home\AuditionController@getCities');        //获取城市列表
     Route::get('/center', 'Home\CenterController@personal');        //个人中心(个人资料)
@@ -41,10 +42,6 @@ Route::group(['prefix' => '', 'middleware' => ['WebBase']], function () {
     Route::post('/sign/up', 'Home\SignController@signUpDo');        //注册执行
     Route::get('/sign/out', 'Home\SignController@signOut');        //退出
     Route::get('/sign/success', 'Home\SignController@signSuccess');        //注册成功
-
-
-    Route::post('/photo/', 'Home\IndexController@photo');        //上传图片
-    Route::post('upload_img','UploadController@imgUpload');
 });
 
 //后台

@@ -45,6 +45,11 @@ function prepay(url, param, callBack) {
     $.post(url + "audition/prepay/do",param,callBack);
 }
 
+//查询支付二维码状态接口
+function getQrcodeState(url, param, callBack) {
+    $.post(url + "audition/getQrcodeState",param,callBack);
+}
+
 //下载试听二维码
 function downloadQrcodeDo(url, param, callBack) {
     ajaxRequest(url + "center/downloadQrcode", param, "GET", callBack);

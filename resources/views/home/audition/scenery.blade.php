@@ -90,12 +90,12 @@
             <div class="card-div row border-radius-10px margin-left-10 margin-right-10">
                 <div class="height-50px line-height-50 bg-grey-white">
                     <div class="col-xs-8 col-sm-8">订单提交成功，请尽快付款</div>
-                    <div class="col-xs-4 col-sm-4 text-right">应付金额<span class="font-color-red margin-left-10 margin-right-10 font-size-18" id="payPrice">50</span>元</div>
+                    <div class="col-xs-4 col-sm-4 text-right">应付金额<span class="font-color-red margin-left-10 margin-right-10 font-size-22" id="payPrice">50</span>元</div>
                 </div>
                 <div>
                     <div class="col-xs-6 col-sm-6 padding-top-40 padding-bottom-40 padding-right-50 padding-left-50" id="payInfo">
-                        <h4>订单号 :<span id="order">B2018010312301500001</span></h4>
-                        <p>距离二维码过期还剩<span class="font-color-red margin-left-10 margin-right-10 font-size-18" id="time">45</span>秒，过期后请刷新页面重新获取二维码</p>
+                        <h4>订单号 :<span id="order"></span></h4>
+                        <p>距离二维码过期还剩<span class="font-color-red margin-left-10 margin-right-10 font-size-22" id="time">45</span>秒，过期后请刷新页面重新获取二维码</p>
                         <p class="text-algin-center margin-top-40 margin-bottom-40">
                             <div class="width-200px height-200px bg-light-grey margin-auto" id="qrcode"></div>
                         </p>
@@ -259,7 +259,6 @@
         })
         function submitDo(price,param){
             prepay('{{URL::asset('')}}', param, function (ret) {
-                console.log("prepay is : "+JSON.stringify(ret))
                 if (ret.result == true) {
                     $('#mjtt-content').hide();
                     $('#mjtt-pay').show();
@@ -282,6 +281,30 @@
                 if(time<=0){
                     $('#payInfo').html('<h4>支付二维码已过期，请重新生成！</h4>')
                     return;
+                }
+                if(time%5==0){
+                    var orderId=$('#order').text();
+                    var param={
+                        nowTime: parseInt(new Date().getTime()),
+                        orderId: orderId,
+                        _token: "{{ csrf_token() }}"
+                    }
+                    // console.log('getQrcodeState param is : '+JSON.stringify(param))
+                    getQrcodeState('{{URL::asset('')}}', param, function (ret) {
+                        console.log('getQrcodeState is : '+JSON.stringify(ret))
+                        if (ret.result == true) {
+                            var data=ret.ret;
+                            if(data.code==0){
+                                location.href="{{URL::asset('/pay/success')}}"
+                            }
+                            else if(data.code==1){
+                                location.href="{{URL::asset('/pay/fail')}}"
+                            }
+                        } else {
+                            layer.msg(ret.message+",请重新生成", {icon: 2, time: 2000})
+                            window.location.reload()
+                        }
+                    })
                 }
                 time--;
                 $("#time").text(time);
