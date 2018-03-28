@@ -82,8 +82,8 @@
                         <th class="text-center" width="50px">流量</th>
                         <th class="text-center" width="120px">国家/城市</th>
                         <th class="text-center" width="30px">logo</th>
-                        <th class="text-center" width="120px">文字</th>
-                        <th class="text-center" width="80px">地址</th>
+                        <th class="text-center" width="30px">文字</th>
+                        <th class="text-center" width="200px">地址</th>
                         <th class="text-center" width="200px">操作</th>
                     </tr>
                 </thead>
@@ -95,21 +95,17 @@
                                 <input type="checkbox" class="checkSingle" name="id_array" value="{{$purchas['id']}}" />
                             </td>
                             <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$purchas['id']}}</td>
-                            <td class="text-center style-ellipsis-1 font-color-red" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$purchas['version']['name']}}</td>
-                            <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{date('Y/m/d',strtotime($purchas['create_time']))}}</td>
-                            <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{date('Y/m/d',strtotime($purchas['expire_time']))}}</td>
-                            <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$purchas['viewed_count']}}</td>
-                            <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$purchas['item_pname']}}/{{$purchas['item_name']}}</td>
-                            <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">
-                                @if($purchas['viewed_count'])
-                                    <img src="{{$purchas['viewed_count']}}" class="width-30px height-30px" />
-                                @else
-                                    无
-                                @endif
+                            <td class="text-center font-color-red" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$purchas['version']['name']}}</td>
+                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{date('Y/m/d',strtotime($purchas['create_time']))}}</td>
+                            <td class="text-center overflow-x-scroll" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{date('Y/m/d',strtotime($purchas['expire_time']))}}</td>
+                            <td class="text-center overflow-x-scroll" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$purchas['viewed_count']}}</td>
+                            <td class="text-center overflow-x-scroll" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$purchas['item_pname']}}/{{$purchas['item_name']}}</td>
+                            <td class="text-center overflow-x-scroll" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">
+                                <img src="{{$purchas['viewed_count']}}" class="width-30px height-30px" />
                             </td>
-                            <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$purchas['slogan']?$purchas['slogan']:'无'}}</td>
-                            <td class="text-center font-color-blue style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">
-                                <a href="{{$purchas['url']}}" style="display: block;" class="style-ellipsis-1 width-80px" target="_blank">
+                            <td class="text-center overflow-x-scroll" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$purchas['slogan']}}</td>
+                            <td class="text-center font-color-blue width-200px" width="200px" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">
+                                <a href="{{$purchas['url']}}" style="display: inline;" target="_blank">
                                     {{$purchas['url']}}
                                 </a>
                             </td>

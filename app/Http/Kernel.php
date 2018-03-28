@@ -58,9 +58,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         //自定义插件
-        'BeforeRequest' => \App\Http\Middleware\BeforeRequest::class,
-        'CheckToken' => \App\Http\Middleware\CheckToken::class,
-        'admin.login' => \App\Http\Middleware\CheckAdminLogin::class,//后台登录中间件
         'WebBase' => \App\Http\Middleware\WebBase::class,
     ];
 }
