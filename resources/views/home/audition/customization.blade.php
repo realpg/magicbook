@@ -17,21 +17,23 @@
                             <input type="checkbox" name="id_array" class="checkSingle" value="{{$i}}" />
                         </div>
                         <div class="col-xs-11 col-sm-11 text-algin-center">
-                            <div class="col-xs-3 col-sm-3 text-algin-center height-50px border-top border-bottom border-left style-ellipsis-1">
-                                <a href="#" class="dropdown-toggle font-color-black vertical-align-middle font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span id="continent_{{$i}}">请选择大洋洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
-                                </a>
-                                <ul class="dropdown-menu width-100">
-                                    @if($common['cities'])
-                                        @foreach($common['cities'] as $continent)
-                                            <li><a href="javascript:" onclick="choiceContinent('{{$i}}','{{$continent['id']}}','{{$continent['name']}}')">{{$continent['name']}}</a></li>
-                                        @endforeach
-                                    @else
-                                        <li>请选择大洲</li>
-                                    @endif
-                                </ul>
+                            <div class="col-xs-3 col-sm-3 text-algin-center height-50px border-top border-bottom border-left">
+                                <div class="dropdown">
+                                    <a href="javascript:" class="dropdown-toggle font-color-black vertical-align-middle font-size-16  style-ellipsis-1" id="dropdownMenu{{$i}}" style="text-decoration:none;color:#000;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span id="continent_{{$i}}">请选择大洋洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
+                                    </a>
+                                    <ul class="dropdown-menu width-100" aria-labelledby="dropdownMenu{{$i}}">
+                                        @if($locations)
+                                            @foreach($locations as $continent)
+                                                <li><a href="javascript:" onclick="choiceContinent('{{$i}}','{{$continent['id']}}','{{$continent['name']}}')">{{$continent['name']}}</a></li>
+                                            @endforeach
+                                        @else
+                                            <li>请选择大洲</li>
+                                        @endif
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center height-50px border-top border-bottom border-left style-ellipsis-1">
+                            <div class="col-xs-3 col-sm-3 text-algin-center height-50px border-top border-bottom border-left">
                                 <a href="#" class="dropdown-toggle font-color-black vertical-align-middle font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     <span id="country_{{$i}}">请选择国家</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
                                 </a>
@@ -39,8 +41,8 @@
                                     <li class="padding-left-10">请选择国家</li>
                                 </ul>
                             </div>
-                            <div class="col-xs-3 col-sm-3 text-algin-center height-50px vertical-align-middle border-top border-bottom border-left style-ellipsis-1">
-                                <a href="#" class="dropdown-toggle font-color-black vertical-align-middle font-size-16" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <div class="col-xs-3 col-sm-3 text-algin-center height-50px vertical-align-middle border-top border-bottom border-left">
+                                <a href="#" class="dropdown-toggle font-color-black vertical-align-middle font-size-16 style-ellipsis-1" style="text-decoration:none;color:#000;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     <span id="city_{{$i}}">请选择城市</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
                                 </a>
                                 <ul class="dropdown-menu width-100" id="cities-content-{{$i}}">
@@ -140,6 +142,7 @@
         function choiceContinent(index,continent_id,continent_name){
             $('#continent_'+index).text(continent_name)
             var param={
+                version: '{{$custom['code']}}',
                 continent_id:continent_id,
                 _token: "{{ csrf_token() }}"
             }
@@ -161,6 +164,7 @@
         function choiceCities(index,country_id,continent_id,country_name){
             $('#country_'+index).text(country_name)
             var param={
+                version: '{{$custom['code']}}',
                 country_id:country_id,
                 continent_id:continent_id,
                 _token: "{{ csrf_token() }}"

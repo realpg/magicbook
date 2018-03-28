@@ -35,10 +35,14 @@ class IndexController extends  Controller{
         if(array_key_exists('continent_id',$request)){
             $continent_id=$request['continent_id'];
             $common=$request['common'];
-            $continents=$common['cities'];
-            foreach ($continents as $continent){
-                if($continent_id==$continent['id']){
-                    $countries=$continent['countries'];
+            $location_param=array(
+                'version'=>$request['version']
+            );
+            $locations=Utils::curl_token('location/chaincity/',$location_param,$common['user']['token']);
+            $locations=json_decode($locations,true);
+            foreach ($locations as $location){
+                if($continent_id==$location['id']){
+                    $countries=$location['countries'];
                 }
             }
             if($countries){
@@ -60,8 +64,13 @@ class IndexController extends  Controller{
             $continent_id=$request['continent_id'];
             $country_id=$request['country_id'];
             $common=$request['common'];
-            $continents=$common['cities'];
-            foreach ($continents as $continent){
+//            $continents=$common['cities'];
+            $location_param=array(
+                'version'=>$request['version']
+            );
+            $locations=Utils::curl_token('location/chaincity/',$location_param,$common['user']['token']);
+            $locations=json_decode($locations,true);
+            foreach ($locations as $continent){
                 if($continent_id==$continent['id']){
                     $countries=$continent['countries'];
                     foreach ($countries as $countrie){
