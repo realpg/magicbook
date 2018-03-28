@@ -441,6 +441,10 @@ a:visited{
     padding-top: 50px;
 }
 
+.padding-top-70 {
+    padding-top: 70px;
+}
+
 .padding-top-150 {
     padding-top: 150px;
 }
@@ -487,6 +491,10 @@ a:visited{
 
 .padding-bottom-50 {
     padding-bottom: 50px;
+}
+
+.padding-bottom-70 {
+    padding-bottom: 70px;
 }
 
 .padding-bottom-150{

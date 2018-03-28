@@ -93,7 +93,7 @@
                     <div class="col-xs-4 col-sm-4 text-right">应付金额<span class="font-color-red margin-left-10 margin-right-10 font-size-22" id="payPrice">50</span>元</div>
                 </div>
                 <div>
-                    <div class="col-xs-6 col-sm-6 padding-top-40 padding-bottom-40 padding-right-50 padding-left-50" id="payInfo">
+                    <div class="col-xs-7 col-sm-7 padding-top-40 padding-bottom-40 padding-right-50 padding-left-50" id="payInfo">
                         <h4>订单号 :<span id="order"></span></h4>
                         <p>距离二维码过期还剩<span class="font-color-red margin-left-10 margin-right-10 font-size-22" id="time">45</span>秒，过期后请刷新页面重新获取二维码</p>
                         <p class="text-algin-center margin-top-40 margin-bottom-40">
@@ -101,7 +101,7 @@
                         </p>
                         <h4 class="text-algin-center">立即支付扫码</h4>
                     </div>
-                    <div class="col-xs-6 col-sm-6 margin-top-70 margin-bottom-70  text-center">
+                    <div class="col-xs-5 col-sm-5 padding-top-70 padding-bottom-70  text-center" style="border-left:1px #ccc solid;">
                         <img src="{{URL::asset('img/pay_ts.png')}}"  class="height-50" >
                     </div>
                 </div>
