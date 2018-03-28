@@ -763,7 +763,7 @@
                     $('#payInfo').html('<h4>支付二维码已过期，请重新生成！</h4>')
                     return;
                 }
-                if(time%5==0){
+                if(time%3==0){
                     var orderId=$('#order').text();
                     var param={
                         nowTime: (parseInt(new Date().getTime())).toString(),
