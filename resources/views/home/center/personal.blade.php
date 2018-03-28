@@ -4,23 +4,27 @@
 <div id="main-body">
     <div class="container margin-top-100">
         @include('home.layouts.center')
-        <div class="width-100 text-center">
-            <div class="line-height-50">
-                <div class="width-15 float-left bg-lime-grey">ID号</div>
-                <div class="width-15 float-left bg-lime-grey">姓名</div>
-                <div class="width-25 float-left bg-lime-grey">公司</div>
-                <div class="width-15 float-left bg-lime-grey">手机号</div>
-                <div class="width-30 float-left bg-lime-grey">类型</div>
-            </div>
-        </div>
-        <div class="width-100 text-center">
-            <div class="line-height-50">
-                <div class="width-15 float-left">{{$common['user']['id']}}</div>
-                <div class="width-15 float-left">{{$common['user']['username']}}</div>
-                <div class="width-25 float-left">{{$common['user']['company']}}</div>
-                <div class="width-15 float-left">{{$common['user']['mobile']}}</div>
-                <div class="width-30 float-left">{{implode('，',$common['user']['businesses'])}}</div>
-            </div>
+        <div class="table-responsive">
+            <table class="table border-0 font-size-10">
+                <thead>
+                    <tr class=" bg-lime-grey">
+                        <th class="text-center border-0" style="border:0;">ID号</th>
+                        <th class="text-center" style="border:0;">姓名</th>
+                        <th class="text-center" style="border:0;">公司</th>
+                        <th class="text-center" style="border:0;">手机号</th>
+                        <th class="text-center" style="border:0;">类型</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center" style="border:0;">{{$common['user']['id']}}</td>
+                        <td class="text-center" style="border:0;">{{$common['user']['username']}}</td>
+                        <td class="text-center" style="border:0;">{{$common['user']['company']}}</td>
+                        <td class="text-center" style="border:0;">{{$common['user']['mobile']}}</td>
+                        <td class="text-center" style="border:0;">{{implode('，',$common['user']['businesses'])}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

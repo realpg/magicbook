@@ -48,25 +48,25 @@
         </div>
         <div class="clear"></div>
         <div class="table-responsive">
-            <table class="table border-0">
+            <table class="table border-0 font-size-10">
                 <thead>
                     <tr class=" bg-lime-grey">
-                        <th class="text-center">订单</th>
-                        <th class="text-center">时间</th>
-                        <th class="text-center">城市数量</th>
-                        <th class="text-center">版本类型</th>
-                        <th class="text-center">金额（元）</th>
+                        <th class="text-center" style="border:0;">订单</th>
+                        <th class="text-center" style="border:0;">时间</th>
+                        <th class="text-center" style="border:0;">城市数量</th>
+                        <th class="text-center" style="border:0;">版本类型</th>
+                        <th class="text-center" style="border:0;">金额（元）</th>
                     </tr>
                 </thead>
                 <tbody>
                 @if($orders)
                     @foreach($orders['results'] as $order)
                         <tr>
-                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$order['out_trade_no']}}</td>
-                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$order['pay_time']}}</td>
-                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$order['city_count']}}</td>
-                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$order['version']['name']}}</td>
-                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;">{{$order['version']['price']}}元</td>
+                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$order['out_trade_no']}}</td>
+                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$order['pay_time']}}</td>
+                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$order['city_count']}}</td>
+                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$order['version']['name']}}</td>
+                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$order['version']['price']}}元</td>
                         </tr>
                     @endforeach
                     @if($orders['count']==0)
