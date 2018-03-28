@@ -10,9 +10,13 @@
             <h4>
                 <b>
                     您可以
-                    <span class="font-color-red margin-left-5 margin-right-5">重新支付</span>
+                    <a href="javascript:history.go(-1)">
+                        <span class="font-color-red margin-left-5 margin-right-5">重新支付</span>
+                    </a>
                     或者
-                    <span class="font-color-red margin-left-5 margin-right-5">获取试听</span>
+                    <a href="{{URL::asset('/audition/free/')}}">
+                        <span class="font-color-red margin-left-5 margin-right-5">获取试听</span>
+                    </a>
                 </b>
             </h4>
         </div>
