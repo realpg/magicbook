@@ -1186,12 +1186,14 @@ input[type="checkbox"]:checked {
 .index-menu div:hover{
     background: #E21B14;
     color: #fff;
+    border-left:1px solid #fff;
     border-right:1px solid #fff;
 }
 
 .center-menu div:hover{
     background: #E21B14;
     color: #fff;
+    border-left:1px solid #fff;
     border-right:1px solid #fff;
 }
 
