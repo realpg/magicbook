@@ -5,7 +5,7 @@
     <div class="container margin-top-100">
         @include('home.layouts.center')
         <div class="table-responsive">
-            <table class="table border-0 font-size-10">
+            <table class="table border-0 font-size-14">
                 <thead>
                     <tr class=" bg-lime-grey">
                         <th class="text-center border-0" style="border:0;">ID号</th>

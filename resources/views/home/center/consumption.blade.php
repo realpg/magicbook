@@ -48,7 +48,7 @@
         </div>
         <div class="clear"></div>
         <div class="table-responsive">
-            <table class="table border-0 font-size-10">
+            <table class="table border-0 font-size-14">
                 <thead>
                     <tr class=" bg-lime-grey">
                         <th class="text-center" style="border:0;">订单</th>
