@@ -101,7 +101,7 @@
                             <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['viewed_count']}}</td>
                             <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['item_pname']}}/{{$purchas['item_name']}}</td>
                             <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">
-                                @if($purchas['viewed_count'])
+                                @if($purchas['viewed_count']&&$purchas['version']['code']=='custom')
                                     <img src="{{$purchas['viewed_count']}}" class="width-30px height-30px" />
                                 @else
                                     无
