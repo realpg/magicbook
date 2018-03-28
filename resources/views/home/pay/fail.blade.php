@@ -7,7 +7,14 @@
                 <img src="{{URL::asset('img/goucha_06.png')}}" />
             </div>
             <h4 class="margin-bottom-20"><b>支付失败</b></h4>
-            <h4><b>您可以查看<span class="font-color-red margin-left-5 margin-right-5">重新支付</span>或者<span class="font-color-red margin-left-5 margin-right-5">获取试听</span></b></h4>
+            <h4>
+                <b>
+                    您可以
+                    <span class="font-color-red margin-left-5 margin-right-5">重新支付</span>
+                    或者
+                    <span class="font-color-red margin-left-5 margin-right-5">获取试听</span>
+                </b>
+            </h4>
         </div>
     </div>
 @endsection

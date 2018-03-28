@@ -31,17 +31,31 @@ class PayController extends  Controller{
     //支付成功
     public function paySuccess(Request $request){
         $menu='pay';
-        $param=array(
-            'menu'=>$menu
-        );
-        return view('home.pay.success',$param);
+        $common=$request['common'];
+        if($common['user']){
+            $param=array(
+                'common'=>$common,
+                'menu'=>$menu
+            );
+            return view('home.pay.success',$param);
+        }
+        else{
+            return redirect('sign/in');
+        }
     }
     //支付失败
     public function payFail(Request $request){
         $menu='pay';
-        $param=array(
-            'menu'=>$menu
-        );
+        $common=$request['common'];
+        if($common['user']){
+            $param=array(
+                'common'=>$common,
+                'menu'=>$menu
+            );
+        }
+        else{
+            return redirect('sign/in');
+        }
         return view('home.pay.fail',$param);
     }
 
