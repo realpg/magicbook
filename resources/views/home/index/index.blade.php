@@ -132,6 +132,7 @@
     function choiceContinent(continent_id,continent_name){
         $('#continent').text(continent_name)
         var param={
+            version: 'free',
             continent_id:continent_id,
             _token: "{{ csrf_token() }}"
         }
@@ -152,6 +153,7 @@
     function choiceCities(country_id,continent_id,country_name){
         $('#country').text(country_name)
         var param={
+            version: 'free',
             country_id:country_id,
             continent_id:continent_id,
             _token: "{{ csrf_token() }}"

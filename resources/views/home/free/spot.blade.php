@@ -2,7 +2,7 @@
 
 @section('content')
     @if($result)
-        <div id="anchor_program" hidden>
+        <div hidden>
             <audio controls="controls" loop id="player" hidden></audio>
         </div>
         <div id="data">
@@ -21,12 +21,12 @@
                         @if($scene['subscenes']>0)
                         <a href="{{URL::asset('free/childspot')}}?code={{$code}}&scene_id={{$scene['id']}}" >
                         @else
-                        <a href="javascript:" onclick="playMusic('{{$scene['audios'][0]['audio']}}')" >
+                        <a href="javascript:" onclick="playMusic('{{$scene['audios'][0]['audio']}}','{{$scene['id']}}')" >
                         @endif
                             <li class="{{$k%2==0?'style-ul-left':'style-ul-right'}}">
                                 <div class="style-position-relative">
                                     <img src="{{$scene['image']}}" class="style-ul-image" />
-                                    <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-icon" />
+                                    <img src="{{URL::asset('img/spot_player.png')}}" id="play-{{$scene['id']}}" class="style-play-icon" />
                                     @if($scene['subscenes']>0)
                                         <div class="aui-padded-5 aui-padded-r-15 style-child-count">{{$scene['subscenes']}}处介绍</div>
                                     @endif
@@ -55,35 +55,35 @@
 @endsection
 @section('script')
     <script>
-        function playMusic(audio){
+        $(function(){
+            if('{{$result}}'){
+                $('#header-title').text('{{$name}}')
+                $("title").text('{{$name}}');
+            }
+        })
+        function playMusic(audio,id){
             var player = $("#player")[0]; /*jquery对象转换成js对象*/
             var player_src=$("#player").attr("src")  //正在播放的音频文件
             console.log("正在播放的音频文件 is : " + JSON.stringify(player_src)+" ; 要播放的音频文件 is : " + JSON.stringify(audio))
-            $("#player").attr('src',audio)
-            if (player.paused){ /*如果已经暂停*/
-                player.play(); /*播放*/
-            }else {
-                player.pause();/*暂停*/
+            if(player_src==audio){
+                if (player.paused){ /*如果已经暂停*/
+                    player.play(); /*播放*/
+                    $("#play-"+id).attr("src","{{URL::asset('img/spot_stop.png')}}")
+                }else {
+                    player.pause();/*暂停*/
+                    $("#play-"+id).attr("src","{{URL::asset('img/spot_player.png')}}")
+                }
             }
-            // if(player_src==audio_index){
-            //     if (player.paused){ /*如果已经暂停*/
-            //         player.play(); /*播放*/
-            //         $("#program_play_"+id+" .style-program-list-cover-play img").attr("src","./image/play_close.png")
-            //     }else {
-            //         player.pause();/*暂停*/
-            //         $("#program_play_"+id+" .style-program-list-cover-play img").attr("src","./image/play_start.png")
-            //     }
-            // }
-            // else{
-            //     player.pause();/*暂停*/
-            //     $("#player").attr("src",audio_index);
-            //     var player = $("#player")[0]; /*jquery对象转换成js对象*/
-            //     var player_src2=$("#player").attr("src")
-            //     console.log("要更换的音频文件 is : " + JSON.stringify(player_src2))
-            //     player.play(); /*播放*/
-            //     $(".style-program-list-cover-play img").attr("src","./image/play_start.png")
-            //     $("#program_play_"+id+" .style-program-list-cover-play img").attr("src","./image/play_close.png")
-            // }
+            else{
+                player.pause();/*暂停*/
+                $("#player").attr("src",audio);
+                var player = $("#player")[0]; /*jquery对象转换成js对象*/
+                var player_src2=$("#player").attr("src")
+                console.log("要更换的音频文件 is : " + JSON.stringify(player_src2))
+                player.play(); /*播放*/
+                $(".style-play-icon").attr("src","{{URL::asset('img/spot_player.png')}}")
+                $("#play-"+id).attr("src","{{URL::asset('img/spot_stop.png')}}")
+            }
         }
     </script>
 @endsection

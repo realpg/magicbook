@@ -30,7 +30,7 @@
         <a href="javascript:history.back(-1);" class="aui-pull-left aui-btn style-back">
             <span class="aui-iconfont aui-icon-left style-font-bold"></span>
         </a>
-        <div class="aui-title style-text-17" style="color:#030303;">意大利语音讲解</div>
+        <div class="aui-title style-text-17" id="header-title" style="color:#030303;"></div>
     </header>
 @show
 {{--<div style="height:2.6rem;"></div>--}}

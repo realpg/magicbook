@@ -26,6 +26,12 @@ class FreeController extends Controller{
         $common=$request['common'];
         $request['code']="A0DC47FD1BA63DA48C4694FE51E79837";    //测试
         if(array_key_exists('code',$request)){
+            if(array_key_exists('name',$request)){
+                $name=$request['name'];
+            }
+            else{
+                $name='魔法路书';
+            }
             $code=$request['code'];
             $scene_param=array(
                 'code'=>$code
@@ -38,7 +44,8 @@ class FreeController extends Controller{
                     'result'=>true,
                     'common'=>$common,
                     'scenes'=>$scenes,
-                    'code'=>$code
+                    'code'=>$code,
+                    'name'=>$name
                 );
             }
             else{
