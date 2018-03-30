@@ -24,13 +24,74 @@ class FreeController extends Controller{
     public function spot(Request $request){
         $request=$request->all();
         $common=$request['common'];
-        $param=array();
+        $request['code']="A0DC47FD1BA63DA48C4694FE51E79837";    //测试
+        if(array_key_exists('code',$request)){
+            $code=$request['code'];
+            $scene_param=array(
+                'code'=>$code
+            );
+            $scenes=Utils::curl('location/scene',$scene_param);
+            $scenes=json_decode($scenes,true);
+            if(array_key_exists('count',$scenes)){
+                $param=array(
+                    'result'=>true,
+                    'common'=>$common,
+                    'scenes'=>$scenes,
+                    'code'=>$code
+                );
+            }
+            else{
+                $param=array(
+                    'result'=>false,
+                    'common'=>$common,
+                    'msg'=>'参数无效！'
+                );
+            }
+        }
+        else{
+            $param=array(
+                'result'=>false,
+                'common'=>$common,
+                'msg'=>'缺少参数，获取数据失败！'
+            );
+        }
         return view('home.free.spot', $param);
     }
     public function childspot(Request $request){
         $request=$request->all();
         $common=$request['common'];
-        $param=array();
+        if(array_key_exists('code',$request)&&array_key_exists('scene_id',$request)){
+            $code=$request['code'];
+            $scene_id=$request['scene_id'];
+            $subscene_param=array(
+                'code'=>$code,
+                'scene_id'=>$scene_id
+            );
+            $subscenes=Utils::curl('location/subscene',$subscene_param);
+            $subscenes=json_decode($subscenes,true);
+            if(array_key_exists('count',$subscenes)){
+                $param=array(
+                    'result'=>true,
+                    'common'=>$common,
+                    'subscenes'=>$subscenes,
+                    'code'=>$code
+                );
+            }
+            else{
+                $param=array(
+                    'result'=>false,
+                    'common'=>$common,
+                    'msg'=>'参数无效！'
+                );
+            }
+        }
+        else{
+            $param=array(
+                'result'=>false,
+                'common'=>$common,
+                'msg'=>'缺少参数，获取数据失败！'
+            );
+        }
         return view('home.free.childspot', $param);
     }
 }
