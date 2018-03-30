@@ -42,6 +42,11 @@ Route::group(['prefix' => '', 'middleware' => ['WebBase']], function () {
     Route::post('/sign/up', 'Home\SignController@signUpDo');        //注册执行
     Route::get('/sign/out', 'Home\SignController@signOut');        //退出
     Route::get('/sign/success', 'Home\SignController@signSuccess');        //注册成功
+
+
+    Route::get('/free/city', 'Home\FreeController@city');        //免费试听（城市）
+    Route::get('/free/spot', 'Home\FreeController@spot');        //免费试听（景点）
+    Route::get('/free/childspot', 'Home\FreeController@childspot');        //免费试听（景点）
 });
 
 //后台

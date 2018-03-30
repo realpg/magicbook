@@ -37,7 +37,7 @@
 </head>
 <body>
 <div class="login">
-    <div class="message font-size-22 text-white">魔法路书-后台登录</div>
+    <div class="message font-size-22 font-color-white">魔法路书-后台登录</div>
     <div id="darkbannerwrap"></div>
 
     <form action="" method="post" onsubmit="return checkValid()" >
