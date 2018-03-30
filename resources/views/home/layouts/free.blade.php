@@ -14,6 +14,7 @@
     <script type="text/javascript" src="{{ URL::asset('dist/lib/respond.min.js') }}"></script>
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/aui/aui.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/aui/aui-slide.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/iconfont/iconfont.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/style.css') }}"/>
     <script type="text/javascript" src="{{ URL::asset('/js/jquery-3.3.1.min.js') }}"></script>

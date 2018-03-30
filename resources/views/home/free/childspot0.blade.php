@@ -7,7 +7,7 @@
                 <div class="aui-margin-b-10">
                     <div class="style-position-relative">
                         <div id="aui-slide">
-                            <div class="aui-slide-wrap" >
+                            <div class="aui-slide-wrap" id="subscenes-images" >
                                 @if($subscenes['results'][0]['images'])
                                     @foreach($subscenes['results'][0]['images'] as $image)
                                     <div class="aui-slide-node bg-dark">
@@ -51,15 +51,12 @@
             {{$msg}}
         </div>
     @endif
-<script id="aui-slide-template" type="text/x-dot-template">
-    <div class="aui-slide-wrap" >
-        @{{~ it.images:item:index }}
-        <div class="aui-slide-node bg-dark">
-            <img src="@{{=item.image}}" />
-        </div>
-        @{{~ }}
+<script id="subscenes-images-template" type="text/x-dot-template">
+    @{{~ it.images:item:index }}
+    <div class="aui-slide-node bg-dark">
+        <img src="@{{=item.image}}" />
     </div>
-    <div class="aui-slide-page-wrap"><!--分页容器--></div>
+    @{{~ }}
 </script>
 @endsection
 @section('script')
@@ -92,8 +89,21 @@
     function switchAaudio(index){
         console.log("subscenes_array['"+index+"'] is :"+JSON.stringify(subscenes_array[index]))
         $('#subscenes-title').text(subscenes_array[index]['name'])
-        var interText = doT.template($("#aui-slide-template").text())
-        $("#aui-slide").html(interText(subscenes_array[index]))
+        var interText = doT.template($("#subscenes-images-template").text())
+        $("#subscenes-images").html(interText(subscenes_array[index]))
+
+        var slide_index = new auiSlide({
+            container:document.getElementById("aui-slide"),
+            // "width":300,
+            "height":260,
+            "speed":300,
+            "autoPlay": 3000, //自动播放
+            "pageShow":true,
+            "pageStyle":'dot',
+            "loop":true,
+            'dotPosition':'center',
+            // currentPage:currentFun
+        })
     }
 </script>
 @endsection

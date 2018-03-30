@@ -32,6 +32,7 @@ class FreeController extends Controller{
             );
             $scenes=Utils::curl('location/scene',$scene_param);
             $scenes=json_decode($scenes,true);
+//            dd($scenes);
             if(array_key_exists('count',$scenes)){
                 $param=array(
                     'result'=>true,
@@ -70,11 +71,13 @@ class FreeController extends Controller{
             $subscenes=Utils::curl('location/subscene',$subscene_param);
             $subscenes=json_decode($subscenes,true);
             if(array_key_exists('count',$subscenes)){
+                $subscenes_array=json_encode($subscenes['results']);
                 $param=array(
                     'result'=>true,
                     'common'=>$common,
                     'subscenes'=>$subscenes,
-                    'code'=>$code
+                    'subscenes_array'=>$subscenes_array,
+                    'code'=>$code,
                 );
             }
             else{
