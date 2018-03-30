@@ -19,6 +19,13 @@ img{
 .style-font-bold{
     font-weight: bold;
 }
+.style-font-color-title{
+    color:#030303;
+}
+.style-back{
+    min-height: 2.6rem;
+    line-height: 2.6rem;
+}
 .style-float-left{
     float:left;
 }

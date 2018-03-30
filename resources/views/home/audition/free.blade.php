@@ -7,7 +7,7 @@
 </div>
 <div class="bottom bg-bright-grey padding-top-50 padding-bottom-50">
     @include('home.layouts.choice')
-    <h2 class="text-algin-center line-height-80 font-color-grey">免费版使用步骤</h2>
+    <h2 class="text-algin-center line-height-80 font-color-grey margin-top-0 margin-bottom-0">免费版使用步骤</h2>
     <div class="container font-color-silver-grey line-height-30">
         <div class="row">
             <div class="col-xs-2 col-sm-1 text-algin-right">
