@@ -172,7 +172,12 @@ class AuditionController extends  Controller{
             $location_param=array(
                 'version'=>$request['version']
             );
-            $locations=Utils::curl_token('location/chaincity/',$location_param,$common['user']['token']);
+            if($request['version']=='free'){
+                $locations=Utils::curl('location/chainfreecity/',$location_param);
+            }
+            else{
+                $locations=Utils::curl_token('location/chaincity/',$location_param,$common['user']['token']);
+            }
             $locations=json_decode($locations,true);
             foreach ($locations as $location){
                 if($continent_id==$location['id']){
@@ -202,7 +207,14 @@ class AuditionController extends  Controller{
             $location_param=array(
                 'version'=>$request['version']
             );
-            $locations=Utils::curl_token('location/chaincity/',$location_param,$common['user']['token']);
+//            $locations=Utils::curl_token('location/chaincity/',$location_param,$common['user']['token']);
+
+            if($request['version']=='free'){
+                $locations=Utils::curl('location/chainfreecity/',$location_param);
+            }
+            else{
+                $locations=Utils::curl_token('location/chaincity/',$location_param,$common['user']['token']);
+            }
             $locations=json_decode($locations,true);
             foreach ($locations as $continent){
                 if($continent_id==$continent['id']){
