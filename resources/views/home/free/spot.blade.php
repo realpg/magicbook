@@ -12,7 +12,8 @@
 </div>
 <div>
     <ul class="style-padding-l-20 style-padding-r-20">
-        <li class="style-ul-left">
+        <a href="{{URL::asset('free/childspot')}}" >
+            <li class="style-ul-left">
             <div class="style-position-relative">
                 <img src="{{URL::asset('img/example.jpg')}}" class="style-ul-image" />
                 <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-icon" />
@@ -26,7 +27,9 @@
                 </div>
             </div>
         </li>
-        <li class="style-ul-right">
+        </a>
+        <a href="{{URL::asset('free/childspot')}}" >
+            <li class="style-ul-right">
             <div class="style-position-relative">
                 <img src="{{URL::asset('img/example.jpg')}}" class="style-ul-image" />
                 <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-icon" />
@@ -40,7 +43,9 @@
                 </div>
             </div>
         </li>
-        <li class="style-ul-left">
+        </a>
+        <a href="{{URL::asset('free/childspot')}}" >
+            <li class="style-ul-left">
             <div class="style-position-relative">
                 <img src="{{URL::asset('img/example.jpg')}}" class="style-ul-image" />
                 <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-icon" />
@@ -54,7 +59,9 @@
                 </div>
             </div>
         </li>
-        <li class="style-ul-right">
+        </a>
+        <a href="{{URL::asset('free/childspot')}}" >
+            <li class="style-ul-right">
             <div class="style-position-relative">
                 <img src="{{URL::asset('img/example.jpg')}}" class="style-ul-image" />
                 <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-icon" />
@@ -68,7 +75,9 @@
                 </div>
             </div>
         </li>
-        <li class="style-ul-left">
+        </a>
+        <a href="{{URL::asset('free/childspot')}}" >
+            <li class="style-ul-left">
             <div class="style-position-relative">
                 <img src="{{URL::asset('img/example.jpg')}}" class="style-ul-image" />
                 <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-icon" />
@@ -82,7 +91,9 @@
                 </div>
             </div>
         </li>
-        <li class="style-ul-right">
+        </a>
+        <a href="{{URL::asset('free/childspot')}}" >
+            <li class="style-ul-right">
             <div class="style-position-relative">
                 <img src="{{URL::asset('img/example.jpg')}}" class="style-ul-image" />
                 <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-icon" />
@@ -96,7 +107,9 @@
                 </div>
             </div>
         </li>
-        <li class="style-ul-left">
+        </a>
+        <a href="{{URL::asset('free/childspot')}}" >
+            <li class="style-ul-left">
             <div class="style-position-relative">
                 <img src="{{URL::asset('img/example.jpg')}}" class="style-ul-image" />
                 <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-icon" />
@@ -110,7 +123,9 @@
                 </div>
             </div>
         </li>
-        <li class="style-ul-right">
+        </a>
+        <a href="{{URL::asset('free/childspot')}}" >
+            <li class="style-ul-right">
             <div class="style-position-relative">
                 <img src="{{URL::asset('img/example.jpg')}}" class="style-ul-image" />
                 <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-icon" />
@@ -124,6 +139,7 @@
                 </div>
             </div>
         </li>
+        </a>
     </ul>
     <div class="clear"></div>
 </div>
