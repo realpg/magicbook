@@ -43,7 +43,7 @@
                 <img src="{{URL::asset('img/erweima_03.png')}}" class="style-margin-center" />
             </a>
         </div>
-        <a href="javascript:" onclick="downloadApp()">
+        <a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">
             <div class="aui-font-size-12 footer-row-2">
                 <div class="footer-row-2-box-1">点击前往下载</div>
                 <div class="footer-row-2-box-2">美景听听APP</div>

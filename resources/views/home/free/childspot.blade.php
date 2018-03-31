@@ -5,27 +5,20 @@
         <div hidden>
             <audio controls="controls" loop id="player" hidden></audio>
         </div>
+        <div hidden>
+            <audio controls="controls" loop id="audio" src="{{$subscenes['scene']['audios'][0]['audio']}}" hidden></audio>
+        </div>
         @if($subscenes['count']>0)
             <div id="data">
                 <div class="aui-margin-b-10">
-                    <div class="style-position-relative">
-                        {{--<div id="aui-slide">--}}
-                            {{--<div class="aui-slide-wrap" >--}}
-                                {{--@if($subscenes['results'][0]['images'])--}}
-                                    {{--@foreach($subscenes['results'][0]['images'] as $image)--}}
-                                    {{--<div class="aui-slide-node bg-dark">--}}
-                                        {{----}}
-                                    {{--</div>--}}
-                                    {{--@endforeach--}}
-                                {{--@endif--}}
-                            {{--</div>--}}
-                            {{--<div class="aui-slide-page-wrap"><!--分页容器--></div>--}}
-                        {{--</div>--}}
-                        <img src="{{URL::asset('img/example.jpg')}}" class="style-width-100" />
-                        <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-header-icon" />
-                        <div class="aui-padded-5 aui-padded-r-15 style-child-spot-count">{{$subscenes['count']}}处介绍</div>
-                        <div class="aui-padded-5 aui-padded-l-15 style-child-spot-title" id="subscenes-title">{{$subscenes['results'][0]['name']}}</div>
-                    </div>
+                    <a href="javacript:" onclick="playAudio()">
+                        <div class="style-position-relative">
+                            <img src="{{$subscenes['scene']['image']}}" class="style-width-100" />
+                            <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-header-icon" />
+                            <div class="aui-padded-5 aui-padded-r-15 style-child-spot-count">{{$subscenes['count']}}处介绍</div>
+                            <div class="aui-padded-5 aui-padded-l-15 style-child-spot-title" id="subscenes-title">{{$subscenes['scene']['name']}}</div>
+                        </div>
+                    </a>
                 </div>
                 <div class="aui-row style-child-padding">
                     @foreach($subscenes['results'] as $k=>$subscene)
@@ -59,13 +52,17 @@
 @section('script')
 <script type="text/javascript" src="{{URL::asset('js/aui/aui-slide.js')}}"></script>
 <script type="text/javascript">
-    {{--$(function(){--}}
-        {{--if('{{$result}}'){--}}
-            {{--$('#header-title').text('{{$name}}')--}}
-            {{--$("title").text('{{$name}}');--}}
-        {{--}--}}
-    {{--})--}}
+    $(function(){
+        if('{{$result}}'){
+            $('#header-title').text('{{$subscenes['scene']['name']}}')
+            $("title").text('{{$subscenes['scene']['name']}}');
+        }
+    })
     function playMusic(audio,id){
+        $("#audio")[0].pause();/*暂停*/
+        $(".style-play-header-icon").attr("src","{{URL::asset('img/spot_player.png')}}")
+
+
         var player = $("#player")[0]; /*jquery对象转换成js对象*/
         var player_src=$("#player").attr("src")  //正在播放的音频文件
         console.log("正在播放的音频文件 is : " + JSON.stringify(player_src)+" ; 要播放的音频文件 is : " + JSON.stringify(audio))
@@ -87,6 +84,19 @@
             player.play(); /*播放*/
             $(".style-play-icon").attr("src","{{URL::asset('img/child_player.png')}}")
             $("#play-"+id).attr("src","{{URL::asset('img/child_stop.png')}}")
+        }
+    }
+    function playAudio(){
+        $("#player")[0].pause();/*暂停*/
+        $(".style-play-icon").attr("src","{{URL::asset('img/child_player.png')}}")
+
+        var player = $("#audio")[0]; /*jquery对象转换成js对象*/
+        if (player.paused){ /*如果已经暂停*/
+            player.play(); /*播放*/
+            $(".style-play-header-icon").attr("src","{{URL::asset('img/spot_stop.png')}}")
+        }else {
+            player.pause();/*暂停*/
+            $(".style-play-header-icon").attr("src","{{URL::asset('img/spot_player.png')}}")
         }
     }
 </script>

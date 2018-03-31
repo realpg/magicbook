@@ -14,17 +14,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class FreeController extends Controller{
-    const PAGE_SIZE=10;
-    public function city(Request $request){
-        $request=$request->all();
-        $common=$request['common'];
-        $param=array();
-        return view('home.free.city', $param);
-    }
     public function spot(Request $request){
         $request=$request->all();
         $common=$request['common'];
-        $request['code']="A0DC47FD1BA63DA48C4694FE51E79837";    //测试
+//        $request['code']="A0DC47FD1BA63DA48C4694FE51E79837";    //测试
         if(array_key_exists('code',$request)){
             if(array_key_exists('name',$request)){
                 $name=$request['name'];
@@ -52,6 +45,7 @@ class FreeController extends Controller{
                 $param=array(
                     'result'=>false,
                     'common'=>$common,
+                    'code'=>'',
                     'msg'=>'参数无效！'
                 );
             }
@@ -60,6 +54,7 @@ class FreeController extends Controller{
             $param=array(
                 'result'=>false,
                 'common'=>$common,
+                'code'=>'',
                 'msg'=>'缺少参数，获取数据失败！'
             );
         }
@@ -92,6 +87,7 @@ class FreeController extends Controller{
                 $param=array(
                     'result'=>false,
                     'common'=>$common,
+                    'code'=>'',
                     'msg'=>'参数无效！'
                 );
             }
@@ -100,6 +96,7 @@ class FreeController extends Controller{
             $param=array(
                 'result'=>false,
                 'common'=>$common,
+                'code'=>'',
                 'msg'=>'缺少参数，获取数据失败！'
             );
         }
