@@ -298,6 +298,15 @@ footer{
     right: 0;
     margin: auto;
 }
+.style-play-header-icon{
+    width:6.7%;
+    position:absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
 .style-spot-image{
     display: inline;
     vertical-align: middle;
@@ -346,6 +355,9 @@ footer{
     .style-play-icon{
         width:20%;
     }
+    .style-play-header-icon{
+        width:20%;
+    }
     .style-child-count{
         font-size: 0.25rem;
     }
@@ -367,6 +379,9 @@ footer{
         height:5.56rem;
     }
     .style-play-icon{
+        width:20%;
+    }
+    .style-play-header-icon{
         width:20%;
     }
     .style-child-count{
@@ -532,6 +547,9 @@ footer{
     .style-play-icon{
         width:20%;
     }
+    .style-play-header-icon{
+        width:20%;
+    }
     .style-ul-child-image{
         height:6.56rem;
     }
@@ -547,6 +565,9 @@ footer{
         margin-top: 3%;
     }
     .style-play-icon{
+        width:6.7%;
+    }
+    .style-play-header-icon{
         width:6.7%;
     }
 }
@@ -567,4 +588,17 @@ footer{
     text-align: center;
     letter-spacing:0.2rem;
     line-height: 4rem;
+}
+
+
+/* 弹窗 */
+#mry-mask { width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; background-color: rgb(45, 45, 45); z-index: 100; opacity: 0.2; display: none; background-position: initial initial; background-repeat: initial initial; }
+#mry-opo { position: fixed; z-index: 7000; left: 50%; top: 50%; padding-bottom:20px; }
+#mry-opo-content { padding: 10px; }
+#mry-opo-content p{
+    padding-right:10px;
+    padding-left:10px;
+    text-align: justify;
+    text-align-last: justify;
+    color:#000;
 }

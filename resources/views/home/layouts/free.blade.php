@@ -39,14 +39,20 @@
 @section('footer')
     <footer id="footer">
         <div class="footer-row-1">
-            <img src="{{URL::asset('img/qrcode.png')}}" class="style-margin-center" />
+            <a href="javascript:" onclick="ejectQrcode()" >
+                <img src="{{URL::asset('img/erweima_03.png')}}" class="style-margin-center" />
+            </a>
         </div>
-        <div class="aui-font-size-12 footer-row-2">
-            <div class="footer-row-2-box-1">点击前往下载</div>
-            <div class="footer-row-2-box-2">美景听听APP</div>
-        </div>
+        <a href="javascript:" onclick="downloadApp()">
+            <div class="aui-font-size-12 footer-row-2">
+                <div class="footer-row-2-box-1">点击前往下载</div>
+                <div class="footer-row-2-box-2">美景听听APP</div>
+            </div>
+        </a>
         <div class="footer-row-3">
-            <img src="{{URL::asset('img/footer_player.png')}}" />
+            <a href="javascript:" onclick="downloadApp()">
+                <img src="{{URL::asset('img/footer_player.png')}}" />
+            </a>
         </div>
         <div class="footer-row-4">
            <img src="{{URL::asset('img/footer_image.png')}}" />
@@ -68,9 +74,21 @@
 {{--common.js--}}
 <script type="text/javascript" src="{{ URL::asset('/js/common.js') }}"></script>
 <script>
-    $(function(){
-
-    })
+    function downloadApp(){
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+            $(location).attr('href', 'https://itunes.apple.com/cn/app/%E7%BE%8E%E6%99%AF%E5%90%AC%E5%90%AC-%E5%85%A8%E7%90%83%E6%99%AF%E7%82%B9%E8%AE%B2%E8%A7%A3%E8%AF%AD%E9%9F%B3%E5%AF%BC%E6%B8%B8/id945386876?mt=8');
+        }
+        else{
+            $(location).attr('href','http://a.app.qq.com/o/simple.jsp?pkgname=com.tommy.mjtt_an_pro&channel=0002160650432d595942&fromcase=60001')
+        }
+    }
+    function ejectQrcode(){
+        pop({
+            width:200,//提示窗口的宽度
+            height:230,//提示窗口的高度
+        });
+    }
+    function pop(obj){function tanchuang(obj){$('body').append('<div id="mry-opo"><div  id="mry-opo-content"><img src="{{URL::asset('img/erweima_03.png')}}" style="width:100%;" /><p class="aui-font-size-16">扫描二维码</p><p>关注美景听听公众号</p></div></div>');var div = $('#mry-opo');$('#mry-opo-content').text(obj.content);div.css('width',obj.width+'px');div.css('height',obj.height+'px');div.css('margin-left',-(parseInt(obj.width)/2)+'px');div.css('margin-top',-(parseInt(obj.height)/2)+'px');div.css('background',obj.backgorund);$('#mry-mask').css('display','block');}function del(){$('#mry-opo').append('<a href="javascript:void(0)" deletes="mry-opo" style="position:absolute;right:10px;top:6px;color:#fff;font-size:12px;">X</a>');	$('[deletes=mry-opo]').click(function(){$('#mry-opo,#mry-mask').remove();});}$('body').append('<div id="mry-mask" deletes="mry-opo"></div>');var ject=obj;ject.width = parseInt(obj.width)||300;ject.height = parseInt(obj.height)||300;ject.backgorund=obj.backgorund||'#fff';tanchuang(ject);del();}
 </script>
 
 </body>

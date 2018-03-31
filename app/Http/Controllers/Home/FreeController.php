@@ -77,6 +77,7 @@ class FreeController extends Controller{
             );
             $subscenes=Utils::curl('location/subscene',$subscene_param);
             $subscenes=json_decode($subscenes,true);
+//            dd($subscenes);
             if(array_key_exists('count',$subscenes)){
                 $subscenes_array=json_encode($subscenes['results']);
                 $param=array(
