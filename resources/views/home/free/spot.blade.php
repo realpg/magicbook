@@ -1,5 +1,4 @@
 @extends('home.layouts.free')
-
 @section('content')
     @if($result)
         <div hidden>
@@ -56,10 +55,8 @@
 @section('script')
     <script>
         $(function(){
-            if('{{$result}}'){
-                $('#header-title').text('{{$name}}')
-                $("title").text('{{$name}}');
-            }
+            $('#header-title').text('{{$name}}')
+            $("title").text('{{$name}}');
         })
         function playMusic(audio,id){
             var player = $("#player")[0]; /*jquery对象转换成js对象*/

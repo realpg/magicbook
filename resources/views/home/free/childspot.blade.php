@@ -53,10 +53,8 @@
 <script type="text/javascript" src="{{URL::asset('js/aui/aui-slide.js')}}"></script>
 <script type="text/javascript">
     $(function(){
-        if('{{$result}}'){
-            $('#header-title').text('{{$subscenes['scene']['name']}}')
-            $("title").text('{{$subscenes['scene']['name']}}');
-        }
+        $('#header-title').text('{{$name?$name:'魔法路书'}}')
+        $("title").text('{{$name?$name:'魔法路书'}}');
     })
     function playMusic(audio,id){
         $("#audio")[0].pause();/*暂停*/
