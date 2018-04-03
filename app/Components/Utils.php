@@ -92,12 +92,14 @@ class Utils
         curl_close($ch);
         if($httpCode>=400){
             $response=json_decode($response,true);
-            if(array_key_exists('detail',$response)){
+            if($response&&array_key_exists('detail',$response)){
                 $return['detail']=$response['detail'];
             }
             else{
                 $return['detail']='提交数据不合法';
             }
+            $return=json_encode($return,true);
+            return $return;
         }
         else{
             return $response;
@@ -148,7 +150,7 @@ class Utils
         curl_close($ch);
         if($httpCode>=400){
             $response=json_decode($response,true);
-            if(array_key_exists('detail',$response)){
+            if($response&&array_key_exists('detail',$response)){
                 $return['detail']=$response['detail'];
             }
             else{
