@@ -28,10 +28,19 @@
             </button>
         </form>
     </div>
-    <div class="mt-20">
+    <from action="{{URL::asset('/admin/member/export')}}" method="post"  class="form-horizontal">
+        <div class="cl pd-5 bg-1 bk-gray mt-20">
+            <span class="l">
+                <a href="javascript:;" onclick="exportMember()" class="btn btn-danger radius"> 批量导出用户</a>
+            </span>
+        </div>
+        <div class="mt-20">
         <table class="table table-border table-bordered table-bg table-hover table-sort" id="table-sort">
             <thead>
             <tr class="text-c">
+                <th>
+                    <input type="checkbox" class="checkAll" id="checkall" />
+                </th>
                 <th width="80">ID</th>
                 <th>用户名</th>
                 <th>手机号</th>
@@ -43,6 +52,9 @@
             <tbody>
             @foreach($datas['results'] as $data)
                 <tr class="text-c">
+                    <td>
+                        <input type="checkbox" name="id_array" class="checkSingle" value="{{$data['id']}}" />
+                    </td>
                     <td>{{$data['id']}}</td>
                     <td>{{$data['username']?$data['username']:'无'}}</td>
                     <td>{{$data['mobile']?$data['mobile']:'无'}}</td>
@@ -60,6 +72,77 @@
             </tbody>
         </table>
     </div>
+    </from>
 </div>
 
+@endsection
+
+@section('script')
+<script>
+    //全选
+    $(".checkAll").click(function () {
+        if ($(this).is(":checked") == true) {
+            $("input[class=checkSingle]").each(function (h) {
+                $(this).prop("checked",true);
+            });
+        }else {
+            $("input[class=checkSingle]").each(function (h) {
+                $(this).prop("checked",false);
+            });
+        }
+    });
+    //选中一行
+    var checknum = $(".checkSingle").size();
+    $(".checkSingle").click(function () {
+        if ($(this).is(":checked") == true) {
+            if($(".checkSingle:checked").length == checknum){
+                $(".checkAll").prop("checked",true);
+            }else{
+                $(".checkAll").prop("checked",false);
+            }
+
+        }else {
+            if($(".checkSingle:checked").length == checknum){
+                $(".checkAll").prop("checked",true);
+            }else{
+                $(".checkAll").prop("checked",false);
+            }
+        }
+    });
+    //批量导出用户
+    function exportMember(){
+        var id_array=''
+        $("input:checkbox[name='id_array']:checked").each(function() { // 遍历name=test的多选框
+            id_array=id_array+$(this).val()+',';  // 每一个被选中项的值
+        });
+        id_array=id_array.substring(0,id_array.length-1)
+        var param = {
+            id_array: id_array,
+            _token: "{{ csrf_token() }}"
+        }
+        if(id_array){
+            $.ajax({
+                url: 'http://testlushu.gowithtommy.com/api/auth/exportUser/?ids='+id_array,
+                method: 'GET',
+                xhrFields: {
+                    responseType: 'document'
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "Token {{$admin['token']}}");
+                },
+                success: function (data) {
+                    var a = document.createElement('a');
+                    var url = window.URL.createObjectURL(data);
+                    a.href = url;
+                    a.download = '用户信息.zip';
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                }
+            });
+        }
+        else{
+            layer.msg('请选择要导出的信息', {icon: 2, time: 2000})
+        }
+    }
+</script>
 @endsection

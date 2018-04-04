@@ -314,7 +314,7 @@
 
         if(id_array){
             $.ajax({
-                url: 'http://testlushu.gowithtommy.com/api/pay/bulkDownloadQrcode/?ids=7,8',
+                url: 'http://testlushu.gowithtommy.com/api/pay/bulkDownloadQrcode/?ids='+id_array,
                 method: 'POST',
                 xhrFields: {
                     responseType: 'blob'

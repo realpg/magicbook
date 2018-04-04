@@ -31,7 +31,6 @@ class FreeController extends Controller{
             );
             $scenes=Utils::curl('location/scene',$scene_param);
             $scenes=json_decode($scenes,true);
-//            dd($scenes);
             if(array_key_exists('count',$scenes)){
                 $param=array(
                     'result'=>true,

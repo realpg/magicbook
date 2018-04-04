@@ -27,6 +27,16 @@ function ajaxRequest(url, param, method, callBack) {
     });
 }
 
+//+++++++++++++++++++++++++后台+++++++++++++++++++++++++++++++++//
+
+//批量导出用户
+function exportMemberInfo(url, param, callBack) {
+    ajaxRequest(url + "member/export", param, "GET", callBack);
+}
+
+
+//++++++++++++++++++++++++++前台+++++++++++++++++++++++++++++++++//
+
 //选择国家
 function getCountries(url, param, callBack) {
     ajaxRequest(url + "region/country", param, "GET", callBack);

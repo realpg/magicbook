@@ -62,4 +62,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.login']], function ()
     //用户相关
     Route::get('/member/index', 'Admin\MemberController@index');       //用户相关首页
     Route::post('/member/index', 'Admin\MemberController@index');       //用户搜索
+    Route::get('/member/export', 'Admin\MemberController@export');       //批量导出用户
 });
