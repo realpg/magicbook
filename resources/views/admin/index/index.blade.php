@@ -63,7 +63,7 @@
                 <dd>
                     <ul>
                         <li><a data-href="{{URL::asset('/admin/version/index')}}" data-title="修改版本信息" href="javascript:void(0)">修改版本信息</a></li>
-                        <li><a data-href="{{URL::asset('/admin/member/index')}}" data-title="修改服务条款接口" href="javascript:void(0)">修改服务条款接口</a></li>
+                        <li><a data-href="{{URL::asset('/admin/service/edit')}}" data-title="修改服务条款" href="javascript:void(0)">修改服务条款</a></li>
                         <li><a data-href="{{URL::asset('/admin/member/index')}}" data-title="大洲下的免费城市列表" href="javascript:void(0)">大洲下的免费城市列表</a></li>
                         <li><a data-href="{{URL::asset('/admin/member/index')}}" data-title="链式城市列表" href="javascript:void(0)">链式城市列表</a></li>
                     </ul>

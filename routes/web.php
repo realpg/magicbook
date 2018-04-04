@@ -69,4 +69,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.login']], function ()
     Route::post('/version/index', 'Admin\VersionController@index');       //版本信息首页
     Route::get('/version/edit', 'Admin\VersionController@edit');       //编辑版本信息首页
     Route::post('/version/edit', 'Admin\VersionController@editDo');       //编辑版本信息首页（执行）
+
+    //服务条款信息
+    Route::get('/service/edit', 'Admin\ServiceController@edit');       //编辑服务条款信息首页
+    Route::post('/service/edit', 'Admin\ServiceController@editDo');       //编辑服务条款信息首页（执行）
 });

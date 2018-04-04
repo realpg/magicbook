@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Components\AdminManager;
 use App\Components\Utils;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Components\RequestValidator;
 

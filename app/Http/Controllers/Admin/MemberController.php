@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
-    const PAGE_SIZE=1;
+    const PAGE_SIZE=10;
     //首页
     public function index(Request $request)
     {
