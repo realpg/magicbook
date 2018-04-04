@@ -85,6 +85,7 @@
                     },
                     price: {
                         required: true,
+                        number:true
                     }
                 },
                 onkeyup: false,
@@ -96,14 +97,14 @@
                         url: "{{ URL::asset('/admin/version/edit')}}",
                         success: function (ret) {
                             console.log(JSON.stringify(ret));
-                            // if (ret.result) {
-                            //     layer.msg(ret.msg, {icon: 1, time: 2000});
-                            //     setTimeout(function () {
-                            //         parent.$('.btn-refresh').click();
-                            //     }, 1000)
-                            // } else {
-                            //     layer.msg(ret.msg, {icon: 2, time: 2000});
-                            // }
+                            if (ret.result) {
+                                layer.msg('编辑成功', {icon: 1, time: 2000});
+                                setTimeout(function () {
+                                    parent.$('.btn-refresh').click();
+                                }, 1000)
+                            } else {
+                                layer.msg(ret.message, {icon: 2, time: 2000});
+                            }
                         },
                         error: function (XmlHttpRequest, textStatus, errorThrown) {
                             layer.msg('保存失败', {icon: 2, time: 2000});

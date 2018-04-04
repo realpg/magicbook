@@ -15,18 +15,29 @@ use Illuminate\Http\Request;
 
 class VersionController extends Controller
 {
+    const PAGE_SIZE=10;
     //首页
     public function index(Request $request)
     {
         $data=$request->all();
         $admin = $request->session()->get('admin');
-        $param=array();
+        if(array_key_exists('page',$data)){
+            $page=$data['page'];
+        }
+        else{
+            $page=1;
+        }
+        $param=array(
+            'page_size'=>self::PAGE_SIZE,
+            'page'=>$page
+        );
         $datas=Utils::curl_token('magic/version/',$param,$admin['token']);
         $datas=json_decode($datas,true);
         //赋值
         $data=array(
             'admin'=>$admin,
             'datas'=>$datas,
+            'page'=>$page
         );
         return view('admin.version.index', $data);
     }
@@ -55,7 +66,7 @@ class VersionController extends Controller
                 'can_customize_city'=>$request['can_customize_city'],
                 'can_customize_logo'=>$request['can_customize_logo'],
                 'valid_days'=>$request['valid_days'],
-                'price'=>$request['price']*100,
+                'price'=>$request['price'],
             );
             $result=Utils::curl_token('m/version/'.$request['code'].'/',$param,$admin['token'],2);
             if($result){

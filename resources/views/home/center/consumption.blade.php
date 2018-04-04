@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 float-left">
                         <input name="page" id="page" type="hidden" value="{{$orders['page_number']}}" />
-                        <input type="text" name="search" class="form-control border-0 width-90 float-left" style="border-radius:0;border-bottom:1px solid #989898;box-shadow:none;" placeholder="请输入订单号查询" value="{{$search?$search:''}}" />
+                        <input type="text" name="search" id="search" class="form-control border-0 width-90 float-left" style="border-radius:0;border-bottom:1px solid #989898;box-shadow:none;" placeholder="请输入订单号查询" value="{{$search?$search:''}}" />
                         <a href="javascript:" class="width-10 float-left bg-none border-0" style="border:0;box-shadow: none;" onclick="submitForm()">
                             <img src="{{URL::asset('img/search_03.png')}}" style="border:0;box-shadow: none;" class="height-40px"  />
                         </a>
@@ -118,9 +118,15 @@
     })
 
     function choiceVersion(code,name){
+        if(code!='{{$version_search}}'){
+            $('#page').val(1)
+        }
         $('#version').val(code);
         $('#c_version').text(name);
     }
+    $('#search').change(function(){
+        $('#page').val(1)
+    });
     function submitForm(){
         $('#page').val(1)
         $('#consumption-form').submit();

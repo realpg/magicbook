@@ -14,11 +14,18 @@ use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
+    const PAGE_SIZE=1;
     //首页
     public function index(Request $request)
     {
         $data=$request->all();
         $admin = $request->session()->get('admin');
+        if(array_key_exists('page',$data)){
+            $page=$data['page'];
+        }
+        else{
+            $page=1;
+        }
         //获取用户列表
         if(array_key_exists('business',$data)){
             $business=$data['business'];
@@ -41,7 +48,9 @@ class MemberController extends Controller
         $param=array(
             'business'=>$business,
             'time_type'=>$time_type,
-            'search'=>$search
+            'search'=>$search,
+            'page_size'=>self::PAGE_SIZE,
+            'page'=>$page
         );
         $datas=Utils::curl_token('auth/user/',$param,$admin['token']);
         $datas=json_decode($datas,true);
@@ -65,6 +74,7 @@ class MemberController extends Controller
             'time_type'=>$time_type,
             'search'=>$search,
             'datas'=>$datas,
+            'page'=>$page
         );
         return view('admin.member.index', $data);
     }
