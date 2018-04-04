@@ -74,7 +74,7 @@
             <table class="table border-0 font-size-14">
                 <thead>
                     <tr class=" bg-lime-grey">
-                        <th class="text-center" width="10px" style="border:0;">选择</th>
+                        <th class="text-center" width="50px" style="border:0;">选择</th>
                         <th class="text-center" width="50px" style="border:0;">序号</th>
                         <th class="text-center" width="100px" style="border:0;">类型</th>
                         <th class="text-center" width="100px" style="border:0;">生成时间</th>
