@@ -16,9 +16,9 @@ class WebBase
 {
     public function handle($request, Closure $next)
     {
-        $common_param=array();
-        $common=Utils::curl('magic/index/',$common_param);
-        $common=json_decode($common,true);
+//        $common_param=array();
+//        $common=Utils::curl('magic/index/',$common_param);
+//        $common=json_decode($common,true);
         $common['user']=$request->cookie('user');
         $request['common']=$common;
         return $next($request);

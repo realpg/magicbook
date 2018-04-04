@@ -55,6 +55,34 @@
                 </dd>
             </dl>
         </div>
+        <div class="menu_dropdown bk_2">
+            <dl id="menu-settings">
+                <dt>
+                    <i class="Hui-iconfont">&#xe62e;</i> 设置相关<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+                </dt>
+                <dd>
+                    <ul>
+                        <li><a data-href="{{URL::asset('/admin/version/index')}}" data-title="修改版本信息" href="javascript:void(0)">修改版本信息</a></li>
+                        <li><a data-href="{{URL::asset('/admin/member/index')}}" data-title="修改服务条款接口" href="javascript:void(0)">修改服务条款接口</a></li>
+                        <li><a data-href="{{URL::asset('/admin/member/index')}}" data-title="大洲下的免费城市列表" href="javascript:void(0)">大洲下的免费城市列表</a></li>
+                        <li><a data-href="{{URL::asset('/admin/member/index')}}" data-title="链式城市列表" href="javascript:void(0)">链式城市列表</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+        <div class="menu_dropdown bk_2">
+            <dl id="menu-orders">
+                <dt>
+                    <i class="Hui-iconfont">&#xe687;</i> 订单相关<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+                </dt>
+                <dd>
+                    <ul>
+                        <li><a data-href="{{URL::asset('/admin/member/index')}}" data-title="试听数据列表" href="javascript:void(0)">试听数据列表</a></li>
+                        <li><a data-href="{{URL::asset('/admin/member/index')}}" data-title="用户的消费记录" href="javascript:void(0)">用户的消费记录</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
     </aside>
     <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a>
     </div>

@@ -82,7 +82,6 @@ class Utils
         }
 
         $response = curl_exec($ch);
-
         if ($response === FALSE) {
             //echo "cURL Error: " . curl_error($ch);
             return false;
@@ -124,8 +123,14 @@ class Utils
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); // 对认证证书来源的检查
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE); // 从证书中检查SSL加密算法是否存在
         }
-        if ($ispost) {
+
+        if ($ispost==1) {
             curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+            curl_setopt($ch, CURLOPT_URL, $url);
+        }
+        else if($ispost==2){
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "put"); //定义请求类型，当然那个提交类型那一句就不需要了
             curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
             curl_setopt($ch, CURLOPT_URL, $url);
         } else {

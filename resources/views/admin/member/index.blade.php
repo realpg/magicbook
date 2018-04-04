@@ -116,19 +116,15 @@
             id_array=id_array+$(this).val()+',';  // 每一个被选中项的值
         });
         id_array=id_array.substring(0,id_array.length-1)
-        var param = {
-            id_array: id_array,
-            _token: "{{ csrf_token() }}"
-        }
         if(id_array){
             $.ajax({
-                url: 'http://testlushu.gowithtommy.com/api/auth/exportUser/?ids='+id_array,
-                method: 'GET',
+                url: 'http://testlushu.gowithtommy.com/api/auth/exportUser/?ids=1000001,1000007',
+                method: 'POST',
                 xhrFields: {
-                    responseType: 'document'
+                    responseType: 'blob'
                 },
                 beforeSend: function (xhr) {
-                    xhr.setRequestHeader("Authorization", "Token {{$admin['token']}}");
+                    xhr.setRequestHeader("Authorization", "Token a00b0568ebca7dad489c178c4711eeb1d30e22cf");
                 },
                 success: function (data) {
                     var a = document.createElement('a');
@@ -137,6 +133,15 @@
                     a.download = '用户信息.zip';
                     a.click();
                     window.URL.revokeObjectURL(url);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('XMLHttpRequest is : '+JSON.stringify(XMLHttpRequest))
+                    // 状态码
+                    console.log(XMLHttpRequest.status);
+                    // 状态
+                    console.log(XMLHttpRequest.readyState);
+                    // 错误信息
+                    console.log(textStatus);
                 }
             });
         }

@@ -18,6 +18,12 @@ class AuditionController extends  Controller{
     public function scenery(Request $request){
         $request=$request->all();
         $common=$request['common'];
+        //获取首页信息//
+        $index_param=array();
+        $index=Utils::curl('magic/index/',$index_param);
+        $index=json_decode($index,true);
+        $common=array_merge($index,$common);
+        ///////////////
         if($common['user']){
             $menu='audition';
             $subsection='scenery';
@@ -47,6 +53,12 @@ class AuditionController extends  Controller{
     public function customization(Request $request){
         $request=$request->all();
         $common=$request['common'];
+        //获取首页信息//
+        $index_param=array();
+        $index=Utils::curl('magic/index/',$index_param);
+        $index=json_decode($index,true);
+        $common=array_merge($index,$common);
+        ///////////////
         if($common['user']){
             $menu='audition';
             $subsection='customization';
@@ -79,6 +91,12 @@ class AuditionController extends  Controller{
     public function free(Request $request){
         $request=$request->all();
         $common=$request['common'];
+        //获取首页信息//
+        $index_param=array();
+        $index=Utils::curl('magic/index/',$index_param);
+        $index=json_decode($index,true);
+        $common=array_merge($index,$common);
+        ///////////////
         if($common['user']){
             $menu='audition';
             $subsection='free';
