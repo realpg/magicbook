@@ -31,9 +31,27 @@ function ajaxRequest(url, param, method, callBack) {
 
 //批量导出用户
 function exportMemberInfo(url, param, callBack) {
-    ajaxRequest(url + "member/export", param, "GET", callBack);
+    ajaxRequest(url + "admin/member/export", param, "GET", callBack);
+}
+//选择国家
+function getChainCountries(url, param, callBack) {
+    ajaxRequest(url + "admin/city/country", param, "GET", callBack);
 }
 
+//选择城市
+function getChainCities(url, param, callBack) {
+    ajaxRequest(url + "admin/city/city", param, "GET", callBack);
+}
+
+//添加城市
+function addCity(url, param, callBack) {
+    $.post(url + "admin/city/add",param,callBack);
+}
+
+//删除城市
+function delCity(url, param, callBack) {
+    ajaxRequest(url + "admin/city/del", param, "GET", callBack);
+}
 
 //++++++++++++++++++++++++++前台+++++++++++++++++++++++++++++++++//
 

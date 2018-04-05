@@ -32,18 +32,6 @@
     </header>
     <aside class="Hui-aside">
         <div class="menu_dropdown bk_2">
-            <dl id="menu-settings">
-                <dt>
-                    <i class="Hui-iconfont">&#xe62e;</i> 设置相关<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
-                </dt>
-                <dd>
-                    <ul>
-                        <li><a data-href="" data-title="网站基本设置" href="javascript:void(0)">设置相关</a></li>
-                    </ul>
-                </dd>
-            </dl>
-        </div>
-        <div class="menu_dropdown bk_2">
             <dl id="menu-members">
                 <dt>
                     <i class="Hui-iconfont">&#xe62b;</i> 用户相关<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
@@ -64,8 +52,7 @@
                     <ul>
                         <li><a data-href="{{URL::asset('/admin/version/index')}}" data-title="修改版本信息" href="javascript:void(0)">修改版本信息</a></li>
                         <li><a data-href="{{URL::asset('/admin/service/edit')}}" data-title="修改服务条款" href="javascript:void(0)">修改服务条款</a></li>
-                        <li><a data-href="{{URL::asset('/admin/member/index')}}" data-title="大洲下的免费城市列表" href="javascript:void(0)">大洲下的免费城市列表</a></li>
-                        <li><a data-href="{{URL::asset('/admin/member/index')}}" data-title="链式城市列表" href="javascript:void(0)">链式城市列表</a></li>
+                        <li><a data-href="{{URL::asset('/admin/city/index')}}" data-title="免费城市管理" href="javascript:void(0)">免费城市管理</a></li>
                     </ul>
                 </dd>
             </dl>

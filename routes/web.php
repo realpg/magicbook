@@ -73,4 +73,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.login']], function ()
     //服务条款信息
     Route::get('/service/edit', 'Admin\ServiceController@edit');       //编辑服务条款信息首页
     Route::post('/service/edit', 'Admin\ServiceController@editDo');       //编辑服务条款信息首页（执行）
+
+    //免费城市管理
+    Route::get('/city/index', 'Admin\CityController@index');       //免费城市管理
+    Route::get('/city/country', 'Admin\CityController@getCountries');       //选择国家
+    Route::get('/city/city', 'Admin\CityController@getCities');       //选择城市
+    Route::post('/city/add', 'Admin\CityController@addDo');       //添加城市
+    Route::get('/city/del', 'Admin\CityController@delDo');       //删除城市
 });
