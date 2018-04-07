@@ -80,4 +80,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.login']], function ()
     Route::get('/city/city', 'Admin\CityController@getCities');       //选择城市
     Route::post('/city/add', 'Admin\CityController@addDo');       //添加城市
     Route::get('/city/del', 'Admin\CityController@delDo');       //删除城市
+
+    //试听数据
+    Route::get('/audition/index', 'Admin\AuditionController@index');       //试听数据首页
+    Route::post('/audition/index', 'Admin\AuditionController@index');       //试听数据搜索
+    Route::get('/audition/del', 'Admin\AuditionController@delDo');       //批量删除试听数据
 });

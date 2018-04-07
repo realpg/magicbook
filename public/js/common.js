@@ -53,6 +53,11 @@ function delCity(url, param, callBack) {
     ajaxRequest(url + "admin/city/del", param, "GET", callBack);
 }
 
+//批量删除试听记录
+function delMoreAudition(url, param, callBack) {
+    ajaxRequest(url + "admin/audition/del", param, "GET", callBack);
+}
+
 //++++++++++++++++++++++++++前台+++++++++++++++++++++++++++++++++//
 
 //选择国家
