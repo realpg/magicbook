@@ -85,4 +85,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.login']], function ()
     Route::get('/audition/index', 'Admin\AuditionController@index');       //试听数据首页
     Route::post('/audition/index', 'Admin\AuditionController@index');       //试听数据搜索
     Route::get('/audition/del', 'Admin\AuditionController@delDo');       //批量删除试听数据
+
+    //订单管理
+    Route::get('/order/index', 'Admin\OrderController@index');       //订单管理首页
+    Route::post('/order/index', 'Admin\OrderController@index');       //订单搜索
 });

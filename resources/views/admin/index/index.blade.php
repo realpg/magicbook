@@ -65,7 +65,7 @@
                 <dd>
                     <ul>
                         <li><a data-href="{{URL::asset('/admin/audition/index')}}" data-title="试听数据列表" href="javascript:void(0)">试听数据列表</a></li>
-                        <li><a data-href="{{URL::asset('/admin/member/index')}}" data-title="用户的消费记录" href="javascript:void(0)">用户的消费记录</a></li>
+                        <li><a data-href="{{URL::asset('/admin/order/index')}}" data-title="用户的消费记录" href="javascript:void(0)">用户的消费记录</a></li>
                     </ul>
                 </dd>
             </dl>

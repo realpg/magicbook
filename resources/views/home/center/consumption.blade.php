@@ -66,7 +66,7 @@
                             <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$order['pay_time']}}</td>
                             <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$order['city_count']}}</td>
                             <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$order['version']['name']}}</td>
-                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$order['version']['price']}}元</td>
+                            <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$order['amount_display']}}元</td>
                         </tr>
                     @endforeach
                     @if($orders['count']==0)
