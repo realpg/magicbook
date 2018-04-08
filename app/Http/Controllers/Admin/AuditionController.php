@@ -82,18 +82,18 @@ class AuditionController extends Controller
                 'ids'=>$id_array
             );
             $result=Utils::curl_token('payment/bulkDeletePurchase/',$param,$admin['token'],1);
-            return $result;
-            if($result){
-                if(array_key_exists('detail',$result)){
-                    return ApiResponse::makeResponse(false, $result['detail'], ApiResponse::UNKNOW_ERROR);
-                }
-                else{
-                    return ApiResponse::makeResponse(true, $result, ApiResponse::SUCCESS_CODE);
-                }
-            }
-            else{
-                return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::UNKNOW_ERROR], ApiResponse::UNKNOW_ERROR);
-            }
+            return ApiResponse::makeResponse(true, $result, ApiResponse::SUCCESS_CODE);
+//            if($result){
+//                if(array_key_exists('detail',$result)){
+//                    return ApiResponse::makeResponse(false, $result['detail'], ApiResponse::UNKNOW_ERROR);
+//                }
+//                else{
+//                    return ApiResponse::makeResponse(true, $result, ApiResponse::SUCCESS_CODE);
+//                }
+//            }
+//            else{
+//                return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::UNKNOW_ERROR], ApiResponse::UNKNOW_ERROR);
+//            }
         }
         else{
             return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::MISSING_PARAM], ApiResponse::MISSING_PARAM);
