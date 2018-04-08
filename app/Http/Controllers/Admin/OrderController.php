@@ -50,6 +50,8 @@ class OrderController
         //版本列表
         $versions=Utils::curl('magic/version/',false);
         $versions=json_decode($versions,true);
+        //////
+        $url=Utils::URL;
         //赋值
         $data=array(
             'admin'=>$admin,
@@ -57,7 +59,8 @@ class OrderController
             'version'=>$version,
             'search'=>$search,
             'datas'=>$datas,
-            'page'=>$page
+            'page'=>$page,
+            'url'=>$url,
         );
         return view('admin.order.index', $data);
     }

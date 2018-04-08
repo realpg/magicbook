@@ -295,7 +295,7 @@
         {{--})--}}
 
         $.ajax({
-            url: 'http://testlushu.gowithtommy.com/api/pay/downloadQrcode/?id='+id,
+            url: '{{$url}}pay/downloadQrcode/?id='+id,
             method: 'POST',
             xhrFields: {
                 responseType: 'blob'
@@ -323,7 +323,7 @@
 
         if(id_array){
             $.ajax({
-                url: 'http://testlushu.gowithtommy.com/api/pay/bulkDownloadQrcode/?ids='+id_array,
+                url: '{{$url}}pay/bulkDownloadQrcode/?ids='+id_array,
                 method: 'POST',
                 xhrFields: {
                     responseType: 'blob'

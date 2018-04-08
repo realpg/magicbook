@@ -135,19 +135,23 @@
         id_array=id_array.substring(0,id_array.length-1)
         if(id_array){
             $.ajax({
-                url: 'http://testlushu.gowithtommy.com/api/payment/exportOrder/?ids='+id_array,
-                method: 'GET',
+                url: '{{$url}}payment/exportOrder/',
+                method: 'POST',
+                data:{
+                    ids:id_array
+                },
                 xhrFields: {
                     responseType: 'blob'
                 },
                 beforeSend: function (xhr) {
-                    xhr.setRequestHeader("Authorization", "Token {{$admin['token']}}");
+                    {{--xhr.setRequestHeader("Authorization", "Token {{$admin['token']}}");--}}
+                    xhr.setRequestHeader("Authorization", "Token a00b0568ebca7dad489c178c4711eeb1d30e22cf");
                 },
                 success: function (data) {
                     var a = document.createElement('a');
                     var url = window.URL.createObjectURL(data);
                     a.href = url;
-                    a.download = '订单信息.zip';
+                    a.download = '订单信息.xls';
                     a.click();
                     window.URL.revokeObjectURL(url);
                 },

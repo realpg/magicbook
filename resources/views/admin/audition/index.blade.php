@@ -177,22 +177,35 @@
     }
     //下载二维码
     function downloadQrcode(id){
+        var param = {
+            id: id,
+        }
         $.ajax({
-            url: 'http://testlushu.gowithtommy.com/api/payment/downloadQrcode/?id='+id,
+            url: '{{$url}}payment/downloadQrcode/',
             method: 'POST',
             xhrFields: {
                 responseType: 'blob'
             },
+            data: param,
             beforeSend: function (xhr) {
-                xhr.setRequestHeader("Authorization", "Token {{$admin['token']}}");
+                xhr.setRequestHeader("Authorization", "Token efe99919181ea6f4d9ad937183d8dff65e830d6d");
             },
             success: function (data) {
                 var a = document.createElement('a');
                 var url = window.URL.createObjectURL(data);
                 a.href = url;
-                a.download = setName()+'.png';
+                a.download = '二维码.png';
                 a.click();
                 window.URL.revokeObjectURL(url);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log('XMLHttpRequest is : '+JSON.stringify(XMLHttpRequest))
+                // 状态码
+                console.log(XMLHttpRequest.status);
+                // 状态
+                console.log(XMLHttpRequest.readyState);
+                // 错误信息
+                console.log(textStatus);
             }
         });
     }

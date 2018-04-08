@@ -29,7 +29,7 @@
             </button>
         </form>
     </div>
-    <from action="{{URL::asset('/admin/member/export')}}" method="post"  class="form-horizontal">
+    <from action="{{URL::asset('/admin/member/export')}}" method="post" id="member"  class="form-horizontal">
         <div class="cl pd-5 bg-1 bk-gray mt-20">
             <span class="l">
                 <a href="javascript:;" onclick="exportMember()" class="btn btn-danger radius"> 批量导出用户</a>
@@ -150,13 +150,22 @@
             id_array=id_array+$(this).val()+',';  // 每一个被选中项的值
         });
         id_array=id_array.substring(0,id_array.length-1)
+        console.log('id_array is : '+JSON.stringify(id_array));
         if(id_array){
             $.ajax({
-                url: 'http://testlushu.gowithtommy.com/api/auth/exportUser/?ids='+id_array,
+                // url: 'http://testlushu.gowithtommy.com/api/auth/exportUser/?ids='+id_array,
+                url: '{{$url}}auth/exportUser/',
                 method: 'POST',
                 xhrFields: {
                     responseType: 'blob'
                 },
+                dataType: 'json',
+                data : {
+                    'ids':id_array
+                },
+                cache: false,
+                processData: false,
+                contentType: false,
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader("Authorization", "Token {{$admin['token']}}");
                 },
@@ -164,7 +173,7 @@
                     var a = document.createElement('a');
                     var url = window.URL.createObjectURL(data);
                     a.href = url;
-                    a.download = '用户信息.zip';
+                    a.download = '用户信息.xls';
                     a.click();
                     window.URL.revokeObjectURL(url);
                 },

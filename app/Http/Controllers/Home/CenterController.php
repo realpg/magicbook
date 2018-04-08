@@ -64,6 +64,8 @@ class CenterController extends  Controller{
             );
             $purchases=Utils::curl_token('pay/user/'.$common['user']['id'].'/purchase/',$purchase_param,$common['user']['token']);
             $purchases=json_decode($purchases,true);
+            ////
+            $url=Utils::URL;
             $param=array(
                 'common'=>$common,
                 'menu'=>$menu,
@@ -75,6 +77,7 @@ class CenterController extends  Controller{
                 'search'=>$search,
                 'version_search'=>$version_search,
                 'page'=>$page_search,
+                'url'=>$url
             );
             return view('home.center.generate', $param);
         }
@@ -126,7 +129,7 @@ class CenterController extends  Controller{
                 'orders'=>$orders,
                 'version_search'=>$version_search,
                 'search'=>$search,
-                'page'=>$page_search
+                'page'=>$page_search,
             );
             return view('home.center.consumption',$param);
         }

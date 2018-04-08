@@ -38,7 +38,7 @@ class AuditionController extends Controller
             $view_order=$data['view_order'];
         }
         else{
-            $view_order=null;
+            $view_order=1;
         }
         if(array_key_exists('search',$data)){
             $search=$data['search'];
@@ -59,6 +59,8 @@ class AuditionController extends Controller
         //版本列表
         $versions=Utils::curl('magic/version/',false);
         $versions=json_decode($versions,true);
+        //////
+        $url=Utils::URL;
         //赋值
         $data=array(
             'admin'=>$admin,
@@ -67,7 +69,8 @@ class AuditionController extends Controller
             'view_order'=>$view_order,
             'search'=>$search,
             'datas'=>$datas,
-            'page'=>$page
+            'page'=>$page,
+            'url'=>$url,
         );
         return view('admin.audition.index', $data);
     }

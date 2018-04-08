@@ -65,6 +65,8 @@ class MemberController extends Controller
         $business_param=array();
         $businesses=Utils::curl('u/business/',$business_param);
         $businesses=json_decode($businesses,true);
+        //////
+        $url=Utils::URL;
         //赋值
         $data=array(
             'admin'=>$admin,
@@ -74,7 +76,8 @@ class MemberController extends Controller
             'time_type'=>$time_type,
             'search'=>$search,
             'datas'=>$datas,
-            'page'=>$page
+            'page'=>$page,
+            'url'=>$url
         );
         return view('admin.member.index', $data);
     }
