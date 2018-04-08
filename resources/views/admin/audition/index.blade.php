@@ -163,12 +163,12 @@
         if(id_array){
             delMoreAudition('{{URL::asset('')}}', param, function (ret) {
                 console.log('delMoreAudition ret is :'+JSON.stringify(ret))
-                if (ret.result == true) {
-                    layer.msg(ret.message, {icon: 1, time: 1000});
-                    $('.btn-refresh').click();
-                } else {
-                    layer.msg(ret.message, {icon: 2, time: 2000})
-                }
+                // if (ret.result == true) {
+                //     layer.msg(ret.message, {icon: 1, time: 1000});
+                //     $('.btn-refresh').click();
+                // } else {
+                //     layer.msg(ret.message, {icon: 2, time: 2000})
+                // }
             })
         }
         else{

@@ -82,6 +82,7 @@ class AuditionController extends Controller
                 'ids'=>$id_array
             );
             $result=Utils::curl_token('payment/bulkDeletePurchase/',$param,$admin['token'],1);
+            return $result;
             if($result){
                 if(array_key_exists('detail',$result)){
                     return ApiResponse::makeResponse(false, $result['detail'], ApiResponse::UNKNOW_ERROR);
