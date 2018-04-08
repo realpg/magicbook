@@ -84,6 +84,7 @@
 @endsection
 
 @section('script')
+<script type="text/javascript" src="{{ URL::asset('/js/jquery-3.3.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('/js/jquery.page.js') }}"></script>
 <script type="text/javascript">
     $(function(){
@@ -126,7 +127,7 @@
         }
     });
     //选中一行
-    var checknum = $(".checkSingle").size();
+    var checknum = $(".checkSingle").length;
     $(".checkSingle").click(function () {
         if ($(this).is(":checked") == true) {
             if($(".checkSingle:checked").length == checknum){
@@ -153,19 +154,14 @@
         console.log('id_array is : '+JSON.stringify(id_array));
         if(id_array){
             $.ajax({
-                // url: 'http://testlushu.gowithtommy.com/api/auth/exportUser/?ids='+id_array,
                 url: '{{$url}}auth/exportUser/',
                 method: 'POST',
                 xhrFields: {
                     responseType: 'blob'
                 },
-                dataType: 'json',
                 data : {
                     'ids':id_array
                 },
-                cache: false,
-                processData: false,
-                contentType: false,
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader("Authorization", "Token {{$admin['token']}}");
                 },

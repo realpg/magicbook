@@ -70,6 +70,7 @@
 @endsection
 
 @section('script')
+<script type="text/javascript" src="{{ URL::asset('/js/jquery-3.3.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('/js/jquery.page.js') }}"></script>
 <script type="text/javascript">
     $(function(){
@@ -109,7 +110,7 @@
         }
     });
     //选中一行
-    var checknum = $(".checkSingle").size();
+    var checknum = $(".checkSingle").length;
     $(".checkSingle").click(function () {
         if ($(this).is(":checked") == true) {
             if($(".checkSingle:checked").length == checknum){
@@ -144,8 +145,7 @@
                     responseType: 'blob'
                 },
                 beforeSend: function (xhr) {
-                    {{--xhr.setRequestHeader("Authorization", "Token {{$admin['token']}}");--}}
-                    xhr.setRequestHeader("Authorization", "Token a00b0568ebca7dad489c178c4711eeb1d30e22cf");
+                    xhr.setRequestHeader("Authorization", "Token {{$admin['token']}}");
                 },
                 success: function (data) {
                     var a = document.createElement('a');

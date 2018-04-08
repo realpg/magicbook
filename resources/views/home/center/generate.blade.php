@@ -164,6 +164,7 @@
 @endsection
 
 @section('script')
+<script type="text/javascript" src="{{ URL::asset('/js/jquery-3.3.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('/js/jquery.page.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/clipboard.min.js') }}"></script>
 <script>
@@ -295,8 +296,11 @@
         {{--})--}}
 
         $.ajax({
-            url: '{{$url}}pay/downloadQrcode/?id='+id,
+            url: '{{$url}}pay/downloadQrcode/',
             method: 'POST',
+            data:{
+                id:id
+            },
             xhrFields: {
                 responseType: 'blob'
             },
@@ -323,8 +327,11 @@
 
         if(id_array){
             $.ajax({
-                url: '{{$url}}pay/bulkDownloadQrcode/?ids='+id_array,
+                url: '{{$url}}pay/bulkDownloadQrcode/',
                 method: 'POST',
+                data:{
+                    ids:id_array
+                },
                 xhrFields: {
                     responseType: 'blob'
                 },
