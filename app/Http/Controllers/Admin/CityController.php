@@ -22,7 +22,7 @@ class CityController extends Controller
         $datas=Utils::curl_token('location/undercontinent/freecity/',false,$admin['token']);
         $datas=json_decode($datas,true);
 //        dd($datas);
-        $chaincities=Utils::curl_token('location/chaincity/',false,'51e2a006e6da8b5f962eec659e7c42ae6c3c5376');
+        $chaincities=Utils::curl_token('location/chaincity/',false,$admin['token']);
         $chaincities=json_decode($chaincities,true);
         if(array_key_exists('detail',$chaincities)){
             $chaincities=array();
@@ -42,7 +42,7 @@ class CityController extends Controller
         $request=$request->all();
         if(array_key_exists('continent_id',$request)){
             $continent_id=$request['continent_id'];
-            $locations=Utils::curl_token('location/chaincity/',false,'51e2a006e6da8b5f962eec659e7c42ae6c3c5376');
+            $locations=Utils::curl_token('location/chaincity/',false,$admin['token']);
             $locations=json_decode($locations,true);
             foreach ($locations as $location){
                 if($continent_id==$location['id']){
@@ -68,7 +68,7 @@ class CityController extends Controller
         if(array_key_exists('continent_id',$request)&&array_key_exists('country_id',$request)){
             $continent_id=$request['continent_id'];
             $country_id=$request['country_id'];
-            $locations=Utils::curl_token('location/chaincity/',false,'51e2a006e6da8b5f962eec659e7c42ae6c3c5376');
+            $locations=Utils::curl_token('location/chaincity/',false,$admin['token']);
             $locations=json_decode($locations,true);
             foreach ($locations as $continent){
                 if($continent_id==$continent['id']){
