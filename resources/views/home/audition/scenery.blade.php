@@ -225,7 +225,7 @@
                     }
                 });
                 if(count==$(".checkSingle:checked").length){
-                    var price=parseInt('{{$mjtt['price']}}')
+                    var price=parseFloat('{{$mjtt['price']}}')
                     $('#price').text(count*price)
                     $('#payPrice').text(payPrice);
                     $('#submitAll').attr('data-toggle','modal')

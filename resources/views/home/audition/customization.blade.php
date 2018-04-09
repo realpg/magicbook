@@ -262,7 +262,7 @@
                     }
                 });
                 if(count==$(".checkSingle:checked").length){
-                    var price=parseInt('{{$custom['price']}}')
+                    var price=parseFloat('{{$custom['price']}}')
                     $('#price').text(count*price)
                     $('#payPrice').text(payPrice);
                     $('#submitAll').attr('data-toggle','modal')

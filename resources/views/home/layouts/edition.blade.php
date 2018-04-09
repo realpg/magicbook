@@ -64,7 +64,7 @@
 <!-- modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content font-weight" style="max-width: 450px;">
+        <div class="modal-content font-weight" style="min-width: 400px;">
             <div class="modal-header text-center border-0">
                 <span id="myModalLabel" class="font-color-light-grey font-size-15">是否确定生成以下城市？生成后不可修改，不可撤销</span>
             </div>

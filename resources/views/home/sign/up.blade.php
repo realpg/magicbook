@@ -83,7 +83,16 @@
                     validators: {
                         notEmpty: {
                             message: '用户名不能为空'
-                        }
+                        },
+                        // stringLength: {//检测长度
+                        //     min: 0,
+                        //     max: 10,
+                        //     message: '长度必须在0-10之间'
+                        // },
+                        // regexp: {
+                        //     regexp: /^[a-zA-Z0-9_/u4e00-/u9fa5]+$/,
+                        //     message: '只能输入中文、字母、数字、下划线'
+                        // },
                     }
                 },
                 mobile: {
