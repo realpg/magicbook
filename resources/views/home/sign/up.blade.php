@@ -89,7 +89,7 @@
                 mobile: {
                     validators: {
                         notEmpty: {
-                            message: '手机号不能位空'
+                            message: '手机号不能为空'
                         },
                         regexp: {
                             regexp: /^[1][3,4,5,7,8][0-9]{9}$/,

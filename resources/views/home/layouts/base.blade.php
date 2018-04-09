@@ -28,9 +28,9 @@
 <body>
 @section('header')
     @if($menu=='center')
-        <nav class="navbar navbar-default navbar-top margin-bottom-0 border-radius-0 border-0" style="box-shadow: none;">
+        <nav class="navbar navbar-default navbar-fixed-top margin-bottom-0 border-radius-0 border-0" style="box-shadow: none;">
     @else
-        <nav class="navbar navbar-default navbar-top margin-bottom-0 border-radius-0 border-0">
+        <nav class="navbar navbar-default navbar-fixed-top margin-bottom-0 border-radius-0 border-0">
     @endif
         <div class="container">
            <div class="float-left margin-top-10 margin-bottom-10">
@@ -75,7 +75,7 @@
         </div>
     </nav>
 @show
-{{--<div class="height-80px"></div>--}}
+<div class="height-80px"></div>
 @yield('content')
 @section('footer')
     <footer class="bg-grey height-200px text-algin-center font-color-dark-grey padding-top-10 padding-bottom-10">
