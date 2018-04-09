@@ -27,7 +27,7 @@
                                     <img src="{{$scene['image']}}" class="style-ul-image" />
                                     <img src="{{URL::asset('img/spot_player.png')}}" id="play-{{$scene['id']}}" class="style-play-icon" />
                                     @if($scene['subscenes']>0)
-                                        <div class="aui-padded-5 aui-padded-r-15 style-child-count">{{$scene['subscenes']}}处介绍</div>
+                                        <div class="aui-padded-5 aui-padded-r-15 style-child-count" style="height:1.05rem;line-height: 1.05rem;">{{$scene['subscenes']}}处介绍</div>
                                     @endif
                                 </div>
                                 <div class="style-width-100 style-display-table">

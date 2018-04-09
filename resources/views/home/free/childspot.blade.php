@@ -13,7 +13,7 @@
                 <div class="aui-margin-b-10">
                     <a href="javacript:" onclick="playAudio()">
                         <div class="style-position-relative">
-                            <img src="{{$subscenes['scene']['image']}}" class="style-width-100" />
+                            <img src="{{$subscenes['scene']['image']}}" class="style-width-100" style="height:170px;" />
                             <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-header-icon" />
                             <div class="aui-padded-5 aui-padded-r-15 style-child-spot-count">{{$subscenes['count']}}处介绍</div>
                             <div class="aui-padded-5 aui-padded-l-15 style-child-spot-title" id="subscenes-title">{{$subscenes['scene']['name']}}</div>
