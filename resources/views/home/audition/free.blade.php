@@ -14,7 +14,7 @@
                 <img src="{{URL::asset('img/xuhao_03.png')}}" class="width-28px; height-28px" />
             </div>
             <div class="col-xs-10 col-sm-11 padding-left-0 padding-top-2">
-                选择需要生成的城市，随后点击<span class="font-color-red">【生成】</span>按钮
+                选择需要生成的城市，随后点击<span class="font-color-red">【立刻生成】</span>按钮
             </div>
         </div>
         <div class="row margin-top-10">
