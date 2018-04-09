@@ -15,8 +15,8 @@
                         <div class="style-position-relative">
                             <img src="{{$subscenes['scene']['image']}}" class="style-width-100" style="height:170px;" />
                             <img src="{{URL::asset('img/spot_player.png')}}" class="style-play-header-icon" />
-                            <div class="aui-padded-5 aui-padded-r-15 style-child-spot-count" style="height:1.05rem;line-height: 1.05rem;">{{$subscenes['count']}}处介绍</div>
-                            <div class="aui-padded-5 aui-padded-l-15 style-child-spot-title" id="subscenes-title" style="height:1.05rem;line-height: 1.05rem;">{{$subscenes['scene']['name']}}</div>
+                            <div class="aui-padded-5 aui-padded-r-15 style-child-spot-count">{{$subscenes['count']}}处介绍</div>
+                            <div class="aui-padded-5 aui-padded-l-15 style-child-spot-title" id="subscenes-title">{{$subscenes['scene']['name']}}</div>
                         </div>
                     </a>
                 </div>
