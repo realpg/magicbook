@@ -241,7 +241,7 @@
                     slogans: slogans_array,
                     _token: "{{ csrf_token() }}"
                 }
-                var pay_price=parseInt('{{$custom['price']}}');
+                var pay_price=parseFloat('{{$custom['price']}}');
                 submitDo(pay_price,param);
             }
             else{
@@ -290,7 +290,7 @@
                 _token: "{{ csrf_token() }}"
             }
             var count=$(".checkSingle:checked").length;
-            var price=parseInt('{{$custom['price']}}');
+            var price=parseFloat('{{$custom['price']}}');
             var pay_price=count*price
             submitDo(pay_price,param);
         })

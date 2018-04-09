@@ -204,7 +204,7 @@
                     cities: array,
                     _token: "{{ csrf_token() }}"
                 }
-                var pay_price=parseInt('{{$mjtt['price']}}');
+                var pay_price=parseFloat('{{$mjtt['price']}}');
                 submitDo(pay_price,param);
             }
             else{
@@ -253,7 +253,7 @@
                 _token: "{{ csrf_token() }}"
             }
             var count=$(".checkSingle:checked").length;
-            var price=parseInt('{{$mjtt['price']}}');
+            var price=parseFloat('{{$mjtt['price']}}');
             var pay_price=count*price
             submitDo(pay_price,param);
         })
