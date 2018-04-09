@@ -90,7 +90,7 @@
                             message: '长度必须在0-10之间'
                         },
                         regexp: {
-                            regexp: /^[a-zA-Z0-9_/u4e00-/u9fa5]+$/,
+                            regexp: /^[\u4E00-\u9FA5a-zA-Z0-9_]*$/,
                             message: '只能输入中文、字母、数字、下划线'
                         },
                     }
