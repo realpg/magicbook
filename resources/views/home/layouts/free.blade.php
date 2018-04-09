@@ -40,25 +40,41 @@
 @yield('content')
 <div style="height:2.6rem;"></div>
 @section('footer')
+    {{--<footer id="footer">--}}
+        {{--<div class="footer-row-1">--}}
+            {{--<a href="javascript:" onclick="ejectQrcode()" >--}}
+                {{--<img src="{{URL::asset('img/erweima_03.png')}}" class="style-margin-center" style="width:50px;" />--}}
+            {{--</a>--}}
+        {{--</div>--}}
+        {{--<a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">--}}
+            {{--<div class="aui-font-size-12 footer-row-2">--}}
+                {{--<div class="footer-row-2-box-1" style="text-align: left;margin-left: 10px;">此处还有很多景点讲解</div>--}}
+                {{--<div class="footer-row-2-box-2" style="text-align: left;margin-left: 10px;">下载美景听听App，可以了解更多哦</div>--}}
+            {{--</div>--}}
+        {{--</a>--}}
+        {{--<div class="footer-row-3">--}}
+            {{--<a href="javascript:" onclick="downloadApp()">--}}
+                {{--<img src="{{URL::asset('img/footer_player.png')}}" />--}}
+            {{--</a>--}}
+        {{--</div>--}}
+        {{--<div class="footer-row-4">--}}
+           {{--<img src="{{URL::asset('img/footer_image.png')}}" />--}}
+        {{--</div>--}}
+    {{--</footer>--}}
     <footer id="footer">
         <div class="footer-row-1">
             <a href="javascript:" onclick="ejectQrcode()" >
-                <img src="{{URL::asset('img/erweima_03.png')}}" class="style-margin-center" style="width:50px;" />
+                <img src="{{URL::asset('img/erweima_03.png')}}" class="style-margin-center" />
             </a>
         </div>
         <a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">
             <div class="aui-font-size-12 footer-row-2">
-                <div class="footer-row-2-box-1">点击前往下载</div>
-                <div class="footer-row-2-box-2">美景听听APP</div>
+                <div class="footer-row-2-box-1">此处还有很多景点讲解</div>
+                <div class="footer-row-2-box-2">下载美景听听App,可以了解更多哦</div>
             </div>
         </a>
-        <div class="footer-row-3">
-            <a href="javascript:" onclick="downloadApp()">
-                <img src="{{URL::asset('img/footer_player.png')}}" />
-            </a>
-        </div>
         <div class="footer-row-4">
-           <img src="{{URL::asset('img/footer_image.png')}}" />
+            <img src="{{URL::asset('img/footer_image.png')}}" />
         </div>
     </footer>
 @show
