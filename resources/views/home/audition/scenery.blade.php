@@ -112,9 +112,7 @@
 @endsection
 @section('script')
     <script>
-        $(function(){
-
-        })
+        var time=45;
         function choiceContinent(index,continent_id,continent_name){
             $('#continent_'+index).text(continent_name)
             var param={
@@ -221,7 +219,7 @@
                     if(item_id){
                         count++
                         var city=$('#city_'+index).text();
-                        str+='<div class="col-xs-3 col-sm-3">'+city+'</div>'
+                        str+='<div class="col-xs-3 col-sm-3 text-oneline">'+city+'</div>'
                     }
                 });
                 if(count==$(".checkSingle:checked").length){
@@ -257,6 +255,7 @@
             var pay_price=count*price
             submitDo(pay_price,param);
         })
+        var pay_str=''
         function submitDo(price,param){
             prepay('{{URL::asset('')}}', param, function (ret) {
                 if (ret.result == true) {
@@ -267,19 +266,26 @@
                     $('#qrcode').html('<img src="'+ret.ret.data.qrcode_img_url+'" class="width-100" />');
                     CountDown()
                     $('#dismiss_modal').trigger('click');
+                    pay_str=$('#payInfo').html()
                 } else {
                     layer.msg(ret.ret, {icon: 2, time: 2000})
                 }
             })
         }
+        function submitDoAgain(){
+            $('#payInfo').html(pay_str)
+            time=45
+            CountDown()
+        }
 
         //倒计时
         var setTime;
         function CountDown(){
-            var time=parseInt($("#time").text());
+            // var time=parseInt($("#time").text());
             setTime=setInterval(function(){
                 if(time<=0){
-                    $('#payInfo').html('<h4>支付二维码已过期，请重新生成！</h4>')
+                    $('#payInfo').html('<h4>支付二维码已过期，<a href="javascript:" onclick="submitDoAgain()"><span class="font-color-red margin-left-10 margin-right-10 font-size-22">请点击</span>重新生成！</a></h4>')
+                    clearInterval(setTime);
                     return;
                 }
                 if(time%3==0){
