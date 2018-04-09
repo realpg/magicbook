@@ -194,6 +194,7 @@
         }
         $('#time_type').val(day);
         $('#c_time_type').text(name);
+        $('#generate-form').submit();
     }
     function choiceVersion(code,name){
         if(code!='{{$version_search}}'){
@@ -201,6 +202,7 @@
         }
         $('#version').val(code);
         $('#c_version').text(name);
+        $('#generate-form').submit();
     }
     $('#search').change(function(){
         $('#page').val(1)

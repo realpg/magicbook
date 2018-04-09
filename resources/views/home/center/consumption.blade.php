@@ -123,6 +123,7 @@
         }
         $('#version').val(code);
         $('#c_version').text(name);
+        $('#consumption-form').submit();
     }
     $('#search').change(function(){
         $('#page').val(1)
