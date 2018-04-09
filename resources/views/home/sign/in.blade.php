@@ -23,11 +23,11 @@
                                     <input type="checkbox" id="remember" class="vertical-align-top">
                                     <span class="margin-left-5">记住密码</span>
                                 </div>
-                                <div class="col-xs-6 col-sm-6 font-color-red padding-0 text-right">
-                                    <a href="">
-                                        忘记密码？
-                                    </a>
-                                </div>
+                                {{--<div class="col-xs-6 col-sm-6 font-color-red padding-0 text-right">--}}
+                                    {{--<a href="">--}}
+                                        {{--忘记密码？--}}
+                                    {{--</a>--}}
+                                {{--</div>--}}
                             </div>
                             <div class="clear"></div>
                             <div class="margin-top-30">
