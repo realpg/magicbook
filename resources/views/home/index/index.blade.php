@@ -109,7 +109,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="width-200px text-algin-center margin-auto margin-top-10 margin-bottom-10">
+            <div class="width-200px text-algin-center margin-auto margin-top-10 margin-bottom-10" id="code-show" hidden>
                 <div class="width-200px height-200px bg-light-grey" id="rqcode"></div>
                 <h3>扫一扫</h3>
                 <button type="button" class="btn btn-danger margin-top-10 bg-none bg-red border-color-red width-100 height-50px font-size-18 border-radius-5px" id="copy"  data-clipboard-text="">复制生成的链接</button>
@@ -191,6 +191,7 @@
                 if (ret.result == true) {
                     $('#rqcode').html('<img src="'+ret.ret.image+'" class="width-100" />')
                     $('#copy').attr('data-clipboard-text',ret.ret.url)
+                    $('#code-show').show()
                 } else {
                     layer.msg(ret.message, {icon: 2, time: 2000})
                 }
