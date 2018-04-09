@@ -113,8 +113,10 @@
                 var bv = $form.data('bootstrapValidator');
 
                 // Use Ajax to submit form data
+                $("body").mLoading();
                 $.post("{{ URL::asset('sign/in')}}", $form.serialize(), function(ret) {
                     console.log('sign in ret is :' + JSON.stringify(ret))
+                    $("body").mLoading("hide");
                     if(ret.result){
                         //表单提交事件触发时，如果复选框是勾选状态则保存cookie
                         if($('#remember').is(':checked')){

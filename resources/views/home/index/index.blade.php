@@ -180,6 +180,7 @@
         $('#item_id').val(city_id)
     }
     function submit(){
+        $("body").mLoading();
         var item_id=$('#item_id').val()
         if(item_id){
             var param = {
@@ -187,6 +188,7 @@
                 _token: "{{ csrf_token() }}"
             }
             submitFree('{{URL::asset('')}}', param, function (ret) {
+                $("body").mLoading("hide");
                 // console.log('submitFree is : '+JSON.stringify(ret))
                 if (ret.result == true) {
                     $('#rqcode').html('<img src="'+ret.ret.image+'" class="width-100" />')

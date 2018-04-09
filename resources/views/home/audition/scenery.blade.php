@@ -257,7 +257,9 @@
         })
         var pay_str=''
         function submitDo(price,param){
+            $("body").mLoading();
             prepay('{{URL::asset('')}}', param, function (ret) {
+                $("body").mLoading("hide");
                 if (ret.result == true) {
                     $('#mjtt-content').hide();
                     $('#mjtt-pay').show();

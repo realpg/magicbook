@@ -132,7 +132,9 @@
             var bv = $form.data('bootstrapValidator');
 
             // Use Ajax to submit form data
+            $("body").mLoading();
             $.post("{{ URL::asset('sign/up')}}", $form.serialize(), function(ret) {
+                $("body").mLoading("hide");
                 if(ret.result){
                     window.location.href = "{{URL::asset('sign/success')}}";
                 }

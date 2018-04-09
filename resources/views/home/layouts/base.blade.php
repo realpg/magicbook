@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap/bootstrapValidator.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap/bootstrap-theme.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/iconfont/iconfont.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/loading/jquery.mloading.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/common.css') }}"/>
     <script type="text/javascript" src="{{ URL::asset('/js/jquery-3.3.1.min.js') }}"></script>
     @section('seo')
@@ -100,6 +101,8 @@
 <script type="text/javascript" src="{{ URL::asset('/js/plupload/moxie.js') }}"></script>
 
 <script type="text/javascript" src="{{ URL::asset('/js/jquery.form.js') }}"></script>
+
+<script type="text/javascript" src="{{ URL::asset('/js/loading/jquery.mloading.js') }}"></script>
 {{--common.js--}}
 <script type="text/javascript" src="{{ URL::asset('/js/common.js') }}"></script>
 <script>

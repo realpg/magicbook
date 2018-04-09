@@ -297,7 +297,9 @@
         })
         var pay_str=''
         function submitDo(price,param){
+            $("body").mLoading();
             prepay('{{URL::asset('')}}', param, function (ret) {
+                $("body").mLoading("hide");
                 // console.log("prepay is : "+JSON.stringify(ret))
                 if (ret.result == true) {
                     $('#custom-content').hide();
