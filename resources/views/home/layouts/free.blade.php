@@ -40,7 +40,7 @@
     <footer id="footer">
         <div class="footer-row-1">
             <a href="javascript:" onclick="ejectQrcode()" >
-                <img src="{{URL::asset('img/erweima_03.png')}}" class="style-margin-center" />
+                <img src="{{URL::asset('img/erweima_03.png')}}" class="style-margin-center" style="width:50px;" />
             </a>
         </div>
         <a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">
