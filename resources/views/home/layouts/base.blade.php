@@ -33,12 +33,12 @@
         <nav class="navbar navbar-default navbar-fixed-top margin-bottom-0 border-radius-0 border-0">
     @endif
         <div class="container">
-           <div class="float-left margin-top-10 margin-bottom-10">
+           <div class="float-left padding-top-10 padding-left-10 width-80px height-80px" style="background-color: #E21C14;">
                <a href="{{URL::asset('/')}}">
-                   <img src="{{URL::asset('img/logo_03.png')}}" class="width-60px height-60px" />
+                   <img src="{{URL::asset('img/logo.png')}}" class="width-60px height-60px" />
                </a>
            </div>
-            <div class="padding-top-10 float-left">
+            <div class="float-left margin-top-10 margin-bottom-10 padding-left-10">
                 <a href="{{URL::asset('/')}}" style="color:#000;text-decoration: none;">
                     <div class="font-size-15 margin-top-10"><b>魔法路书</b></div>
                     <div class="font-size-15"><b>让路书更智能</b></div>
