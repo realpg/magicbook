@@ -9,11 +9,13 @@
         <div class="middle_banner">
             <div id="carousel-middel-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
+                @if(count($common['middle_banner'])>1)
                 <ol class="carousel-indicators">
                     @foreach($common['middle_banner'] as $k=>$middle_banner)
                     <li data-target="#carousel-middel-generic" data-slide-to="{{$k}}" {{$k==0?'class="active"':''}}></li>
                     @endforeach
                 </ol>
+                @endif
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     @foreach($common['middle_banner'] as $k=>$middle_banner)
@@ -23,6 +25,7 @@
                     @endforeach
                 </div>
                 <!-- Controls -->
+                @if(count($common['middle_banner'])>1)
                 <a class="left carousel-control" style="background: none;" href="#carousel-middel-generic" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
@@ -31,6 +34,7 @@
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
+                @endif
             </div>
         </div>
         @endif
