@@ -87,6 +87,7 @@
             width:200,//提示窗口的宽度
             height:230,//提示窗口的高度
         });
+        $('#mry-opo-content').html('<img src="{{URL::asset('img/erweima_03.png')}}"  style="width:100%;">')
     }
     function pop(obj){function tanchuang(obj){$('body').append('<div id="mry-opo"><div  id="mry-opo-content"><img src="{{URL::asset('img/erweima_03.png')}}" style="width:100%;" /><p class="aui-font-size-16">扫描二维码</p><p>关注美景听听公众号</p></div></div>');var div = $('#mry-opo');$('#mry-opo-content').text(obj.content);div.css('width',obj.width+'px');div.css('height',obj.height+'px');div.css('margin-left',-(parseInt(obj.width)/2)+'px');div.css('margin-top',-(parseInt(obj.height)/2)+'px');div.css('background',obj.backgorund);$('#mry-mask').css('display','block');}function del(){$('#mry-opo').append('<a href="javascript:void(0)" deletes="mry-opo" style="position:absolute;right:10px;top:6px;color:#fff;font-size:12px;">X</a>');	$('[deletes=mry-opo]').click(function(){$('#mry-opo,#mry-mask').remove();});}$('body').append('<div id="mry-mask" deletes="mry-opo"></div>');var ject=obj;ject.width = parseInt(obj.width)||300;ject.height = parseInt(obj.height)||300;ject.backgorund=obj.backgorund||'#fff';tanchuang(ject);del();}
 </script>
