@@ -20,7 +20,7 @@
                             <div class="col-xs-3 col-sm-3 text-algin-center height-50px border-top border-bottom border-left">
                                 <div class="dropdown">
                                     <a href="javascript:" class="dropdown-toggle font-color-black vertical-align-middle font-size-16  style-ellipsis-1" id="dropdownMenu{{$i}}" style="text-decoration:none;color:#000;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span id="continent_{{$i}}">请选择大洋洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
+                                        <span id="continent_{{$i}}">请选择大洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
                                     </a>
                                     <ul class="dropdown-menu width-100" aria-labelledby="dropdownMenu{{$i}}">
                                         @if($locations)
