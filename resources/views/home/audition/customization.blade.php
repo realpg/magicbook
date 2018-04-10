@@ -408,12 +408,29 @@
                     }
                     else{
                         //判断图片的尺寸
-
-                        if (url) {
-                            $('#prv_image_'+index).attr("src", url) ; //将图片路径存入src中，显示出图片
+                        var _URL = window.URL || window.webkitURL;
+                        var img;
+                        if (file) {
+                            img = new Image();
+                            img.onload = function () {
+                                // alert(this.width + " " + this.height);
+                                if(this.width!=150||this.height!=150){
+                                    layer.msg("请上传尺寸为150*150的图片！", {icon: 2, time: 2000})
+                                    return false;
+                                }
+                                else{
+                                    if (url) {
+                                        $('#prv_image_'+index).attr("src", url) ; //将图片路径存入src中，显示出图片
+                                    }
+                                    //转码
+                                    readFile(file,index)
+                                }
+                            };
+                            img.src = _URL.createObjectURL(file);
                         }
-                        //转码
-                        readFile(file,index)
+                        // console.log('upload_logo is : '+JSON.stringify(image))
+
+
                     }
                 }
 
