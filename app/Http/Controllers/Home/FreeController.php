@@ -17,13 +17,9 @@ class FreeController extends Controller{
     public function spot(Request $request){
         $request=$request->all();
         $common=$request['common'];
-        if(array_key_exists('name',$request)){
-            $name=$request['name'];
-        }
-        else{
-            $name='魔法路书';
-        }
-//        $request['code']="A0DC47FD1BA63DA48C4694FE51E79837";    //测试
+        $name='魔法路书';
+        $logo='';
+        $slogan='';
         if(array_key_exists('code',$request)){
             $code=$request['code'];
             $scene_param=array(
@@ -31,13 +27,24 @@ class FreeController extends Controller{
             );
             $scenes=Utils::curl('location/scene',$scene_param);
             $scenes=json_decode($scenes,true);
+            if(array_key_exists('city_name',$scenes)&&$scenes['city_name']){
+                $name=$scenes['city_name'];
+            }
+            if(array_key_exists('logo',$scenes)&&$scenes['logo']){
+                $logo=$scenes['logo'];
+            }
+            if(array_key_exists('slogan',$scenes)&&$scenes['slogan']){
+                $slogan=$scenes['slogan'];
+            }
             if(array_key_exists('count',$scenes)){
                 $param=array(
                     'result'=>true,
                     'common'=>$common,
                     'scenes'=>$scenes,
                     'code'=>$code,
-                    'name'=>$name
+                    'name'=>$name,
+                    'logo'=>$logo,
+                    'slogan'=>$slogan,
                 );
             }
             else{
@@ -46,7 +53,9 @@ class FreeController extends Controller{
                     'common'=>$common,
                     'code'=>'',
                     'name'=>$name,
-                    'msg'=>'参数无效！'
+                    'msg'=>'参数无效！',
+                    'logo'=>$logo,
+                    'slogan'=>$slogan,
                 );
             }
         }
@@ -56,6 +65,8 @@ class FreeController extends Controller{
                 'common'=>$common,
                 'code'=>'',
                 'name'=>$name,
+                'logo'=>$logo,
+                'slogan'=>$slogan,
                 'msg'=>'缺少参数，获取数据失败！'
             );
         }
