@@ -75,6 +75,8 @@ class FreeController extends Controller{
     public function childspot(Request $request){
         $request=$request->all();
         $common=$request['common'];
+        $logo='';
+        $slogan='';
         if(array_key_exists('code',$request)&&array_key_exists('scene_id',$request)){
             $code=$request['code'];
             $scene_id=$request['scene_id'];
@@ -84,6 +86,12 @@ class FreeController extends Controller{
             );
             $subscenes=Utils::curl('location/subscene',$subscene_param);
             $subscenes=json_decode($subscenes,true);
+            if(array_key_exists('logo',$subscenes)&&$subscenes['logo']){
+                $logo=$subscenes['logo'];
+            }
+            if(array_key_exists('slogan',$subscenes)&&$subscenes['slogan']){
+                $slogan=$subscenes['slogan'];
+            }
 //            dd($subscenes);
             if($subscenes){
                 if(array_key_exists('count',$subscenes)){
@@ -95,6 +103,8 @@ class FreeController extends Controller{
                         'subscenes_array'=>$subscenes_array,
                         'name'=>$subscenes['scene']['name'],
                         'code'=>$code,
+                        'logo'=>$logo,
+                        'slogan'=>$slogan,
                     );
                 }
                 else{
@@ -103,6 +113,8 @@ class FreeController extends Controller{
                         'common'=>$common,
                         'code'=>'',
                         'name'=>'',
+                        'logo'=>$logo,
+                        'slogan'=>$slogan,
                         'msg'=>'参数无效！'
                     );
                 }
@@ -113,6 +125,8 @@ class FreeController extends Controller{
                     'common'=>$common,
                     'code'=>'',
                     'name'=>'',
+                    'logo'=>$logo,
+                    'slogan'=>$slogan,
                     'msg'=>'参数无效！'
                 );
             }
@@ -123,6 +137,8 @@ class FreeController extends Controller{
                 'common'=>$common,
                 'code'=>'',
                 'name'=>'',
+                'logo'=>$logo,
+                'slogan'=>$slogan,
                 'msg'=>'缺少参数，获取数据失败！'
             );
         }
