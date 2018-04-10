@@ -65,8 +65,9 @@
                             <div class="col-xs-9 col-sm-9 text-algin-center">
                                 <div class="col-xs-5 col-sm-5 text-algin-center">
                                     <div class="col-xs-4 col-sm-4 text-algin-center">
-                                        <img src="{{URL::asset('img/browse.jpg')}}" id="prv_image_{{$i}}" class="img-rect-30" style="cursor: pointer;" />
+                                        <img src="{{URL::asset('img/browse.jpg')}}" id="prv_image_{{$i}}" class="img-rect-30" style="cursor: pointer;" onclick="upload_logo({{$i}})" />
                                         <input type="file" id="upload_file_{{$i}}" style="display: none;" accept="image/jpg, image/png" />
+                                        <input type="hidden" id="logo_code_{{$i}}" />
                                     </div>
                                     <div class="col-xs-8 col-sm-8 text-algin-center style-ellipsis-1" id="font_file_{{$i}}">
                                         未选择文件
@@ -137,8 +138,7 @@
     <script>
         var time=45;
         $(function(){
-            //获取七牛token
-            initQNUploader();
+
         })
         function choiceContinent(index,continent_id,continent_name){
             $('#continent_'+index).text(continent_name)
@@ -226,7 +226,7 @@
                 array.push(item_id);
                 // console.log("array is : "+JSON.stringify(array))
                 //logo
-                var upload_file=$('#prv_image_'+index).attr('src');
+                var upload_file=$('#logo_code_'+index).val();
                 var upload_array=new Array();
                 upload_array.push(upload_file);
                 // console.log("upload_array is : "+JSON.stringify(upload_array))
@@ -246,6 +246,7 @@
                         slogans: slogans_array,
                         _token: "{{ csrf_token() }}"
                     }
+                    console.log('param is : '+JSON.stringify(param))
                     var pay_price=parseFloat('{{$custom['price']}}');
                     submitDo(pay_price,param);
                 }
@@ -293,7 +294,7 @@
                 var item_id=$('#item_id_'+index).val()
                 array.push(item_id);
                 //图片
-                var upload_file=$('#prv_image_'+index).attr('src');
+                var upload_file=$('#logo_code_'+index).val();
                 upload_array.push(upload_file);
                 //文字
                 var slogans=$('#slogans_'+index).val();
@@ -346,449 +347,6 @@
             time=45
             CountDown()
         }
-        //初始化七牛上传模块
-        function initQNUploader() {
-            var uploader_0 = Qiniu.uploader({
-                runtimes: 'html5,flash,html4',      // 上传模式，依次退化
-                browse_button: 'prv_image_0',         // 上传选择的点选按钮，必需
-                container: 'container',//上传按钮的上级元素ID
-                // 在初始化时，uptoken，uptoken_url，uptoken_func三个参数中必须有一个被设置
-                // 切如果提供了多个，其优先级为uptoken > uptoken_url > uptoken_func
-                // 其中uptoken是直接提供上传凭证，uptoken_url是提供了获取上传凭证的地址，如果需要定制获取uptoken的过程则可以设置uptoken_func
-                uptoken: "{{$upload_token}}", // uptoken是上传凭证，由其他程序生成
-                // uptoken_url: '/uptoken',         // Ajax请求uptoken的Url，强烈建议设置（服务端提供）
-                // uptoken_func: function(file){    // 在需要获取uptoken时，该方法会被调用
-                //    // do something
-                //    return uptoken;
-                // },
-                get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的uptoken
-                // downtoken_url: '/downtoken',
-                // Ajax请求downToken的Url，私有空间时使用，JS-SDK将向该地址POST文件的key和domain，服务端返回的JSON必须包含url字段，url值为该文件的下载地址
-                unique_names: true,              // 默认false，key为文件名。若开启该选项，JS-SDK会为每个文件自动生成key（文件名）
-                // save_key: true,                  // 默认false。若在服务端生成uptoken的上传策略中指定了sava_key，则开启，SDK在前端将不对key进行任何处理
-                domain: 'http://dsyy.isart.me/',     // bucket域名，下载资源时用到，必需
-                max_file_size: '100mb',             // 最大文件体积限制
-                flash_swf_url: 'path/of/plupload/Moxie.swf',  //引入flash，相对路径
-                max_retries: 3,                     // 上传失败最大重试次数
-                dragdrop: true,                     // 开启可拖曳上传
-                drop_element: 'container',          // 拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
-                chunk_size: '4mb',                  // 分块上传时，每块的体积
-                auto_start: true,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传
-                //x_vars : {
-                //    查看自定义变量
-                //    'time' : function(up,file) {
-                //        var time = (new Date()).getTime();
-                // do something with 'time'
-                //        return time;
-                //    },
-                //    'size' : function(up,file) {
-                //        var size = file.size;
-                // do something with 'size'
-                //        return size;
-                //    }
-                //},
-                init: {
-                    'FilesAdded': function (up, files) {
-                        plupload.each(files, function (file) {
-                            // 文件添加进队列后，处理相关的事情
-//                                            alert(alert(JSON.stringify(file)));
-                        });
-                    },
-                    'BeforeUpload': function (up, file) {
-                        // 每个文件上传前，处理相关的事情
-//                        console.log("BeforeUpload up:" + up + " file:" + JSON.stringify(file));
-                    },
-                    'UploadProgress': function (up, file) {
-                        // 每个文件上传时，处理相关的事情
-//                        console.log("UploadProgress up:" + up + " file:" + JSON.stringify(file));
-                    },
-                    'FileUploaded': function (up, file, info) {
-                        // 每个文件上传成功后，处理相关的事情
-                        // 其中info是文件上传成功后，服务端返回的json，形式如：
-                        // {
-                        //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
-                        //    "key": "gogopher.jpg"
-                        //  }
-//                        console.log(JSON.stringify(info));
-                        var domain = up.getOption('domain');
-                        var res = JSON.parse(info);
-                        //获取上传成功后的文件的Url
-                        var sourceLink = domain + res.key;
-                        // $("#upload_file_0").val(sourceLink);
-                        console.log(sourceLink);
-                        $("#prv_image_0").attr('src', sourceLink);
-                        $("#font_file_0").html('');
-                    },
-                    'Error': function (up, err, errTip) {
-                        //上传出错时，处理相关的事情
-                        console.log(err + errTip);
-                    },
-                    'UploadComplete': function () {
-                        //队列文件处理完毕后，处理相关的事情
-                    },
-                    'Key': function (up, file) {
-                        // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
-                        // 该配置必须要在unique_names: false，save_key: false时才生效
-
-                        var key = "";
-                        // do something with key here
-                        return key
-                    }
-                }
-            });
-            var uploader_1 = Qiniu.uploader({
-                runtimes: 'html5,flash,html4',      // 上传模式，依次退化
-                browse_button: 'prv_image_1',         // 上传选择的点选按钮，必需
-                container: 'container',//上传按钮的上级元素ID
-                // 在初始化时，uptoken，uptoken_url，uptoken_func三个参数中必须有一个被设置
-                // 切如果提供了多个，其优先级为uptoken > uptoken_url > uptoken_func
-                // 其中uptoken是直接提供上传凭证，uptoken_url是提供了获取上传凭证的地址，如果需要定制获取uptoken的过程则可以设置uptoken_func
-                uptoken: "{{$upload_token}}", // uptoken是上传凭证，由其他程序生成
-                // uptoken_url: '/uptoken',         // Ajax请求uptoken的Url，强烈建议设置（服务端提供）
-                // uptoken_func: function(file){    // 在需要获取uptoken时，该方法会被调用
-                //    // do something
-                //    return uptoken;
-                // },
-                get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的uptoken
-                // downtoken_url: '/downtoken',
-                // Ajax请求downToken的Url，私有空间时使用，JS-SDK将向该地址POST文件的key和domain，服务端返回的JSON必须包含url字段，url值为该文件的下载地址
-                unique_names: true,              // 默认false，key为文件名。若开启该选项，JS-SDK会为每个文件自动生成key（文件名）
-                // save_key: true,                  // 默认false。若在服务端生成uptoken的上传策略中指定了sava_key，则开启，SDK在前端将不对key进行任何处理
-                domain: 'http://dsyy.isart.me/',     // bucket域名，下载资源时用到，必需
-                max_file_size: '100mb',             // 最大文件体积限制
-                flash_swf_url: 'path/of/plupload/Moxie.swf',  //引入flash，相对路径
-                max_retries: 3,                     // 上传失败最大重试次数
-                dragdrop: true,                     // 开启可拖曳上传
-                drop_element: 'container',          // 拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
-                chunk_size: '4mb',                  // 分块上传时，每块的体积
-                auto_start: true,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传
-                //x_vars : {
-                //    查看自定义变量
-                //    'time' : function(up,file) {
-                //        var time = (new Date()).getTime();
-                // do something with 'time'
-                //        return time;
-                //    },
-                //    'size' : function(up,file) {
-                //        var size = file.size;
-                // do something with 'size'
-                //        return size;
-                //    }
-                //},
-                init: {
-                    'FilesAdded': function (up, files) {
-                        plupload.each(files, function (file) {
-                            // 文件添加进队列后，处理相关的事情
-//                                            alert(alert(JSON.stringify(file)));
-                        });
-                    },
-                    'BeforeUpload': function (up, file) {
-                        // 每个文件上传前，处理相关的事情
-//                        console.log("BeforeUpload up:" + up + " file:" + JSON.stringify(file));
-                    },
-                    'UploadProgress': function (up, file) {
-                        // 每个文件上传时，处理相关的事情
-//                        console.log("UploadProgress up:" + up + " file:" + JSON.stringify(file));
-                    },
-                    'FileUploaded': function (up, file, info) {
-                        // 每个文件上传成功后，处理相关的事情
-                        // 其中info是文件上传成功后，服务端返回的json，形式如：
-                        // {
-                        //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
-                        //    "key": "gogopher.jpg"
-                        //  }
-//                        console.log(JSON.stringify(info));
-                        var domain = up.getOption('domain');
-                        var res = JSON.parse(info);
-                        //获取上传成功后的文件的Url
-                        var sourceLink = domain + res.key;
-                        // $("#upload_file_1").val(sourceLink);
-                        $("#prv_image_1").attr('src', sourceLink);
-                        $("#font_file_1").html('');
-                        // console.log($("#pickfiles").attr('src'));
-                    },
-                    'Error': function (up, err, errTip) {
-                        //上传出错时，处理相关的事情
-                        console.log(err + errTip);
-                    },
-                    'UploadComplete': function () {
-                        //队列文件处理完毕后，处理相关的事情
-                    },
-                    'Key': function (up, file) {
-                        // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
-                        // 该配置必须要在unique_names: false，save_key: false时才生效
-
-                        var key = "";
-                        // do something with key here
-                        return key
-                    }
-                }
-            });
-            var uploader_2 = Qiniu.uploader({
-                runtimes: 'html5,flash,html4',      // 上传模式，依次退化
-                browse_button: 'prv_image_2',         // 上传选择的点选按钮，必需
-                container: 'container',//上传按钮的上级元素ID
-                // 在初始化时，uptoken，uptoken_url，uptoken_func三个参数中必须有一个被设置
-                // 切如果提供了多个，其优先级为uptoken > uptoken_url > uptoken_func
-                // 其中uptoken是直接提供上传凭证，uptoken_url是提供了获取上传凭证的地址，如果需要定制获取uptoken的过程则可以设置uptoken_func
-                uptoken: "{{$upload_token}}", // uptoken是上传凭证，由其他程序生成
-                // uptoken_url: '/uptoken',         // Ajax请求uptoken的Url，强烈建议设置（服务端提供）
-                // uptoken_func: function(file){    // 在需要获取uptoken时，该方法会被调用
-                //    // do something
-                //    return uptoken;
-                // },
-                get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的uptoken
-                // downtoken_url: '/downtoken',
-                // Ajax请求downToken的Url，私有空间时使用，JS-SDK将向该地址POST文件的key和domain，服务端返回的JSON必须包含url字段，url值为该文件的下载地址
-                unique_names: true,              // 默认false，key为文件名。若开启该选项，JS-SDK会为每个文件自动生成key（文件名）
-                // save_key: true,                  // 默认false。若在服务端生成uptoken的上传策略中指定了sava_key，则开启，SDK在前端将不对key进行任何处理
-                domain: 'http://dsyy.isart.me/',     // bucket域名，下载资源时用到，必需
-                max_file_size: '100mb',             // 最大文件体积限制
-                flash_swf_url: 'path/of/plupload/Moxie.swf',  //引入flash，相对路径
-                max_retries: 3,                     // 上传失败最大重试次数
-                dragdrop: true,                     // 开启可拖曳上传
-                drop_element: 'container',          // 拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
-                chunk_size: '4mb',                  // 分块上传时，每块的体积
-                auto_start: true,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传
-                //x_vars : {
-                //    查看自定义变量
-                //    'time' : function(up,file) {
-                //        var time = (new Date()).getTime();
-                // do something with 'time'
-                //        return time;
-                //    },
-                //    'size' : function(up,file) {
-                //        var size = file.size;
-                // do something with 'size'
-                //        return size;
-                //    }
-                //},
-                init: {
-                    'FilesAdded': function (up, files) {
-                        plupload.each(files, function (file) {
-                            // 文件添加进队列后，处理相关的事情
-//                                            alert(alert(JSON.stringify(file)));
-                        });
-                    },
-                    'BeforeUpload': function (up, file) {
-                        // 每个文件上传前，处理相关的事情
-//                        console.log("BeforeUpload up:" + up + " file:" + JSON.stringify(file));
-                    },
-                    'UploadProgress': function (up, file) {
-                        // 每个文件上传时，处理相关的事情
-//                        console.log("UploadProgress up:" + up + " file:" + JSON.stringify(file));
-                    },
-                    'FileUploaded': function (up, file, info) {
-                        // 每个文件上传成功后，处理相关的事情
-                        // 其中info是文件上传成功后，服务端返回的json，形式如：
-                        // {
-                        //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
-                        //    "key": "gogopher.jpg"
-                        //  }
-//                        console.log(JSON.stringify(info));
-                        var domain = up.getOption('domain');
-                        var res = JSON.parse(info);
-                        //获取上传成功后的文件的Url
-                        var sourceLink = domain + res.key;
-                        // $("#upload_file_2").val(sourceLink);
-                        $("#prv_image_2").attr('src', sourceLink);
-                        $("#font_file_2").html('');
-                        // console.log($("#pickfiles").attr('src'));
-                    },
-                    'Error': function (up, err, errTip) {
-                        //上传出错时，处理相关的事情
-                        console.log(err + errTip);
-                    },
-                    'UploadComplete': function () {
-                        //队列文件处理完毕后，处理相关的事情
-                    },
-                    'Key': function (up, file) {
-                        // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
-                        // 该配置必须要在unique_names: false，save_key: false时才生效
-
-                        var key = "";
-                        // do something with key here
-                        return key
-                    }
-                }
-            });
-            var uploader_3 = Qiniu.uploader({
-                runtimes: 'html5,flash,html4',      // 上传模式，依次退化
-                browse_button: 'prv_image_3',         // 上传选择的点选按钮，必需
-                container: 'container',//上传按钮的上级元素ID
-                // 在初始化时，uptoken，uptoken_url，uptoken_func三个参数中必须有一个被设置
-                // 切如果提供了多个，其优先级为uptoken > uptoken_url > uptoken_func
-                // 其中uptoken是直接提供上传凭证，uptoken_url是提供了获取上传凭证的地址，如果需要定制获取uptoken的过程则可以设置uptoken_func
-                uptoken: "{{$upload_token}}", // uptoken是上传凭证，由其他程序生成
-                // uptoken_url: '/uptoken',         // Ajax请求uptoken的Url，强烈建议设置（服务端提供）
-                // uptoken_func: function(file){    // 在需要获取uptoken时，该方法会被调用
-                //    // do something
-                //    return uptoken;
-                // },
-                get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的uptoken
-                // downtoken_url: '/downtoken',
-                // Ajax请求downToken的Url，私有空间时使用，JS-SDK将向该地址POST文件的key和domain，服务端返回的JSON必须包含url字段，url值为该文件的下载地址
-                unique_names: true,              // 默认false，key为文件名。若开启该选项，JS-SDK会为每个文件自动生成key（文件名）
-                // save_key: true,                  // 默认false。若在服务端生成uptoken的上传策略中指定了sava_key，则开启，SDK在前端将不对key进行任何处理
-                domain: 'http://dsyy.isart.me/',     // bucket域名，下载资源时用到，必需
-                max_file_size: '100mb',             // 最大文件体积限制
-                flash_swf_url: 'path/of/plupload/Moxie.swf',  //引入flash，相对路径
-                max_retries: 3,                     // 上传失败最大重试次数
-                dragdrop: true,                     // 开启可拖曳上传
-                drop_element: 'container',          // 拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
-                chunk_size: '4mb',                  // 分块上传时，每块的体积
-                auto_start: true,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传
-                //x_vars : {
-                //    查看自定义变量
-                //    'time' : function(up,file) {
-                //        var time = (new Date()).getTime();
-                // do something with 'time'
-                //        return time;
-                //    },
-                //    'size' : function(up,file) {
-                //        var size = file.size;
-                // do something with 'size'
-                //        return size;
-                //    }
-                //},
-                init: {
-                    'FilesAdded': function (up, files) {
-                        plupload.each(files, function (file) {
-                            // 文件添加进队列后，处理相关的事情
-//                                            alert(alert(JSON.stringify(file)));
-                        });
-                    },
-                    'BeforeUpload': function (up, file) {
-                        // 每个文件上传前，处理相关的事情
-//                        console.log("BeforeUpload up:" + up + " file:" + JSON.stringify(file));
-                    },
-                    'UploadProgress': function (up, file) {
-                        // 每个文件上传时，处理相关的事情
-//                        console.log("UploadProgress up:" + up + " file:" + JSON.stringify(file));
-                    },
-                    'FileUploaded': function (up, file, info) {
-                        // 每个文件上传成功后，处理相关的事情
-                        // 其中info是文件上传成功后，服务端返回的json，形式如：
-                        // {
-                        //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
-                        //    "key": "gogopher.jpg"
-                        //  }
-//                        console.log(JSON.stringify(info));
-                        var domain = up.getOption('domain');
-                        var res = JSON.parse(info);
-                        //获取上传成功后的文件的Url
-                        var sourceLink = domain + res.key;
-                        // $("#upload_file_3").val(sourceLink);
-                        $("#prv_image_3").attr('src', sourceLink);
-                        $("#font_file_3").html('');
-                        // console.log($("#pickfiles").attr('src'));
-                    },
-                    'Error': function (up, err, errTip) {
-                        //上传出错时，处理相关的事情
-                        console.log(err + errTip);
-                    },
-                    'UploadComplete': function () {
-                        //队列文件处理完毕后，处理相关的事情
-                    },
-                    'Key': function (up, file) {
-                        // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
-                        // 该配置必须要在unique_names: false，save_key: false时才生效
-
-                        var key = "";
-                        // do something with key here
-                        return key
-                    }
-                }
-            });
-            var uploader_4 = Qiniu.uploader({
-                runtimes: 'html5,flash,html4',      // 上传模式，依次退化
-                browse_button: 'prv_image_4',         // 上传选择的点选按钮，必需
-                container: 'container',//上传按钮的上级元素ID
-                // 在初始化时，uptoken，uptoken_url，uptoken_func三个参数中必须有一个被设置
-                // 切如果提供了多个，其优先级为uptoken > uptoken_url > uptoken_func
-                // 其中uptoken是直接提供上传凭证，uptoken_url是提供了获取上传凭证的地址，如果需要定制获取uptoken的过程则可以设置uptoken_func
-                uptoken: "{{$upload_token}}", // uptoken是上传凭证，由其他程序生成
-                // uptoken_url: '/uptoken',         // Ajax请求uptoken的Url，强烈建议设置（服务端提供）
-                // uptoken_func: function(file){    // 在需要获取uptoken时，该方法会被调用
-                //    // do something
-                //    return uptoken;
-                // },
-                get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的uptoken
-                // downtoken_url: '/downtoken',
-                // Ajax请求downToken的Url，私有空间时使用，JS-SDK将向该地址POST文件的key和domain，服务端返回的JSON必须包含url字段，url值为该文件的下载地址
-                unique_names: true,              // 默认false，key为文件名。若开启该选项，JS-SDK会为每个文件自动生成key（文件名）
-                // save_key: true,                  // 默认false。若在服务端生成uptoken的上传策略中指定了sava_key，则开启，SDK在前端将不对key进行任何处理
-                domain: 'http://dsyy.isart.me/',     // bucket域名，下载资源时用到，必需
-                max_file_size: '100mb',             // 最大文件体积限制
-                flash_swf_url: 'path/of/plupload/Moxie.swf',  //引入flash，相对路径
-                max_retries: 3,                     // 上传失败最大重试次数
-                dragdrop: true,                     // 开启可拖曳上传
-                drop_element: 'container',          // 拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
-                chunk_size: '4mb',                  // 分块上传时，每块的体积
-                auto_start: true,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传
-                //x_vars : {
-                //    查看自定义变量
-                //    'time' : function(up,file) {
-                //        var time = (new Date()).getTime();
-                // do something with 'time'
-                //        return time;
-                //    },
-                //    'size' : function(up,file) {
-                //        var size = file.size;
-                // do something with 'size'
-                //        return size;
-                //    }
-                //},
-                init: {
-                    'FilesAdded': function (up, files) {
-                        plupload.each(files, function (file) {
-                            // 文件添加进队列后，处理相关的事情
-//                                            alert(alert(JSON.stringify(file)));
-                        });
-                    },
-                    'BeforeUpload': function (up, file) {
-                        // 每个文件上传前，处理相关的事情
-//                        console.log("BeforeUpload up:" + up + " file:" + JSON.stringify(file));
-                    },
-                    'UploadProgress': function (up, file) {
-                        // 每个文件上传时，处理相关的事情
-//                        console.log("UploadProgress up:" + up + " file:" + JSON.stringify(file));
-                    },
-                    'FileUploaded': function (up, file, info) {
-                        // 每个文件上传成功后，处理相关的事情
-                        // 其中info是文件上传成功后，服务端返回的json，形式如：
-                        // {
-                        //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
-                        //    "key": "gogopher.jpg"
-                        //  }
-//                        console.log(JSON.stringify(info));
-                        var domain = up.getOption('domain');
-                        var res = JSON.parse(info);
-                        //获取上传成功后的文件的Url
-                        var sourceLink = domain + res.key;
-                        // $("#upload_file_4").val(sourceLink);
-                        $("#prv_image_4").attr('src', sourceLink);
-                        $("#font_file_4").html('');
-                        // console.log($("#pickfiles").attr('src'));
-                    },
-                    'Error': function (up, err, errTip) {
-                        //上传出错时，处理相关的事情
-                        console.log(err + errTip);
-                    },
-                    'UploadComplete': function () {
-                        //队列文件处理完毕后，处理相关的事情
-                    },
-                    'Key': function (up, file) {
-                        // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
-                        // 该配置必须要在unique_names: false，save_key: false时才生效
-
-                        var key = "";
-                        // do something with key here
-                        return key
-                    }
-                }
-            });
-        }
 
         //倒计时
         var setTime;
@@ -827,6 +385,69 @@
                 time--;
                 $("#time").text(time);
             },1000);
+        }
+
+        //上传图片
+        function upload_logo(index){
+            $('#upload_file_'+index).click()
+            $('#upload_file_'+index).on("change",function(e){
+                //判断图片类型、大小
+                var file = $(this)[0].files[0],
+                    imgSrc = $(this)[0].value,
+                    url = URL.createObjectURL(file);
+                if (!/\.(jpg|jpeg|png|JPG|PNG|JPEG)$/.test(imgSrc)){
+                    layer.msg("请上传jpg或png格式的图片！", {icon: 2, time: 2000})
+                    return false;
+                }
+                else{
+                   //判断图片大小
+                    var size = $(this)[0].files[0].size
+                    if((size.toFixed(2))>=(100*1024*1024)){
+                        layer.msg("请上传小于100M的图片！", {icon: 2, time: 2000})
+                        return false;
+                    }
+                    else{
+                        //判断图片的尺寸
+
+                        if (url) {
+                            $('#prv_image_'+index).attr("src", url) ; //将图片路径存入src中，显示出图片
+                        }
+                        //转码
+                        readFile(file,index)
+                    }
+                }
+
+
+
+            });
+        }
+        //建立一個可存取到該file的url
+        function getObjectURL(file) {
+            var url = null ;
+            // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+            if (window.createObjectURL!=undefined) { // basic
+                url = window.createObjectURL(file) ;
+            } else if (window.URL!=undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file) ;
+            } else if (window.webkitURL!=undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file) ;
+            }
+            return url ;
+        }
+        //img转码
+        function readFile(file,index){
+            // var file = obj.files[0];
+            //判断类型是不是图片
+            if(!/image\/\w+/.test(file.type)){
+                alert("请确保文件为图像类型");
+                return false;
+            }
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e){
+                // alert(this.result); //就是base64
+                $('#logo_code_'+index).val(this.result)
+            }
         }
     </script>
 @endsection
