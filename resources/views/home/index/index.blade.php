@@ -133,6 +133,19 @@
 @section('script')
 <script type="text/javascript" src="{{ URL::asset('js/clipboard.min.js') }}"></script>
 <script>
+    $(function(){
+        var continent_l = $('#continent');
+        var country_l = $('#country');
+        var city_l = $('#city');
+        var item_id_l=$('#item_id');
+        //页面初始化时，如果帐号密码cookie存在则填充
+        if(getCookie('continent_c') && getCookie('country_c') && getCookie('city_c') && getCookie('item_id_c')){
+            continent_l.text(getCookie('continent_c'))
+            country_l.text(getCookie('country_c'))
+            city_l.text(getCookie('city_c'))
+            item_id_l.val(getCookie('item_id_c'))
+        }
+    })
     function choiceContinent(continent_id,continent_name){
         $('#continent').text(continent_name)
         var param={
@@ -187,15 +200,31 @@
                 item_id: item_id,
                 _token: "{{ csrf_token() }}"
             }
+
             submitFree('{{URL::asset('')}}', param, function (ret) {
                 $("body").mLoading("hide");
-                // console.log('submitFree is : '+JSON.stringify(ret))
+                console.log('submitFree is : '+JSON.stringify(ret))
                 if (ret.result == true) {
                     $('#rqcode').html('<img src="'+ret.ret.image+'" class="width-100" />')
                     $('#copy').attr('data-clipboard-text',ret.ret.url)
                     $('#code-show').show()
+                    //获取成功删除cookie
+                    delCookie('continent_c')
+                    delCookie('country_c')
+                    delCookie('city_c')
+                    delCookie('item_id_c')
                 } else {
-                    layer.msg(ret.message, {icon: 2, time: 2000})
+                    if(ret.code=='101'){
+                        //如果没登录，创建cookie
+                        setCookie('continent_c',$('#continent').text(),7); //保存帐号到cookie，有效期7天
+                        setCookie('country_c',$('#country').text(),7); //保存帐号到cookie，有效期7天
+                        setCookie('city_c',$('#city').text(),7); //保存帐号到cookie，有效期7天
+                        setCookie('item_id_c',$('#item_id').val(),7); //保存帐号到cookie，有效期7天
+                        window.location.replace("{{URL::asset('/sign/in')}}");
+                    }
+                    else{
+                        layer.msg(ret.message, {icon: 2, time: 2000})
+                    }
                 }
             })
         }
@@ -214,5 +243,31 @@
             layer.msg('复制失败，请扫描图中二维码', {icon: 2, time: 2000})
         });
     });
+
+    //设置cookie
+    function setCookie(name,value,day){
+        var date = new Date();
+        date.setDate(date.getDate() + day);
+        document.cookie = name + '=' + value + ';expires='+ date;
+
+        // $.cookie(name, value);
+    };
+    //获取cookie
+    function getCookie(name){
+        var reg = RegExp(name+'=([^;]+)');
+        var arr = document.cookie.match(reg);
+        if(arr){
+            return arr[1];
+        }else{
+            return '';
+        }
+
+        // $.cookie(name);
+    };
+    //删除cookie
+    function delCookie(name){
+        setCookie(name,null,-1);
+        // $.cookie(name, null);
+    };
 </script>
 @endsection

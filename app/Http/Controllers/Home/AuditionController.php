@@ -115,27 +115,32 @@ class AuditionController extends  Controller{
     public function freeDo(Request $request){
         $request=$request->all();
         $common=$request['common'];
-        if(array_key_exists('item_id',$request)){
-            $item_id=$request['item_id'];
-            $param=array(
-                'item_id'=>$item_id
-            );
-            $purchase=Utils::curl_token('pay/version/free/purchase/',$param,$common['user']['token'],1);
-            $purchase=json_decode($purchase,true);
-            if($purchase){
-                if(array_key_exists('detail',$purchase)){
-                    return ApiResponse::makeResponse(false, $purchase['detail'], ApiResponse::UNKNOW_ERROR);
+        if($common['user']){
+            if(array_key_exists('item_id',$request)){
+                $item_id=$request['item_id'];
+                $param=array(
+                    'item_id'=>$item_id
+                );
+                $purchase=Utils::curl_token('pay/version/free/purchase/',$param,$common['user']['token'],1);
+                $purchase=json_decode($purchase,true);
+                if($purchase){
+                    if(array_key_exists('detail',$purchase)){
+                        return ApiResponse::makeResponse(false, $purchase['detail'], ApiResponse::UNKNOW_ERROR);
+                    }
+                    else{
+                        return ApiResponse::makeResponse(true, $purchase, ApiResponse::SUCCESS_CODE);
+                    }
                 }
                 else{
-                    return ApiResponse::makeResponse(true, $purchase, ApiResponse::SUCCESS_CODE);
+                    return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::UNKNOW_ERROR], ApiResponse::UNKNOW_ERROR);
                 }
             }
             else{
-                return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::UNKNOW_ERROR], ApiResponse::UNKNOW_ERROR);
+                return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::MISSING_PARAM], ApiResponse::MISSING_PARAM);
             }
         }
         else{
-            return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::MISSING_PARAM], ApiResponse::MISSING_PARAM);
+            return ApiResponse::makeResponse(false, ApiResponse::$errorMassage[ApiResponse::TOKEN_LOST], ApiResponse::TOKEN_LOST);
         }
     }
     //批量生成收费版试听数据（执行）
