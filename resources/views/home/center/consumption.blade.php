@@ -25,7 +25,9 @@
                                     <ul class="dropdown-menu width-70" style="margin-left:30%;" id="countries-content">
                                         <li class="padding-right-10 text-center" onclick="choiceVersion('','全部')" style="cursor:pointer;">全部</li>
                                         @foreach($versions['results'] as $version)
+                                            @if($version['code']!='free')
                                             <li class="padding-right-10 text-center" onclick="choiceVersion('{{$version['code']}}','{{$version['name']}}')" style="cursor:pointer;">{{$version['name']}}</li>
+                                            @endif
                                         @endforeach
                                     </ul>
                                 @endif

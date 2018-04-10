@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-7 col-sm-7 text-algin-center padding-top-10 style-ellipsis-1">
-                                    <input type="text" name="slogans_{{$i}}" id="slogans-_{$i}}" class="form-control" style="border-radius: 0;" placeholder="请输入十字以内的自定义文字">
+                                    <input type="text" name="slogans_{{$i}}" id="slogans_{{$i}}" class="form-control" style="border-radius: 0;" placeholder="请输入十字以内的自定义文字">
                                 </div>
                             </div>
                         </div>
@@ -231,19 +231,24 @@
                 upload_array.push(upload_file);
                 // console.log("upload_array is : "+JSON.stringify(upload_array))
                 //文字
-                var slogans=$('#slogan_'+index).val();
+                var slogans=$('#slogans_'+index).val();
                 var slogans_array=new Array();
                 slogans_array.push(slogans);
                 // console.log("slogans_array is : "+JSON.stringify(slogans_array))
-                var param={
-                    version: '{{$custom['code']}}',
-                    cities: array,
-                    logos: upload_array,
-                    slogans: slogans_array,
-                    _token: "{{ csrf_token() }}"
+                if(slogans.length>10){
+                    layer.msg('请输入10字以内的自定义文字', {icon: 2, time: 2000})
                 }
-                var pay_price=parseFloat('{{$custom['price']}}');
-                submitDo(pay_price,param);
+                else{
+                    var param={
+                        version: '{{$custom['code']}}',
+                        cities: array,
+                        logos: upload_array,
+                        slogans: slogans_array,
+                        _token: "{{ csrf_token() }}"
+                    }
+                    var pay_price=parseFloat('{{$custom['price']}}');
+                    submitDo(pay_price,param);
+                }
             }
             else{
                 layer.msg('请选择城市', {icon: 2, time: 2000})
@@ -280,27 +285,48 @@
         }
         $("#submitPayInfo").click(function(){
             var array=new Array();
+            var upload_array=new Array();
+            var slogans_array=new Array();
+            var status=true
             $("input:checkbox[name='id_array']:checked").each(function() {
                 var index=$(this).val();
                 var item_id=$('#item_id_'+index).val()
                 array.push(item_id);
+                //图片
+                var upload_file=$('#prv_image_'+index).attr('src');
+                upload_array.push(upload_file);
+                //文字
+                var slogans=$('#slogans_'+index).val();
+                if(slogans.length>10){
+                    status=false
+                }
+                slogans_array.push(slogans);
             });
-            var param={
-                version: '{{$custom['code']}}',
-                cities: array,
-                _token: "{{ csrf_token() }}"
+            if(status){
+                var param={
+                    version: '{{$custom['code']}}',
+                    cities: array,
+                    logos: upload_array,
+                    slogans: slogans_array,
+                    _token: "{{ csrf_token() }}"
+                }
+                console.log('param is : '+JSON.stringify(param))
+                var count=$(".checkSingle:checked").length;
+                var price=parseFloat('{{$custom['price']}}');
+                var pay_price=count*price
+                submitDo(pay_price,param);
             }
-            var count=$(".checkSingle:checked").length;
-            var price=parseFloat('{{$custom['price']}}');
-            var pay_price=count*price
-            submitDo(pay_price,param);
+            else{
+                layer.msg('请输入10字以内的自定义文字', {icon: 2, time: 2000})
+                $('#dismiss_modal').click();
+            }
         })
         var pay_str=''
         function submitDo(price,param){
             $("body").mLoading();
             prepay('{{URL::asset('')}}', param, function (ret) {
                 $("body").mLoading("hide");
-                // console.log("prepay is : "+JSON.stringify(ret))
+                console.log("prepay is : "+JSON.stringify(ret))
                 if (ret.result == true) {
                     $('#custom-content').hide();
                     $('#custom-pay').show();

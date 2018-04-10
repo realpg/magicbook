@@ -156,10 +156,28 @@ class AuditionController extends  Controller{
                 );
             }
             else{
-                $param=array(
-                    'version'=>$version,
-                    'cities'=>$cities,
-                );
+                if(array_key_exists('slogans',$request)){
+                    $slogans=json_encode($request['slogans'],true);
+                    $param=array(
+                        'version'=>$version,
+                        'cities'=>$cities,
+                        'slogans'=>$slogans,
+                    );
+                }
+                else if(array_key_exists('logos',$request)){
+                    $logos=json_encode($request['logos'],true);
+                    $param=array(
+                        'version'=>$version,
+                        'cities'=>$cities,
+                        'logos'=>$logos
+                    );
+                }
+                else{
+                    $param=array(
+                        'version'=>$version,
+                        'cities'=>$cities,
+                    );
+                }
             }
             $prepay=Utils::curl_token('pay/prepay/',$param,$common['user']['token'],1);
             $prepay=json_decode($prepay,true);
