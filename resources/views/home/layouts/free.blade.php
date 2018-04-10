@@ -40,7 +40,7 @@
 @yield('content')
 <div style="height:2.6rem;"></div>
 @section('footer')
-    {{--@if($logo&&$slogan)--}}
+    @if($logo&&$slogan)
     <footer id="footer">
         <div class="footer-row-1">
             <a href="javascript:" onclick="ejectQrcode()" >
@@ -60,7 +60,25 @@
             <img src="{{URL::asset('img/footer_image.png')}}" />
         </div>
     </footer>
-    {{--@endif--}}
+    @else
+        <footer id="footer">
+            <div class="footer-row-1">
+                <a href="javascript:" onclick="ejectQrcode()" >
+                    <img src="{{URL::asset('img/erweima_03.png')}}" class="style-margin-center" />
+                </a>
+            </div>
+            <a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">
+                <div class="aui-font-size-12 footer-row-2">
+                    {{--<div class="footer-row-2-box-1">此处还有很多景点讲解</div>--}}
+                    {{--<div class="footer-row-2-box-2">下载美景听听App,可以了解更多哦</div>--}}
+                    <span class="aui-ellipsis-2">此处还有很多景点讲解,下载美景听听App,可以了解更多哦</span>
+                </div>
+            </a>
+            <div class="footer-row-4">
+                <img src="{{URL::asset('img/footer_image.png')}}" />
+            </div>
+        </footer>
+    @endif
 @show
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="{{ URL::asset('js/aui/api.js') }}"></script>
@@ -92,7 +110,7 @@
             width:200,//提示窗口的宽度
             height:230,//提示窗口的高度
         });
-        $('#qrcode_img').attr('src','{{URL::asset('img/logo.png')}}')
+        $('#qrcode_img').attr('src','{{$logo&&$slogan?$logo:URL::asset('img/erweima_03.png')}}')
     }
     function pop(obj){function tanchuang(obj){$('body').append('<div id="mry-opo"><div  id="mry-opo-content" ><img src="{{URL::asset('img/erweima_03.png')}}" id="qrcode_img" style="width:100%;" /><p class="aui-font-size-16">扫描二维码</p><p>关注美景听听公众号</p></div></div>');var div = $('#mry-opo');$('#mry-opo-content').text(obj.content);div.css('width',obj.width+'px');div.css('height',obj.height+'px');div.css('margin-left',-(parseInt(obj.width)/2)+'px');div.css('margin-top',-(parseInt(obj.height)/2)+'px');div.css('background',obj.backgorund);$('#mry-mask').css('display','block');}function del(){$('#mry-opo').append('<a href="javascript:void(0)" deletes="mry-opo" style="position:absolute;right:10px;top:6px;color:#fff;font-size:12px;">X</a>');	$('[deletes=mry-opo]').click(function(){$('#mry-opo,#mry-mask').remove();});}$('body').append('<div id="mry-mask" deletes="mry-opo"></div>');var ject=obj;ject.width = parseInt(obj.width)||300;ject.height = parseInt(obj.height)||300;ject.backgorund=obj.backgorund||'#fff';tanchuang(ject);del();}
 

@@ -70,6 +70,7 @@
             </div>
             <div class="modal-body text-center padding-left-50 padding-right-50 font-color-red line-height-50" style="margin-top: -20px;">
                 <div class="row font-size-15" id="city_names"></div>
+                <div class="clear"></div>
             </div>
             <div class="modal-footer padding-0 line-height-50">
                 <a href="" type="button" data-dismiss="modal" id="dismiss_modal">

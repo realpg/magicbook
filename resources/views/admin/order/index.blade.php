@@ -52,8 +52,8 @@
                         <td>{{$data['user']['username']}}</td>
                         <td>{{$data['city_count']}}</td>
                         <td>{{$data['version']['name']}}</td>
-                        <td>{{$data['version']['name']}}</td>
                         <td>{{$data['amount_display']}}元</td>
+                        <td>{{$data['pay_time']}}</td>
                     </tr>
                 @endforeach
                 </tbody>
