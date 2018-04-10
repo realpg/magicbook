@@ -22,8 +22,8 @@
                                         <span id="continent_{{$i}}">请选择大洲</span> <img src="{{URL::asset('img/meijing_13.png')}}" class="height-28px" />
                                     </a>
                                     <ul class="dropdown-menu width-100">
-                                        @if($common['cities'])
-                                            @foreach($common['cities'] as $continent)
+                                        @if($locations)
+                                            @foreach($locations as $continent)
                                                 <li><a href="javascript:" onclick="choiceContinent('{{$i}}','{{$continent['id']}}','{{$continent['name']}}')">{{$continent['name']}}</a></li>
                                             @endforeach
                                         @else
