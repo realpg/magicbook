@@ -55,7 +55,7 @@
 @section('script')
     <script>
         $(function(){
-            $('#header-title').text('{{$name}}')
+            {{--$('#header-title').text('{{$name}}')--}}
             $("title").text('{{$name}}');
         })
         function playMusic(audio,id){

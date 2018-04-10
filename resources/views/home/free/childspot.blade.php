@@ -53,7 +53,7 @@
 <script type="text/javascript" src="{{URL::asset('js/aui/aui-slide.js')}}"></script>
 <script type="text/javascript">
     $(function(){
-        $('#header-title').text('{{$name?$name:'魔法路书'}}')
+        {{--$('#header-title').text('{{$name?$name:'魔法路书'}}')--}}
         $("title").text('{{$name?$name:'魔法路书'}}');
     })
     function playMusic(audio,id){
