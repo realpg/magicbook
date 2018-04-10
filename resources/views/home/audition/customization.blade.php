@@ -265,7 +265,7 @@
                     if(item_id){
                         count++
                         var city=$('#city_'+index).text();
-                        str+='<div class="col-xs-3 col-sm-3">'+city+'</div>'
+                        str+='<div class="col-xs-3 col-sm-3 text-oneline">'+city+'</div>'
                     }
                 });
                 if(count==$(".checkSingle:checked").length){
