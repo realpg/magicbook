@@ -225,11 +225,13 @@
                     else{
                         layer.msg(ret.message, {icon: 2, time: 2000})
                     }
+                    $("body").mLoading("hide");
                 }
             })
         }
         else{
             layer.msg('请选择城市', {icon: 2, time: 2000})
+            $("body").mLoading("hide");
         }
     }
     $("#copy").click(function () {
