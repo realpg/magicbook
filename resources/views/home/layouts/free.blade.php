@@ -40,12 +40,12 @@
 @yield('content')
 <div style="height:2.6rem;"></div>
 @section('footer')
-    @if($logo&&$slogan)
+    {{--@if($logo&&$slogan)--}}
     <footer id="footer">
         <div class="footer-row-1">
             <a href="javascript:" onclick="ejectQrcode()" >
                 {{--<img src="{{URL::asset('img/erweima_03.png')}}" class="style-margin-center" />--}}
-                <img src="{{$logo}}" class="style-margin-center" />
+                <img src="{{$logo?$logo:URL::asset('img/erweima_03.png')}}" class="style-margin-center" />
             </a>
         </div>
         <a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">
@@ -53,14 +53,14 @@
                 {{--<div class="footer-row-2-box-1">此处还有很多景点讲解</div>--}}
                 {{--<div class="footer-row-2-box-2">下载美景听听App,可以了解更多哦</div>--}}
                 {{--<span class="aui-ellipsis-2">此处还有很多景点讲解,下载美景听听App,可以了解更多哦</span>--}}
-                <span class="aui-ellipsis-2">{{$slogan}}</span>
+                <span class="aui-ellipsis-2">{{$slogan?$slogan:"此处还有很多景点讲解,下载美景听听App,可以了解更多哦"}}</span>
             </div>
         </a>
         <div class="footer-row-4">
             <img src="{{URL::asset('img/footer_image.png')}}" />
         </div>
     </footer>
-    @endif
+    {{--@endif--}}
 @show
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="{{ URL::asset('js/aui/api.js') }}"></script>

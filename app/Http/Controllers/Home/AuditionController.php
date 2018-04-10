@@ -120,7 +120,7 @@ class AuditionController extends  Controller{
             $param=array(
                 'item_id'=>$item_id
             );
-            $purchase=Utils::curl('pay/version/free/purchase/',$param,1);
+            $purchase=Utils::curl_token('pay/version/free/purchase/',$param,$common['user']['token'],1);
             $purchase=json_decode($purchase,true);
             if($purchase){
                 if(array_key_exists('detail',$purchase)){
