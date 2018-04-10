@@ -48,11 +48,11 @@
                                     </ul>
                                 </div>
                                 <input id="item_id_{{$i}}" type="hidden" />
-                                <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16 line-height-50 height-50px style-ellipsis-1">
-                                    <a href="javascript:" onclick="submitSingle({{$i}})" style="color:#fff;text-decoration: none;">
+                                <a href="javascript:" onclick="submitSingle({{$i}})" style="color:#fff;text-decoration: none;">
+                                    <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16 line-height-50 height-50px style-ellipsis-1">
                                         立刻生成
-                                    </a>
-                                </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>

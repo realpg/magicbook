@@ -50,11 +50,11 @@
                                 </ul>
                             </div>
                             <input id="item_id_{{$i}}" type="hidden" />
-                            <div class="col-xs-3 col-sm-3 text-algin-center height-50px bg-red border-top border-bottom border-red font-color-white font-size-16" style="line-height: 53px;">
-                                <a href="javascript:" onclick="submitSingle({{$i}})" class=" vertical-align-middle" style="color:#fff;text-decoration: none;">
+                            <a href="javascript:" onclick="submitSingle({{$i}})" class=" vertical-align-middle" style="color:#fff;text-decoration: none;">
+                                <div class="col-xs-3 col-sm-3 text-algin-center height-50px bg-red border-top border-bottom border-red font-color-white font-size-16" style="line-height: 53px;">
                                     立刻生成
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="row font-size-16 padding-top-20 font-size-16">
