@@ -125,7 +125,8 @@
                             console.log('cookie is : '+JSON.stringify(getCookie('cs')))
                             if(getCookie('mbl')&&getCookie('pswd')){
                                 layer.msg('登录成功', {icon: 1, time: 3000});
-                                window.location.href = "{{URL::asset('center')}}";
+                                {{--window.location.href = "{{URL::asset('center')}}";--}}
+                                    window.location.href = "{{URL::asset('index')}}";
                             }
                         }
                         else{
