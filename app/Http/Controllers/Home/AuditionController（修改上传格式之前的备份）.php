@@ -147,47 +147,43 @@ class AuditionController extends  Controller{
     public function prepayDo(Request $request){
         $request=$request->all();
         $common=$request['common'];
-        if(array_key_exists('version',$request)&&array_key_exists('data',$request)){
+        if(array_key_exists('version',$request)&&array_key_exists('cities',$request)){
             $version=$request['version'];
-            $data=$request['data'];
-//            if(array_key_exists('slogans',$request)&&array_key_exists('logos',$request)){
-//                $slogans=json_encode($request['slogans'],true);
-//                $logos=json_encode($request['logos'],true);
-//                $param=array(
-//                    'version'=>$version,
-//                    'cities'=>$cities,
-//                    'slogans'=>$slogans,
-//                    'logos'=>$logos
-//                );
-//            }
-//            else{
-//                if(array_key_exists('slogans',$request)){
-//                    $slogans=json_encode($request['slogans'],true);
-//                    $param=array(
-//                        'version'=>$version,
-//                        'cities'=>$cities,
-//                        'slogans'=>$slogans,
-//                    );
-//                }
-//                else if(array_key_exists('logos',$request)){
-//                    $logos=json_encode($request['logos'],true);
-//                    $param=array(
-//                        'version'=>$version,
-//                        'cities'=>$cities,
-//                        'logos'=>$logos
-//                    );
-//                }
-//                else{
-//                    $param=array(
-//                        'version'=>$version,
-//                        'cities'=>$cities,
-//                    );
-//                }
-//            }
-            $param=array(
-                'version'=>$version,
-                'data'=>$data,
-            );
+            $cities=json_encode($request['cities'],true);
+            if(array_key_exists('slogans',$request)&&array_key_exists('logos',$request)){
+                $slogans=json_encode($request['slogans'],true);
+                $logos=json_encode($request['logos'],true);
+                $param=array(
+                    'version'=>$version,
+                    'cities'=>$cities,
+                    'slogans'=>$slogans,
+                    'logos'=>$logos
+                );
+            }
+            else{
+                if(array_key_exists('slogans',$request)){
+                    $slogans=json_encode($request['slogans'],true);
+                    $param=array(
+                        'version'=>$version,
+                        'cities'=>$cities,
+                        'slogans'=>$slogans,
+                    );
+                }
+                else if(array_key_exists('logos',$request)){
+                    $logos=json_encode($request['logos'],true);
+                    $param=array(
+                        'version'=>$version,
+                        'cities'=>$cities,
+                        'logos'=>$logos
+                    );
+                }
+                else{
+                    $param=array(
+                        'version'=>$version,
+                        'cities'=>$cities,
+                    );
+                }
+            }
             $prepay=Utils::curl_token('pay/prepay/',$param,$common['user']['token'],1);
             $prepay=json_decode($prepay,true);
             if($prepay){

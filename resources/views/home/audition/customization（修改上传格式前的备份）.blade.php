@@ -221,30 +221,34 @@
         function submitSingle(index){
             var item_id=$('#item_id_'+index).val();
             if(item_id){
+                //城市
+                var array=new Array();
+                array.push(item_id);
                 // console.log("array is : "+JSON.stringify(array))
                 //logo
-                var upload_file=$('#logo_code_'+index).val()?$('#logo_code_'+index).val():null;
+                var upload_file=$('#logo_code_'+index).val();
+                var upload_array=new Array();
+                if(upload_file){
+                    upload_array.push(upload_file);
+                }
                 // console.log("upload_array is : "+JSON.stringify(upload_array))
                 //文字
                 var slogans=$('#slogans_'+index).val();
+                var slogans_array=new Array();
+                slogans_array.push(slogans);
                 // console.log("slogans_array is : "+JSON.stringify(slogans_array))
                 if(slogans.length>10){
                     layer.msg('请输入10字以内的自定义文字', {icon: 2, time: 2000})
                 }
                 else{
-                    var data_array=new Array();
-                    var data={
-                        'city_id':item_id,
-                        'slogan':slogans,
-                        'logo':upload_file
-                    }
-                    data_array.push(data);
                     var param={
                         version: '{{$custom['code']}}',
-                        data:JSON.stringify(data_array),
+                        cities: array,
+                        logos: upload_array,
+                        slogans: slogans_array,
                         _token: "{{ csrf_token() }}"
                     }
-                    console.log('param is : '+param)
+                    console.log('param is : '+JSON.stringify(param))
                     var pay_price=parseFloat('{{$custom['price']}}');
                     submitDo(pay_price,param);
                 }
@@ -283,33 +287,30 @@
             }
         }
         $("#submitPayInfo").click(function(){
-            var data_array=new Array();
+            var array=new Array();
+            var upload_array=new Array();
+            var slogans_array=new Array();
             var status=true
             $("input:checkbox[name='id_array']:checked").each(function() {
                 var index=$(this).val();
                 var item_id=$('#item_id_'+index).val()
+                array.push(item_id);
                 //图片
                 var upload_file=$('#logo_code_'+index).val()?$('#logo_code_'+index).val():null;
+                upload_array.push(upload_file);
                 //文字
                 var slogans=$('#slogans_'+index).val();
-                var data={
-                    'city_id':item_id,
-                    'slogan':slogans,
-                    'logo':upload_file
+                if(slogans.length>10){
+                    status=false
                 }
-                data_array.push(data);
+                slogans_array.push(slogans);
             });
             if(status){
-                {{--var param={--}}
-                    {{--version: '{{$custom['code']}}',--}}
-                    {{--cities: array,--}}
-                    {{--logos: upload_array,--}}
-                    {{--slogans: slogans_array,--}}
-                    {{--_token: "{{ csrf_token() }}"--}}
-                {{--}--}}
                 var param={
                     version: '{{$custom['code']}}',
-                    data: JSON.stringify(data_array),
+                    cities: array,
+                    logos: upload_array,
+                    slogans: slogans_array,
                     _token: "{{ csrf_token() }}"
                 }
                 console.log('param is : '+JSON.stringify(param))
@@ -466,8 +467,6 @@
             reader.onload = function(e){
                 // alert(this.result); //就是base64
                 $('#logo_code_'+index).val(this.result)
-                console.log("readFilen "+index+" : "+this.result)
-                $('#font_file_'+index).hide()
             }
         }
     </script>

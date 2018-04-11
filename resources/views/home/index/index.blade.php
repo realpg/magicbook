@@ -216,10 +216,10 @@
                 } else {
                     if(ret.code=='101'){
                         //如果没登录，创建cookie
-                        setCookie('continent_c',$('#continent').text(),7); //保存帐号到cookie，有效期7天
-                        setCookie('country_c',$('#country').text(),7); //保存帐号到cookie，有效期7天
-                        setCookie('city_c',$('#city').text(),7); //保存帐号到cookie，有效期7天
-                        setCookie('item_id_c',$('#item_id').val(),7); //保存帐号到cookie，有效期7天
+                        setCookie('continent_c',$('#continent').text(),1); //保存帐号到cookie，有效期1天
+                        setCookie('country_c',$('#country').text(),1); //保存帐号到cookie，有效期1天
+                        setCookie('city_c',$('#city').text(),1); //保存帐号到cookie，有效期1天
+                        setCookie('item_id_c',$('#item_id').val(),1); //保存帐号到cookie，有效期1天
                         window.location.replace("{{URL::asset('/sign/in')}}");
                     }
                     else{

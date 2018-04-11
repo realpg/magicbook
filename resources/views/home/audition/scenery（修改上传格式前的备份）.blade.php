@@ -194,14 +194,12 @@
         function submitSingle(index){
             var item_id=$('#item_id_'+index).val();
             if(item_id){
-                var data_array=new Array();
-                var data={
-                    'city_id':item_id
-                }
-                data_array.push(data);
+                var array=new Array();
+                array.push(item_id);
+                console.log("array is : "+JSON.stringify(array))
                 var param={
                     version: '{{$mjtt['code']}}',
-                    data: JSON.stringify(data_array),
+                    cities: array,
                     _token: "{{ csrf_token() }}"
                 }
                 var pay_price=parseFloat('{{$mjtt['price']}}');
@@ -241,18 +239,15 @@
             }
         }
         $("#submitPayInfo").click(function(){
-            var data_array=new Array();
+            var array=new Array();
             $("input:checkbox[name='id_array']:checked").each(function() {
                 var index=$(this).val();
                 var item_id=$('#item_id_'+index).val()
-                var data={
-                    'city_id':item_id
-                }
-                data_array.push(data);
+                array.push(item_id);
             });
             var param={
                 version: '{{$mjtt['code']}}',
-                data: JSON.stringify(data_array),
+                cities: array,
                 _token: "{{ csrf_token() }}"
             }
             var count=$(".checkSingle:checked").length;
