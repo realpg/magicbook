@@ -91,11 +91,11 @@
                     <div class="col-xs-9 col-sm-9 text-algin-left padding-left-0">
                         全选
                     </div>
-                    <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16 style-ellipsis-1" style="line-height: 56px;">
-                        <a href="javascript:" onclick="submitAll()" id="submitAll" style="color:#fff;text-decoration: none;">
+                    <a href="javascript:" onclick="submitAll()" id="submitAll" style="color:#fff;text-decoration: none;">
+                        <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16 style-ellipsis-1" style="line-height: 56px;">
                             批量生成
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -228,7 +228,9 @@
                 //logo
                 var upload_file=$('#logo_code_'+index).val();
                 var upload_array=new Array();
-                upload_array.push(upload_file);
+                if(upload_file){
+                    upload_array.push(upload_file);
+                }
                 // console.log("upload_array is : "+JSON.stringify(upload_array))
                 //文字
                 var slogans=$('#slogans_'+index).val();
@@ -294,7 +296,7 @@
                 var item_id=$('#item_id_'+index).val()
                 array.push(item_id);
                 //图片
-                var upload_file=$('#logo_code_'+index).val();
+                var upload_file=$('#logo_code_'+index).val()?$('#logo_code_'+index).val():null;
                 upload_array.push(upload_file);
                 //文字
                 var slogans=$('#slogans_'+index).val();
@@ -338,7 +340,8 @@
                     $('#dismiss_modal').trigger('click');
                     pay_str=$('#payInfo').html()
                 } else {
-                    layer.msg(ret.ret, {icon: 2, time: 2000})
+                    layer.msg(ret.message, {icon: 2, time: 2000})
+                    $('#dismiss_modal').trigger('click');
                 }
             })
         }

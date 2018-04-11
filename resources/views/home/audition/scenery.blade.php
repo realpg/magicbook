@@ -67,11 +67,11 @@
                         <div class="col-xs-9 col-sm-9 text-algin-left padding-left-0">
                             全选
                         </div>
-                        <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16 style-ellipsis-1" style="line-height: 56px;">
-                            <a href="javascript:" onclick="submitAll()" id="submitAll" style="color:#fff;text-decoration: none;">
+                        <a href="javascript:" onclick="submitAll()" id="submitAll" style="color:#fff;text-decoration: none;">
+                            <div class="col-xs-3 col-sm-3 text-algin-center bg-red border-top border-bottom border-red font-color-white font-size-16 style-ellipsis-1" style="line-height: 56px;">
                                 批量生成
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
