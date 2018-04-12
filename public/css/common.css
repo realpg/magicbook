@@ -1176,9 +1176,9 @@ input[type="checkbox"]:checked {
     background-color: unset;
     border-color: unset;
 }
-.container{
-    max-width: 1000px;
-}
+/*.container{*/
+    /*max-width: 1000px;*/
+/*}*/
 .navbar-default{
     /*background-image: -webkit-linear-gradient(top, #fff 0%, #f8f8f8 100%);*/
     /*background-image: -o-linear-gradient(top, #fff 0%, #f8f8f8 100%);*/

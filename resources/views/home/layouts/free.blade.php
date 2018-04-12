@@ -44,16 +44,12 @@
     <footer id="footer">
         <div class="footer-row-1">
             <a href="javascript:" >
-                {{--<img src="{{URL::asset('img/erweima_03.png')}}" class="style-margin-center" />--}}
-                <img src="{{$logo?$logo:URL::asset('img/erweima_03.png')}}" class="style-margin-center" />
+                <img src="{{$logo}}" class="style-margin-center" />
             </a>
         </div>
         <a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">
             <div class="aui-font-size-12 footer-row-2">
-                {{--<div class="footer-row-2-box-1">此处还有很多景点讲解</div>--}}
-                {{--<div class="footer-row-2-box-2">下载美景听听App,可以了解更多哦</div>--}}
-                {{--<span class="aui-ellipsis-2">此处还有很多景点讲解,下载美景听听App,可以了解更多哦</span>--}}
-                <span class="aui-ellipsis-2">{{$slogan?$slogan:"此处还有很多景点讲解,下载美景听听App,可以了解更多哦"}}</span>
+                <span class="aui-ellipsis-2">{{$slogan}}</span>
             </div>
         </a>
         <div class="footer-row-4">
