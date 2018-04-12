@@ -14,7 +14,17 @@
             <div class="carousel-inner" role="listbox">
                 @foreach($common['top_banners'] as $k=>$top_banner)
                 <div class="item {{$k==0?'active':''}}">
-                    <img src="{{$top_banner['image']}}" alt="{{$top_banner['title']}}" class="margin-auto">
+                    @if($top_banner['redirect_type']==1)
+                        @if(preg_match('/(http:\/\/)|(https:\/\/)/i', $top_banner['detail_id']))
+                        <a href="{{$top_banner['detail_id']}}" target="_blank">
+                        @else
+                        <a href="http://{{$top_banner['detail_id']}}" target="_blank">
+                        @endif
+                            <img src="{{$top_banner['image']}}" alt="{{$top_banner['title']}}" class="margin-auto">
+                        </a>
+                    @else
+                        <img src="{{$top_banner['image']}}" alt="{{$top_banner['title']}}" class="margin-auto">
+                    @endif
                 </div>
                 @endforeach
             </div>

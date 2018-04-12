@@ -36,14 +36,12 @@ class AuditionController extends  Controller{
             );
             $locations=Utils::curl_token('location/chaincity/',$location_param,$common['user']['token']);
             $locations=json_decode($locations,true);
-            $url=Utils::URL;
             $param=array(
                 'common'=>$common,
                 'menu'=>$menu,
                 'subsection'=>$subsection,
                 'mjtt'=>$mjtt,
-                'locations'=>$locations,
-                'url'=>$url
+                'locations'=>$locations
             );
             return view('home.audition.scenery',$param);
         }
@@ -75,15 +73,13 @@ class AuditionController extends  Controller{
             $locations=json_decode($locations,true);
             //生成七牛token
             $upload_token = QNManager::uploadToken();
-            $url=Utils::URL;
             $param=array(
                 'common'=>$common,
                 'menu'=>$menu,
                 'subsection'=>$subsection,
                 'custom'=>$custom,
                 'upload_token'=>$upload_token,
-                'locations'=>$locations,
-                'url'=>$url
+                'locations'=>$locations
             );
             return view('home.audition.customization',$param);
         }
@@ -151,43 +147,47 @@ class AuditionController extends  Controller{
     public function prepayDo(Request $request){
         $request=$request->all();
         $common=$request['common'];
-        if(array_key_exists('version',$request)&&array_key_exists('cities',$request)){
+        if(array_key_exists('version',$request)&&array_key_exists('data',$request)){
             $version=$request['version'];
-            $cities=json_encode($request['cities'],true);
-            if(array_key_exists('slogans',$request)&&array_key_exists('logos',$request)){
-                $slogans=json_encode($request['slogans'],true);
-                $logos=json_encode($request['logos'],true);
-                $param=array(
-                    'version'=>$version,
-                    'cities'=>$cities,
-                    'slogans'=>$slogans,
-                    'logos'=>$logos
-                );
-            }
-            else{
-                if(array_key_exists('slogans',$request)){
-                    $slogans=json_encode($request['slogans'],true);
-                    $param=array(
-                        'version'=>$version,
-                        'cities'=>$cities,
-                        'slogans'=>$slogans,
-                    );
-                }
-                else if(array_key_exists('logos',$request)){
-                    $logos=json_encode($request['logos'],true);
-                    $param=array(
-                        'version'=>$version,
-                        'cities'=>$cities,
-                        'logos'=>$logos
-                    );
-                }
-                else{
-                    $param=array(
-                        'version'=>$version,
-                        'cities'=>$cities,
-                    );
-                }
-            }
+            $data=$request['data'];
+//            if(array_key_exists('slogans',$request)&&array_key_exists('logos',$request)){
+//                $slogans=json_encode($request['slogans'],true);
+//                $logos=json_encode($request['logos'],true);
+//                $param=array(
+//                    'version'=>$version,
+//                    'cities'=>$cities,
+//                    'slogans'=>$slogans,
+//                    'logos'=>$logos
+//                );
+//            }
+//            else{
+//                if(array_key_exists('slogans',$request)){
+//                    $slogans=json_encode($request['slogans'],true);
+//                    $param=array(
+//                        'version'=>$version,
+//                        'cities'=>$cities,
+//                        'slogans'=>$slogans,
+//                    );
+//                }
+//                else if(array_key_exists('logos',$request)){
+//                    $logos=json_encode($request['logos'],true);
+//                    $param=array(
+//                        'version'=>$version,
+//                        'cities'=>$cities,
+//                        'logos'=>$logos
+//                    );
+//                }
+//                else{
+//                    $param=array(
+//                        'version'=>$version,
+//                        'cities'=>$cities,
+//                    );
+//                }
+//            }
+            $param=array(
+                'version'=>$version,
+                'data'=>$data,
+            );
             $prepay=Utils::curl_token('pay/prepay/',$param,$common['user']['token'],1);
             $prepay=json_decode($prepay,true);
             if($prepay){

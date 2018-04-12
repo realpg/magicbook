@@ -80,7 +80,7 @@
                         <th class="text-center" width="100px" style="border:0;">生成时间</th>
                         <th class="text-center" width="100px" style="border:0;">失效时间</th>
                         <th class="text-center" width="50px" style="border:0;">流量</th>
-                        <th class="text-center" width="120px" style="border:0;">国家/城市</th>
+                        <th class="text-center" width="100px" style="border:0;">国家/城市</th>
                         <th class="text-center" width="30px" style="border:0;">logo</th>
                         <th class="text-center" width="120px" style="border:0;">文字</th>
                         <th class="text-center" width="80px" style="border:0;">地址</th>
@@ -98,6 +98,8 @@
                             <td class="text-center style-ellipsis-1 font-color-red" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['version']['name']}}</td>
                             <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{date('Y/m/d',strtotime($purchas['create_time']))}}</td>
                             <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{date('Y/m/d',strtotime($purchas['expire_time']))}}</td>
+                            {{--<td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['create_time']}}</td>--}}
+                            {{--<td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['expire_time']}}</td>--}}
                             <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['viewed_count']}}</td>
                             <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['item_pname']}}/{{$purchas['item_name']}}</td>
                             <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">
@@ -284,19 +286,6 @@
     }
     //下载二维码
     function downloadQrcode(id){
-        {{--var param={--}}
-            {{--id:id,--}}
-            {{--_token: "{{ csrf_token() }}"--}}
-        {{--}--}}
-        {{--downloadQrcodeDo('{{URL::asset('')}}', param, function (ret) {--}}
-            {{--$('#test').html(ret['responseText'])--}}
-            {{--console.log('getCountry err is :' +JSON.stringify(ret))--}}
-            {{--// if (ret.result == true) {--}}
-            {{--// } else {--}}
-            {{--//     console.log('getCountry err is :' +JSON.stringify(ret.message))--}}
-            {{--// }--}}
-        {{--})--}}
-
         $.ajax({
             url: '{{$url}}pay/downloadQrcode/',
             method: 'POST',
