@@ -6,7 +6,11 @@
             <div class="card-div row border-radius-10px margin-left-10 margin-right-10">
                 <div class="height-50px line-height-50 bg-grey-white">
                     <div class="col-xs-8 col-sm-8">登录</div>
-                    <div class="col-xs-4 col-sm-4 text-right">立即注册</div>
+                    <div class="col-xs-4 col-sm-4 text-right">
+                        <a href="{{URL::asset('sign/up')}}">
+                            立即注册
+                        </a>
+                    </div>
                 </div>
                 <div>
                     <div class="col-xs-8 col-sm-8 padding-top-40 padding-bottom-40 padding-right-50 padding-left-50" style="border-right:1px #ccc solid;">

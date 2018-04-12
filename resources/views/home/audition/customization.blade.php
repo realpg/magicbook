@@ -73,8 +73,9 @@
                                                 未选择文件
                                             </div>
                                         </div>
-                                        <div class="col-xs-7 col-sm-7 text-algin-center padding-top-10 style-ellipsis-1">
-                                            <input type="text" name="slogans_{{$i}}" id="slogans_{{$i}}" class="form-control" style="border-radius: 0;" placeholder="请输入十字以内的自定义文字">
+                                        <div class="col-xs-7 col-sm-7 text-algin-left padding-top-10 style-ellipsis-1">
+                                            <input type="text" name="slogans_{{$i}}" id="slogans_{{$i}}" class="form-control" style="border-radius: 0;" placeholder="请输入十字以内的自定义文字" maxlength="10">
+                                            {{--<span class="font-color-red" style="font-size: 10px;line-height: 10px;" id="label_{{$i}}" hidden>* 请输入十字以内的自定义文字</span>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -220,18 +221,27 @@
         });
         function submitSingle(index){
             var item_id=$('#item_id_'+index).val();
-            if(item_id){
+            var upload_file=document.getElementById('upload_file_'+index).files[0];
+            var slogans=$('#slogans_'+index).val();
+            if(!judgeObject(item_id)){
+                layer.msg('请选择城市', {icon: 2, time: 2000})
+            }
+            else if(!judgeObject(upload_file)){
+                layer.msg('请上传logo', {icon: 2, time: 2000})
+            }
+            else if(!judgeObject(slogans)){
+                layer.msg('请输入十字以内的自定义文字', {icon: 2, time: 2000})
+            }
+            else{
                 {{--//城市--}}
                 var array=new Array();
                 array.push(item_id);
                 // console.log("array is : "+JSON.stringify(array))
                 //logo
-                var upload_file=document.getElementById('upload_file_'+index).files[0];
                 var upload_array=new Array();
                 upload_array.push(upload_file)
                 // console.log("upload_array is : "+JSON.stringify(upload_array))
                 //文字
-                var slogans=$('#slogans_'+index).val();
                 var slogans_array=new Array();
                 slogans_array.push(slogans);
                 // console.log("slogans_array is : "+JSON.stringify(slogans_array))
@@ -293,14 +303,13 @@
                     });
                 }
             }
-            else{
-                layer.msg('请选择城市', {icon: 2, time: 2000})
-            }
         }
         function submitAll(){
             if($(".checkSingle:checked").length >0){
                 var str=''
                 var count=0
+                var logo_count=0
+                var slogan_count=0
                 $("input:checkbox[name='id_array']:checked").each(function() {
                     var index=$(this).val();
                     var item_id=$('#item_id_'+index).val()
@@ -309,17 +318,35 @@
                         var city=$('#city_'+index).text();
                         str+='<div class="col-xs-3 col-sm-3 text-oneline">'+city+'</div>'
                     }
+                    //获取上传logo的个数
+                    var upload_file=document.getElementById('upload_file_'+index).files[0];
+                    if(judgeObject(upload_file)){
+                        logo_count++
+                    }
+                    //获取填写自定义文字的个数
+                    var slogan=$('#slogans_'+index).val();
+                    if(judgeObject(slogan)){
+                        slogan_count++
+                    }
                 });
-                if(count==$(".checkSingle:checked").length){
+                var checked_length=$(".checkSingle:checked").length  //获取选中的个数
+                //判断个数是否合法
+                if(count!=checked_length){
+                    layer.msg('请选择城市', {icon: 2, time: 2000})
+                }
+                else if(logo_count!=checked_length){
+                    layer.msg('请为选定的每座城市上传LOGO', {icon: 2, time: 2000})
+                }
+                else if(slogan_count!=checked_length){
+                    layer.msg('请为选定的每座城市设置自定义文字', {icon: 2, time: 2000})
+                }
+                else{
                     var price=parseFloat('{{$custom['price']}}')
                     $('#price').text(count*price)
                     $('#payPrice').text(payPrice);
                     $('#submitAll').attr('data-toggle','modal')
                     $('#submitAll').attr('data-target','#myModal')
                     $('#city_names').html(str)
-                }
-                else{
-                    layer.msg('请选择城市', {icon: 2, time: 2000})
                 }
             }
             else{
@@ -564,5 +591,16 @@
                 return true
             }
         }
+        //校验文字
+        // function checkText(index){
+        //     console.log("checkText is : "+index)
+        //     var slogan=$('#slogans_'+index).val();
+        //     if(slogan.length>10){
+        //         $('#label_'+index).show()
+        //     }
+        //     else{
+        //         $('#label_'+index).hide()
+        //     }
+        // }
     </script>
 @endsection
