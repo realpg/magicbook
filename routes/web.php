@@ -17,7 +17,7 @@ Route::group(['prefix' => '', 'middleware' => ['WebBase']], function () {
     Route::get('/index/', 'Home\IndexController@index');        //首页
 //    Route::get('/region/country', 'Home\IndexController@getCountries');        //获取国家列表
 //    Route::get('/region/city', 'Home\IndexController@getCities');        //获取城市列表
-    Route::get('/audition/', 'Home\AuditionController@scenery') ;        //获取试听(美景版)
+    Route::get('/audition/', 'Home\AuditionController@free') ;        //获取试听(美景版)
     Route::get('/audition/scenery/', 'Home\AuditionController@scenery') ;        //获取试听(美景版)
     Route::get('/audition/customization/', 'Home\AuditionController@customization') ;        //获取试听(定制版)
     Route::get('/audition/free/', 'Home\AuditionController@free') ;       //获取试听(免费版)
