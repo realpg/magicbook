@@ -224,6 +224,12 @@ footer{
     width:185px;
     float:left;
     font-size: 8px;
+    padding-left:2.5px;
+    padding-right:2.5px;
+}
+.footer-row-2-text{
+    line-height:20px;
+    height:52px;
 }
 .footer-row-2 span{
     line-height: 20px;
@@ -429,7 +435,10 @@ footer{
         margin-top: 8px;
     }
     .footer-row-2{
-        width:300px;
+        width:550px;
+    }
+    .footer-row-2-text{
+        height:65px;
     }
     .footer-row-2 span{
         font-size: 16px;

@@ -48,8 +48,15 @@
             </a>
         </div>
         <a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">
-            <div class="aui-font-size-12 footer-row-2">
-                <span class="aui-ellipsis-2">{{$slogan}}</span>
+            {{--<div class="aui-font-size-12 footer-row-2">--}}
+                {{--<span class="aui-ellipsis-2">{{$slogan}}</span>--}}
+            {{--</div>--}}
+            <div class="aui-font-size-12 footer-row-2 style-display-table">
+                <div class="footer-row-2-text style-vertical-align-middle style-display-table-cell">
+                    <div class="aui-ellipsis-2">
+                        {{$slogan}}
+                    </div>
+                </div>
             </div>
         </a>
         <div class="footer-row-4">
@@ -64,10 +71,12 @@
                 </a>
             </div>
             <a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">
-                <div class="aui-font-size-12 footer-row-2">
-                    {{--<div class="footer-row-2-box-1">此处还有很多景点讲解</div>--}}
-                    {{--<div class="footer-row-2-box-2">下载美景听听App,可以了解更多哦</div>--}}
-                    <span class="aui-ellipsis-2">此处还有很多景点讲解,下载美景听听App,可以了解更多哦</span>
+                <div class="aui-font-size-12 footer-row-2 style-display-table">
+                    <div class="footer-row-2-text style-vertical-align-middle style-display-table-cell">
+                        <div class="aui-ellipsis-2">
+                            此处还有很多景点讲解,下载美景听听App,可以了解更多哦
+                        </div>
+                    </div>
                 </div>
             </a>
             <div class="footer-row-4">
