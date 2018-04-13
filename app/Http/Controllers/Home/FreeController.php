@@ -49,12 +49,18 @@ class FreeController extends Controller{
                 );
             }
             else{
+                if(array_key_exists('detail',$scenes)){
+                    $msg=$scenes['detail'];
+                }
+                else{
+                    $msg='参数无效！';
+                }
                 $param=array(
                     'result'=>false,
                     'common'=>$common,
                     'code'=>'',
                     'name'=>$name,
-                    'msg'=>'参数无效！',
+                    'msg'=>$msg,
                     'logo'=>$logo,
                     'slogan'=>$slogan,
                 );

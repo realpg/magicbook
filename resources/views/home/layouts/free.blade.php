@@ -99,13 +99,13 @@
 {{--common.js--}}
 <script type="text/javascript" src="{{ URL::asset('/js/common.js') }}"></script>
 <script>
-    $(function(){
-        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-            if(screen.height == 812 && screen.width == 375){
-                $('footer').css('height','60')
-            }
-        }
-    })
+    // $(function(){
+    //     if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+    //         if(screen.height == 812 && screen.width == 375){
+    //             $('footer').css('height','60')
+    //         }
+    //     }
+    // })
     function ejectQrcode(){
         pop({
             width:200,//提示窗口的宽度
