@@ -47,7 +47,7 @@
                 <img src="{{$logo}}" class="style-margin-center" />
             </a>
         </div>
-        <a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">
+        <a href="{{$url}}app/download?code={{$code}}">
             <div class="aui-font-size-14 footer-row-2 style-display-table">
                 <div class="footer-row-2-text style-vertical-align-middle style-display-table-cell">
                     <div class="aui-ellipsis-2">
@@ -67,7 +67,7 @@
                     <img src="{{URL::asset('img/erweima_03.png')}}" class="style-margin-center" />
                 </a>
             </div>
-            <a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">
+            <a href="{{$url}}app/download?code={{$code}}">
                 <div class="aui-font-size-12 footer-row-2 style-display-table">
                     <div class="footer-row-2-text style-vertical-align-middle style-display-table-cell">
                         <div class="aui-ellipsis-2">

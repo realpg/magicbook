@@ -20,6 +20,7 @@ class FreeController extends Controller{
         $name='魔法路书';
         $logo='';
         $slogan='';
+        $url=Utils::URL;
         if(array_key_exists('code',$request)){
             $code=$request['code'];
             $scene_param=array(
@@ -46,6 +47,7 @@ class FreeController extends Controller{
                     'name'=>$name,
                     'logo'=>$logo,
                     'slogan'=>$slogan,
+                    'url'=>$url
                 );
             }
             else{
@@ -63,6 +65,7 @@ class FreeController extends Controller{
                     'msg'=>$msg,
                     'logo'=>$logo,
                     'slogan'=>$slogan,
+                    'url'=>$url
                 );
             }
         }
@@ -74,6 +77,7 @@ class FreeController extends Controller{
                 'name'=>$name,
                 'logo'=>$logo,
                 'slogan'=>$slogan,
+                'url'=>$url,
                 'msg'=>'缺少参数，获取数据失败！'
             );
         }
@@ -84,6 +88,7 @@ class FreeController extends Controller{
         $common=$request['common'];
         $logo='';
         $slogan='';
+        $url=Utils::URL;
         if(array_key_exists('code',$request)&&array_key_exists('scene_id',$request)){
             $code=$request['code'];
             $scene_id=$request['scene_id'];
@@ -112,6 +117,7 @@ class FreeController extends Controller{
                         'code'=>$code,
                         'logo'=>$logo,
                         'slogan'=>$slogan,
+                        'url'=>$url,
                     );
                 }
                 else{
@@ -122,6 +128,7 @@ class FreeController extends Controller{
                         'name'=>'',
                         'logo'=>$logo,
                         'slogan'=>$slogan,
+                        'url'=>$url,
                         'msg'=>'参数无效！'
                     );
                 }
@@ -134,6 +141,7 @@ class FreeController extends Controller{
                     'name'=>'',
                     'logo'=>$logo,
                     'slogan'=>$slogan,
+                    'url'=>$url,
                     'msg'=>'参数无效！'
                 );
             }
@@ -146,6 +154,7 @@ class FreeController extends Controller{
                 'name'=>'',
                 'logo'=>$logo,
                 'slogan'=>$slogan,
+                'url'=>$url,
                 'msg'=>'缺少参数，获取数据失败！'
             );
         }
