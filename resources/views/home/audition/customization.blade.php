@@ -330,7 +330,7 @@
                     if(item_id){
                         count++
                         var city=$('#city_'+index).text();
-                        str+='<div class="col-xs-3 col-sm-3 text-oneline">'+city+'</div>'
+                        str+='<div class="col-xs-4 col-sm-4 text-oneline">'+city+'</div>'
                     }
                     //获取上传logo的个数
                     var upload_file=document.getElementById('upload_file_'+index).files[0];
