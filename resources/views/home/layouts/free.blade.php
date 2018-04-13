@@ -48,10 +48,10 @@
             </a>
         </div>
         <a href="http://testlushu.gowithtommy.com/api/app/download?code={{$code}}">
-            <div class="aui-font-size-12 footer-row-2 style-display-table">
+            <div class="aui-font-size-14 footer-row-2 style-display-table">
                 <div class="footer-row-2-text style-vertical-align-middle style-display-table-cell">
                     <div class="aui-ellipsis-2">
-                        {{$slogan}}
+                        <b>{{$slogan}}</b>
                     </div>
                 </div>
             </div>
@@ -99,13 +99,13 @@
 {{--common.js--}}
 <script type="text/javascript" src="{{ URL::asset('/js/common.js') }}"></script>
 <script>
-    // $(function(){
-    //     if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-    //         if(screen.height == 812 && screen.width == 375){
-    //             $('footer').css('height','60')
-    //         }
-    //     }
-    // })
+    $(function(){
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+            if(screen.height == 812 && screen.width == 375){
+                $('footer').css('height','60')
+            }
+        }
+    })
     function ejectQrcode(){
         pop({
             width:200,//提示窗口的宽度

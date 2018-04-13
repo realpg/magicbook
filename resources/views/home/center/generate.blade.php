@@ -96,8 +96,6 @@
                             </td>
                             <td class="text-center" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['id']}}</td>
                             <td class="text-center style-ellipsis-1 font-color-red" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['version']['name']}}</td>
-                            {{--<td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{date('Y/m/d',strtotime($purchas['create_time']))}}</td>--}}
-                            {{--<td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{date('Y/m/d',strtotime($purchas['expire_time']))}}</td>--}}
                             <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['create_time']}}</td>
                             <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['expire_time']}}</td>
                             <td class="text-center style-ellipsis-1" style="vertical-align: middle;border-bottom: 1px #F2F2F2 solid;border-top:0;">{{$purchas['viewed_count']}}</td>
@@ -169,6 +167,7 @@
 <script type="text/javascript" src="{{ URL::asset('/js/jquery-3.3.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('/js/jquery.page.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/clipboard.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('/js/loading/jquery.mloading.js') }}"></script>
 <script>
     $(function(){
         //分页
@@ -286,6 +285,7 @@
     }
     //下载二维码
     function downloadQrcode(id){
+        $("body").mLoading();  //加载
         $.ajax({
             url: '{{$url}}pay/downloadQrcode/',
             method: 'POST',
@@ -299,6 +299,7 @@
                 xhr.setRequestHeader("Authorization", "Token {{$common['user']['token']}}");
             },
             success: function (data) {
+                $("body").mLoading("hide");
                 var a = document.createElement('a');
                 var url = window.URL.createObjectURL(data);
                 a.href = url;
@@ -317,6 +318,7 @@
         id_array=id_array.substring(0,id_array.length-1)
 
         if(id_array){
+            $("body").mLoading();  //加载
             $.ajax({
                 url: '{{$url}}pay/bulkDownloadQrcode/',
                 method: 'POST',
@@ -330,6 +332,7 @@
                     xhr.setRequestHeader("Authorization", "Token {{$common['user']['token']}}");
                 },
                 success: function (data) {
+                    $("body").mLoading("hide");
                     var a = document.createElement('a');
                     var url = window.URL.createObjectURL(data);
                     a.href = url;

@@ -14,6 +14,7 @@ class Utils
 //    const PAGE_SIZE = 15;
 
     const URL = "http://testlushu.gowithtommy.com/api/";   //请求链接公共部分
+//    const URL = "http://lushu.gowithtommy.com/api/";   //请求链接公共部分
 
 
     /*

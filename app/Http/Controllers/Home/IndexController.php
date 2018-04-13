@@ -23,6 +23,7 @@ class IndexController extends  Controller{
         $index_param=array();
         $index=Utils::curl('magic/index/',$index_param);
         $index=json_decode($index,true);
+//        dd($index);
         $common=array_merge($index,$common);
         ///////////////
 
