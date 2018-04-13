@@ -48,7 +48,7 @@
             </a>
         </div>
         <a href="{{$url}}app/download?code={{$code}}">
-            <div class="aui-font-size-14 footer-row-2 style-display-table">
+            <div class="aui-font-size-16 footer-row-2 style-display-table">
                 <div class="footer-row-2-text style-vertical-align-middle style-display-table-cell">
                     <div class="aui-ellipsis-2">
                         <b>{{$slogan}}</b>
