@@ -142,48 +142,62 @@
 
         })
         function choiceContinent(index,continent_id,continent_name){
+            var continent_name_y=$('#continent_'+index).text()
             $('#continent_'+index).text(continent_name)
-            var param={
-                version: '{{$custom['code']}}',
-                continent_id:continent_id,
-                _token: "{{ csrf_token() }}"
-            }
-            getCountries('{{URL::asset('')}}', param, function (ret) {
-                if (ret.result == true) {
-                    var data=ret.ret
-                    $('#countries-content-'+index).html('');
-                    for(var i=0;i<data.length;i++){
-                        data[i]['index']=index
-                        data[i]['continent_id']=continent_id
-                        var interText = doT.template($("#countries-content-template").text())
-                        $("#countries-content-"+index).append(interText(data[i]))
-                    }
-                } else {
-                    // console.log('getCountry err is :' +JSON.stringify(ret.message))
+            //如果大洲修改，需重新调用接口
+            if(continent_name_y!=continent_name){
+                var param={
+                    version: '{{$custom['code']}}',
+                    continent_id:continent_id,
+                    _token: "{{ csrf_token() }}"
                 }
-            })
+                getCountries('{{URL::asset('')}}', param, function (ret) {
+                    if (ret.result == true) {
+                        var data=ret.ret
+                        $('#countries-content-'+index).html('');
+                        for(var i=0;i<data.length;i++){
+                            data[i]['index']=index
+                            data[i]['continent_id']=continent_id
+                            var interText = doT.template($("#countries-content-template").text())
+                            $("#countries-content-"+index).append(interText(data[i]))
+                        }
+                        //如果成功修改国家和城市
+                        $('#country_'+index).text('请选择国家')
+                        $('#city_'+index).text('请选择城市')
+                        $('#item_id_'+index).val('')
+                    } else {
+                        // console.log('getCountry err is :' +JSON.stringify(ret.message))
+                    }
+                })
+            }
         }
         function choiceCities(index,country_id,continent_id,country_name){
+            var country_name_y=$('#country_'+index).text()
             $('#country_'+index).text(country_name)
-            var param={
-                version: '{{$custom['code']}}',
-                country_id:country_id,
-                continent_id:continent_id,
-                _token: "{{ csrf_token() }}"
-            }
-            getCities('{{URL::asset('')}}', param, function (ret) {
-                if (ret.result == true) {
-                    var data=ret.ret
-                    $('#cities-content-'+index).html('');
-                    for(var i=0;i<data.length;i++){
-                        data[i]['index']=index
-                        var interText = doT.template($("#cities-content-template").text())
-                        $("#cities-content-"+index).append(interText(data[i]))
-                    }
-                } else {
-                    // console.log('getCountry err is :' +JSON.stringify(ret.message))
+            if(country_name_y!=country_name){
+                var param={
+                    version: '{{$custom['code']}}',
+                    country_id:country_id,
+                    continent_id:continent_id,
+                    _token: "{{ csrf_token() }}"
                 }
-            })
+                getCities('{{URL::asset('')}}', param, function (ret) {
+                    if (ret.result == true) {
+                        var data=ret.ret
+                        $('#cities-content-'+index).html('');
+                        for(var i=0;i<data.length;i++){
+                            data[i]['index']=index
+                            var interText = doT.template($("#cities-content-template").text())
+                            $("#cities-content-"+index).append(interText(data[i]))
+                        }
+                        //如果成功修改国家和城市
+                        $('#city_'+index).text('请选择城市')
+                        $('#item_id_'+index).val('')
+                    } else {
+                        // console.log('getCountry err is :' +JSON.stringify(ret.message))
+                    }
+                })
+            }
         }
         function determineCity(index,city_id,city_name){
             $('#city_'+index).text(city_name)
