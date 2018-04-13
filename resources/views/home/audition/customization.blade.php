@@ -525,6 +525,7 @@
                     url = URL.createObjectURL(file);
                 if (!/\.(jpg|jpeg|png|JPG|PNG|JPEG)$/.test(imgSrc)){
                     layer.msg("请上传jpg或png格式的图片！", {icon: 2, time: 2000})
+                    $('#upload_file_'+index).val('');
                     return false;
                 }
                 else{
@@ -532,6 +533,7 @@
                     var size = $(this)[0].files[0].size
                     if((size.toFixed(2))>=(100*1024*1024)){
                         layer.msg("请上传小于100M的图片！", {icon: 2, time: 2000})
+                        $('#upload_file_'+index).val('');
                         return false;
                     }
                     else{
@@ -544,6 +546,7 @@
                                 // alert(this.width + " " + this.height);
                                 if(this.width!=150||this.height!=150){
                                     layer.msg("请上传尺寸为150*150的图片！", {icon: 2, time: 2000})
+                                    $('#upload_file_'+index).val('');
                                     return false;
                                 }
                                 else{
