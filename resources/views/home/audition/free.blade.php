@@ -117,6 +117,7 @@
                     $('#country').text('请选择国家')
                     $('#city').text('请选择城市')
                     $('#item_id').val('')
+                    $('#cities-content').html('<li class="padding-left-10">请选择城市</li>');
                 } else {
                     console.log('getCountry err is :' +JSON.stringify(ret.message))
                 }
