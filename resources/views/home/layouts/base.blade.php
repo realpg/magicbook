@@ -21,9 +21,9 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/common.css') }}"/>
     <script type="text/javascript" src="{{ URL::asset('/js/jquery-3.3.1.min.js') }}"></script>
     @section('seo')
-        <title>魔法路书</title>
-        <meta name="keywords" content="魔法路书" />
-        <meta name="description" content="魔法路书" />
+        <title>魔法行程单</title>
+        <meta name="keywords" content="魔法行程单" />
+        <meta name="description" content="魔法行程单" />
     @show
 </head>
 <body>
@@ -41,7 +41,7 @@
            </div>
             <div class="float-left margin-top-10 margin-bottom-10 padding-left-10">
                 <a href="{{URL::asset('/')}}" style="color:#000;text-decoration: none;">
-                    <div class="font-size-15 margin-top-10"><b>魔法路书</b></div>
+                    <div class="font-size-15 margin-top-10"><b>魔法行程单</b></div>
                     <div class="font-size-15"><b>让路书更智能</b></div>
                 </a>
             </div>
@@ -81,7 +81,7 @@
 @section('footer')
     <footer class="bg-grey height-200px text-algin-center font-color-dark-grey padding-top-10 padding-bottom-10">
         <div class="container">
-            <h3 class="margin-bottom-20 line-height-80">魔法路书-让路书更智慧</h3>
+            <h3 class="margin-bottom-20 line-height-80">魔法行程单-让路书更智慧</h3>
             <div>本站隶属于美景听听（北京）科技有限公司，&nbsp;京ICP备 15053860号 营业执照</div>
             <div>美景听听（北京）科技有限公司 注册地址：北京市石景山实兴大街30号院3号楼2层-1063房间</div>
         </div>

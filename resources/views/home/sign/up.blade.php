@@ -52,7 +52,7 @@
                                     <input type="radio" id="female" name="agreement_checked">
                                     <label for="female" class="font-color-red">
                                         <a href="{{URL::asset('service')}}">
-                                            我已阅读并同意《魔法路书服务条款》
+                                            我已阅读并同意《魔法行程单服务条款》
                                         </a>
                                     </label>
                                 </div>
@@ -67,14 +67,14 @@
                         </form>
                     </div>
                     <div class="text-algin-center col-xs-4 col-sm-4 padding-top-40 padding-bottom-40 padding-right-40 padding-left-40">
-                        <div class="text-left font-size-16"><b>注册魔法路书：</b></div>
+                        <div class="text-left font-size-16"><b>注册魔法行程单：</b></div>
                         <div class="margin-top-20 margin-bottom-20 padding-top-10 padding-bottom-10 font-size-16">
                             中文语音导游，让旅行更有内涵
                         </div>
                         <div class="width-200px margin-auto">
                             <img src="{{URL::asset('img/erweima_03.png')}}" class="width-100"/>
                         </div>
-                        <div class="padding-top-10 padding-bottom-10 font-size-16">扫描加魔法路书公众号</div>
+                        <div class="padding-top-10 padding-bottom-10 font-size-16">扫描加魔法行程单公众号</div>
                     </div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                     agreement_checked: {
                         validators: {
                             notEmpty: {
-                                message: '请阅读并同意《魔法路书服务条款》'
+                                message: '请阅读并同意《魔法行程单服务条款》'
                             }
                         }
                     },

@@ -19,9 +19,9 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/style.css') }}"/>
     <script type="text/javascript" src="{{ URL::asset('/js/jquery-3.3.1.min.js') }}"></script>
     @section('seo')
-        <title>魔法路书</title>
-        <meta name="keywords" content="魔法路书" />
-        <meta name="description" content="魔法路书" />
+        <title>魔法行程单</title>
+        <meta name="keywords" content="魔法行程单" />
+        <meta name="description" content="魔法行程单" />
     @show
     <style>
         img { pointer-events: all; }

@@ -50,7 +50,7 @@
                             <div class="width-200px height-200px margin-bottom-20">
                                 <img src="{{URL::asset('img/erweima_03.png')}}" class="width-100"/>
                             </div>
-                            <h4>扫描加魔法路书公众号</h4>
+                            <h4>扫描加魔法行程单公众号</h4>
                         </div>
                     </div>
                 </div>
