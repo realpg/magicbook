@@ -14,7 +14,7 @@
                         <div class="container font-color-silver-grey line-height-50 margin-top-20 margin-bottom-20 padding-left-50 padding-right-50">
                             <div class="row">
                                 <div class="col-xs-1 col-sm-1 text-algin-right">
-                                    <input type="checkbox" name="id_array" class="checkSingle" value="{{$i}}" />
+                                    <input type="checkbox" name="id_array" id="checkbox-{{$i}}" class="checkSingle" value="{{$i}}" />
                                 </div>
                                 <div class="col-xs-11 col-sm-11 text-algin-center">
                                     <div class="col-xs-3 col-sm-3 text-algin-center border-top border-bottom border-left height-50px">
@@ -207,56 +207,66 @@
                 }
             }
         });
+        {{--function submitSingle(index){--}}
+            {{--var item_id=$('#item_id_'+index).val();--}}
+            {{--if(item_id){--}}
+                {{--//城市--}}
+                {{--var array=new Array();--}}
+                {{--array.push(item_id);--}}
+                {{--// console.log("array is : "+JSON.stringify(array))--}}
+                {{--var pay_price=parseFloat('{{$mjtt['price']}}');--}}
+                {{--$("body").mLoading();  //加载--}}
+                {{--var formData = new FormData();--}}
+                {{--formData.append("version", "{{$mjtt['code']}}");--}}
+                {{--for(var i=1;i<=array.length;i++){--}}
+                    {{--// console.log('array['+i+'] is : '+array[i])--}}
+                    {{--formData.append("cities[]", array[i-1]);--}}
+                {{--}--}}
+                {{--$.ajax({--}}
+                    {{--url: '{{$url}}pay/prepay/',--}}
+                    {{--type: 'post',  //提交方式--}}
+                    {{--data: formData,//数据，这里使用的是Json格式进行传输--}}
+                    {{--dataType:'json',--}}
+                    {{--cache:false,--}}
+                    {{--processData:false,--}}
+                    {{--contentType:false,--}}
+                    {{--beforeSend: function (xhr) {--}}
+                        {{--xhr.setRequestHeader("Authorization", "Token {{$common['user']['token']}}");--}}
+                    {{--},--}}
+                    {{--success: function (ret) {--}}
+                        {{--$("body").mLoading("hide");--}}
+                        {{--console.log('prepay is : '+JSON.stringify(ret))--}}
+                        {{--//返回数据根据结果进行相应的处理--}}
+                        {{--if (ret.code == 0) {--}}
+                            {{--$('#mjtt-content').hide();--}}
+                            {{--$('#mjtt-pay').show();--}}
+                            {{--$('#order').text(ret.data.out_trade_no);--}}
+                            {{--$('#payPrice').text(pay_price);--}}
+                            {{--$('#qrcode').html('<img src="'+ret.data.qrcode_img_url+'" class="width-100" />');--}}
+                            {{--CountDown()--}}
+                            {{--$('#dismiss_modal').trigger('click');--}}
+                            {{--pay_str=$('#payInfo').html()--}}
+                        {{--} else {--}}
+                            {{--layer.msg(ret.message, {icon: 2, time: 2000})--}}
+                            {{--$('#dismiss_modal').trigger('click');--}}
+                        {{--}--}}
+                    {{--},--}}
+                    {{--error: function (err) {--}}
+                        {{--$("body").mLoading("hide");--}}
+                        {{--console.log(JSON.stringify(err));--}}
+                        {{--console.log("responseText:" + err.responseText);--}}
+                    {{--}--}}
+                {{--});--}}
+            {{--}--}}
+            {{--else{--}}
+                {{--layer.msg('请选择城市', {icon: 2, time: 2000})--}}
+            {{--}--}}
+        {{--}--}}
         function submitSingle(index){
             var item_id=$('#item_id_'+index).val();
             if(item_id){
-                //城市
-                var array=new Array();
-                array.push(item_id);
-                // console.log("array is : "+JSON.stringify(array))
-                var pay_price=parseFloat('{{$mjtt['price']}}');
-                $("body").mLoading();  //加载
-                var formData = new FormData();
-                formData.append("version", "{{$mjtt['code']}}");
-                for(var i=1;i<=array.length;i++){
-                    // console.log('array['+i+'] is : '+array[i])
-                    formData.append("cities[]", array[i-1]);
-                }
-                $.ajax({
-                    url: '{{$url}}pay/prepay/',
-                    type: 'post',  //提交方式
-                    data: formData,//数据，这里使用的是Json格式进行传输
-                    dataType:'json',
-                    cache:false,
-                    processData:false,
-                    contentType:false,
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader("Authorization", "Token {{$common['user']['token']}}");
-                    },
-                    success: function (ret) {
-                        $("body").mLoading("hide");
-                        console.log('prepay is : '+JSON.stringify(ret))
-                        //返回数据根据结果进行相应的处理
-                        if (ret.code == 0) {
-                            $('#mjtt-content').hide();
-                            $('#mjtt-pay').show();
-                            $('#order').text(ret.data.out_trade_no);
-                            $('#payPrice').text(pay_price);
-                            $('#qrcode').html('<img src="'+ret.data.qrcode_img_url+'" class="width-100" />');
-                            CountDown()
-                            $('#dismiss_modal').trigger('click');
-                            pay_str=$('#payInfo').html()
-                        } else {
-                            layer.msg(ret.message, {icon: 2, time: 2000})
-                            $('#dismiss_modal').trigger('click');
-                        }
-                    },
-                    error: function (err) {
-                        $("body").mLoading("hide");
-                        console.log(JSON.stringify(err));
-                        console.log("responseText:" + err.responseText);
-                    }
-                });
+                $('#checkbox-'+index).attr('checked','checked');
+                $('#submitAll').click();
             }
             else{
                 layer.msg('请选择城市', {icon: 2, time: 2000})

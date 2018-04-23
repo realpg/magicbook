@@ -14,7 +14,7 @@
                         <div class="container font-color-silver-grey line-height-50 margin-top-20 margin-bottom-20 padding-left-50 padding-right-50">
                             <div class="row">
                                 <div class="col-xs-1 col-sm-1 text-algin-right">
-                                    <input type="checkbox" name="id_array" class="checkSingle" value="{{$i}}" />
+                                    <input type="checkbox" name="id_array" id="checkbox-{{$i}}" class="checkSingle" value="{{$i}}" />
                                 </div>
                                 <div class="col-xs-11 col-sm-11 text-algin-center">
                                     <div class="col-xs-3 col-sm-3 text-algin-center height-50px border-top border-bottom border-left">
@@ -234,6 +234,91 @@
                 }
             }
         });
+        {{--function submitSingle(index){--}}
+            {{--var item_id=$('#item_id_'+index).val();--}}
+            {{--var upload_file=document.getElementById('upload_file_'+index).files[0];--}}
+            {{--var slogans=$('#slogans_'+index).val();--}}
+            {{--if(!judgeObject(item_id)){--}}
+                {{--layer.msg('请选择城市', {icon: 2, time: 2000})--}}
+            {{--}--}}
+            {{--else if(!judgeObject(upload_file)){--}}
+                {{--layer.msg('请上传logo', {icon: 2, time: 2000})--}}
+            {{--}--}}
+            {{--else if(!judgeObject(slogans)){--}}
+                {{--layer.msg('请输入十字以内的自定义文字', {icon: 2, time: 2000})--}}
+            {{--}--}}
+            {{--else{--}}
+                {{--//城市--}}
+                {{--var array=new Array();--}}
+                {{--array.push(item_id);--}}
+                {{--// console.log("array is : "+JSON.stringify(array))--}}
+                {{--//logo--}}
+                {{--var upload_array=new Array();--}}
+                {{--upload_array.push(upload_file)--}}
+                {{--// console.log("upload_array is : "+JSON.stringify(upload_array))--}}
+                {{--//文字--}}
+                {{--var slogans_array=new Array();--}}
+                {{--slogans_array.push(slogans);--}}
+                {{--// console.log("slogans_array is : "+JSON.stringify(slogans_array))--}}
+                {{--if(slogans.length>10){--}}
+                    {{--layer.msg('请输入10字以内的自定义文字', {icon: 2, time: 2000})--}}
+                {{--}--}}
+                {{--else{--}}
+                    {{--var pay_price=parseFloat('{{$custom['price']}}');--}}
+                    {{--$("body").mLoading();  //加载--}}
+                    {{--var formData = new FormData();--}}
+                    {{--formData.append("version", "{{$custom['code']}}");--}}
+                    {{--for(var i=1;i<=array.length;i++){--}}
+                        {{--// console.log('array['+i+'] is : '+array[i])--}}
+                        {{--formData.append("cities[]", array[i-1]);--}}
+                    {{--}--}}
+                    {{--for(var i=1;i<=slogans_array.length;i++){--}}
+                        {{--// console.log('slogans_array['+i+'] is : '+slogans_array[i])--}}
+                        {{--formData.append("slogan_"+i, slogans_array[i-1]);--}}
+                    {{--}--}}
+                    {{--for(var i=1;i<=upload_array.length;i++){--}}
+                        {{--if(judgeObject(upload_array[i-1])){--}}
+                            {{--formData.append("logo_"+i, upload_array[i-1]);--}}
+                        {{--}--}}
+                    {{--}--}}
+                    {{--$.ajax({--}}
+                        {{--url: '{{$url}}pay/prepay/',--}}
+                        {{--type: 'post',  //提交方式--}}
+                        {{--data: formData,//数据，这里使用的是Json格式进行传输--}}
+                        {{--dataType:'json',--}}
+                        {{--cache:false,--}}
+                        {{--processData:false,--}}
+                        {{--contentType:false,--}}
+                        {{--beforeSend: function (xhr) {--}}
+                            {{--xhr.setRequestHeader("Authorization", "Token {{$common['user']['token']}}");--}}
+                        {{--},--}}
+                        {{--success: function (ret) {--}}
+                            {{--$("body").mLoading("hide");--}}
+                            {{--console.log('prepay is : '+JSON.stringify(ret))--}}
+                            {{--//返回数据根据结果进行相应的处理--}}
+                            {{--if (ret.code == 0) {--}}
+                                {{--$('#custom-content').hide();--}}
+                                {{--$('#custom-pay').show();--}}
+                                {{--$('#order').text(ret.data.out_trade_no);--}}
+                                {{--$('#payPrice').text(pay_price);--}}
+                                {{--$('#qrcode').html('<img src="'+ret.data.qrcode_img_url+'" class="width-100" />');--}}
+                                {{--CountDown()--}}
+                                {{--$('#dismiss_modal').trigger('click');--}}
+                                {{--pay_str=$('#payInfo').html()--}}
+                            {{--} else {--}}
+                                {{--layer.msg(ret.message, {icon: 2, time: 2000})--}}
+                                {{--$('#dismiss_modal').trigger('click');--}}
+                            {{--}--}}
+                        {{--},--}}
+                        {{--error: function (err) {--}}
+                            {{--$("body").mLoading("hide");--}}
+                            {{--console.log(JSON.stringify(err));--}}
+                            {{--console.log("responseText:" + err.responseText);--}}
+                        {{--}--}}
+                    {{--});--}}
+                {{--}--}}
+            {{--}--}}
+        {{--}--}}
         function submitSingle(index){
             var item_id=$('#item_id_'+index).val();
             var upload_file=document.getElementById('upload_file_'+index).files[0];
@@ -248,7 +333,7 @@
                 layer.msg('请输入十字以内的自定义文字', {icon: 2, time: 2000})
             }
             else{
-                {{--//城市--}}
+                        {{--//城市--}}
                 var array=new Array();
                 array.push(item_id);
                 // console.log("array is : "+JSON.stringify(array))
@@ -264,58 +349,8 @@
                     layer.msg('请输入10字以内的自定义文字', {icon: 2, time: 2000})
                 }
                 else{
-                    var pay_price=parseFloat('{{$custom['price']}}');
-                    $("body").mLoading();  //加载
-                    var formData = new FormData();
-                    formData.append("version", "{{$custom['code']}}");
-                    for(var i=1;i<=array.length;i++){
-                        // console.log('array['+i+'] is : '+array[i])
-                        formData.append("cities[]", array[i-1]);
-                    }
-                    for(var i=1;i<=slogans_array.length;i++){
-                        // console.log('slogans_array['+i+'] is : '+slogans_array[i])
-                        formData.append("slogan_"+i, slogans_array[i-1]);
-                    }
-                    for(var i=1;i<=upload_array.length;i++){
-                        if(judgeObject(upload_array[i-1])){
-                            formData.append("logo_"+i, upload_array[i-1]);
-                        }
-                    }
-                    $.ajax({
-                        url: '{{$url}}pay/prepay/',
-                        type: 'post',  //提交方式
-                        data: formData,//数据，这里使用的是Json格式进行传输
-                        dataType:'json',
-                        cache:false,
-                        processData:false,
-                        contentType:false,
-                        beforeSend: function (xhr) {
-                            xhr.setRequestHeader("Authorization", "Token {{$common['user']['token']}}");
-                        },
-                        success: function (ret) {
-                            $("body").mLoading("hide");
-                            console.log('prepay is : '+JSON.stringify(ret))
-                            //返回数据根据结果进行相应的处理
-                            if (ret.code == 0) {
-                                $('#custom-content').hide();
-                                $('#custom-pay').show();
-                                $('#order').text(ret.data.out_trade_no);
-                                $('#payPrice').text(pay_price);
-                                $('#qrcode').html('<img src="'+ret.data.qrcode_img_url+'" class="width-100" />');
-                                CountDown()
-                                $('#dismiss_modal').trigger('click');
-                                pay_str=$('#payInfo').html()
-                            } else {
-                                layer.msg(ret.message, {icon: 2, time: 2000})
-                                $('#dismiss_modal').trigger('click');
-                            }
-                        },
-                        error: function (err) {
-                            $("body").mLoading("hide");
-                            console.log(JSON.stringify(err));
-                            console.log("responseText:" + err.responseText);
-                        }
-                    });
+                    $('#checkbox-'+index).attr('checked','checked');
+                    $('#submitAll').click();
                 }
             }
         }
