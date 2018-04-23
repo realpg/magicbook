@@ -148,12 +148,12 @@
         var country_l = $('#country');
         var city_l = $('#city');
         var item_id_l=$('#item_id');
-        //页面初始化时，如果帐号密码cookie存在则填充
+        //页面初始化时，如果cookie存在则填充
         if(getCookie('continent_c') && getCookie('country_c') && getCookie('city_c') && getCookie('item_id_c')){
-            continent_l.text(getCookie('continent_c'))
-            country_l.text(getCookie('country_c'))
-            city_l.text(getCookie('city_c'))
-            item_id_l.val(getCookie('item_id_c'))
+            continent_l.text(getCookie('continent_c')?getCookie('continent_c'):'请选择大洲')
+            country_l.text(getCookie('country_c')?getCookie('country_c'):'请选择国家')
+            city_l.text(getCookie('city_c')?getCookie('city_c'):'请选择城市')
+            item_id_l.val(getCookie('item_id_c')?getCookie('item_id_c'):'')
         }
     })
     function choiceContinent(continent_id,continent_name){
