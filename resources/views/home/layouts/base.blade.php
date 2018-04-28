@@ -79,11 +79,28 @@
 <div class="height-80px"></div>
 @yield('content')
 @section('footer')
-    <footer class="bg-grey height-200px text-algin-center font-color-dark-grey padding-top-10 padding-bottom-10">
+    <footer class="bg-grey height-200px text-algin-center font-color-dark-grey padding-top-10 padding-bottom-10" style="background-color:#393939;height:356px;color:#fff;">
         <div class="container">
-            <h3 class="margin-bottom-20 line-height-80">魔法行程单-让路书更智慧</h3>
-            <div>本站隶属于美景听听（北京）科技有限公司，&nbsp;京ICP备 15053860号 营业执照</div>
-            <div>美景听听（北京）科技有限公司 注册地址：北京市石景山实兴大街30号院3号楼2层-1063房间</div>
+            <div class="row" style="border-bottom:#515151 1px solid;">
+                <div class="col-xs-7 col-sm-7 padding-left-0 text-left">
+                    <h3 style="margin-top:90px;margin-bottom:82px;font-size:48px;letter-spacing: 1.71px;">魔法行程单-让路书更智慧</h3>
+                </div>
+                <div class="col-xs-5 col-sm-5">
+                    <div class="col-xs-5 col-sm-5">
+                        <img src="{{URL::asset('img/qrcode-new.jpg')}}" style="width:150px;height:150px;margin-top:42px;margin-bottom:28px;" />
+                    </div>
+                    <div class="col-xs-7 col-sm-7 text-left">
+                        <div style="color:#DFDFDF;font-size:18px;margin-top:102px;margin-bottom:82px;">
+                            <div style="margin-top:30px;">如有任何问题，请联系李小姐</div>
+                            <div>电话：18500538210</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="color:#DFDFDF;font-size:18px;">
+                <div style="margin-top:30px;">本站隶属于美景听听（北京）科技有限公司，&nbsp;京ICP备 15053860号 营业执照</div>
+                <div>美景听听（北京）科技有限公司 注册地址：北京市石景山实兴大街30号院3号楼2层-1063房间</div>
+            </div>
         </div>
     </footer>
 @show

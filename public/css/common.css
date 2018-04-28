@@ -257,6 +257,10 @@ a:visited{
     margin-top: 150px;
 }
 
+.margin-top-160 {
+    margin-top: 160px;
+}
+
 .margin-bottom-0 {
     margin-bottom: 0px;
 }
@@ -293,8 +297,20 @@ a:visited{
     margin-bottom: 50px;
 }
 
+.margin-bottom-80 {
+    margin-bottom: 80px;
+}
+
 .margin-bottom-100 {
     margin-bottom: 100px;
+}
+
+.margin-bottom-140 {
+    margin-bottom: 140px;
+}
+
+.margin-bottom-160 {
+    margin-bottom: 160px;
 }
 
 .margin-10 {

@@ -1,5 +1,5 @@
 @if($common['versions'])
-<h2 class="font-color-grey text-center line-height-80 margin-bottom-50">选择套餐</h2>
+<h2 class="font-color-grey text-center line-height-80 margin-bottom-80">选择套餐</h2>
 <div class="container package-card padding-left-50 padding-right-50 margin-bottom-50">
     <ul class="height-457px">
         <li>

@@ -3,10 +3,10 @@
 @section('content')
 <div id="main-body">
     @include('home.layouts.banner')
-    <div class="middle">
+    <div class="middle margin-top-160 margin-bottom-160">
         @if($common['middle_banner'])
-        <h2 class="text-algin-center line-height-80 font-color-grey">效果展示</h2>
-        <div class="middle_banner">
+        <h2 class="text-algin-center font-color-grey margin-bottom-80">效果展示</h2>
+        <div class="middle_banner margin-bottom-140">
             <div id="carousel-middel-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 @if(count($common['middle_banner'])>1)
@@ -51,7 +51,7 @@
         @include('home.layouts.edition')
     </div>
     <div class="bottom">
-        <h2 class="text-algin-center line-height-80 font-color-grey">免费版使用步骤</h2>
+        <h2 class="text-algin-center font-color-grey margin-bottom-80">免费版使用步骤</h2>
         <div class="container font-color-silver-grey line-height-30">
             <div class="row">
                 <div class="col-xs-2 col-sm-1 text-algin-right">
