@@ -86,14 +86,16 @@
                     <div style="margin-top:90px;margin-bottom:82px;font-size:48px;letter-spacing: 1.71px;">魔法行程单-让路书更智慧</div>
                 </div>
                 <div class="col-xs-5 col-sm-5">
-                    <div class="col-xs-5 col-sm-5">
-                        <img src="{{URL::asset('img/qrcode-new.jpg')}}" style="width:150px;height:150px;margin-top:42px;margin-bottom:28px;" />
-                    </div>
-                    <div class="col-xs-7 col-sm-7 text-left">
-                        <div style="color:#DFDFDF;font-size:14px;margin-top:102px;margin-bottom:82px;letter-spacing: 0.5px">
-                            <div style="margin-top:30px;">如有任何问题，请联系李小姐</div>
-                            <div>电话：18500538210</div>
+                    <div style="float:right;margin-left:10px;">
+                        <div style="color:#DFDFDF;font-size:14px;margin-top:102px;margin-bottom:78px;letter-spacing: 0.5px">
+                            <div style="float:right;text-align:left;">
+                                如有任何问题，请联系李小姐<br />
+                                电话：18500538210
+                            </div>
                         </div>
+                    </div>
+                    <div style="float:right;">
+                        <img src="{{URL::asset('img/qrcode-new.jpg')}}" style="width:150px;height:150px;margin-top:42px;margin-bottom:28px;" />
                     </div>
                 </div>
             </div>
