@@ -8,7 +8,7 @@ $(function () {
 // 接口部分
 //基本的ajax访问后端接口类
 function ajaxRequest(url, param, method, callBack) {
-    console.log("url:" + url + " method:" + method + " param:" + JSON.stringify(param));
+    // console.log("url:" + url + " method:" + method + " param:" + JSON.stringify(param));
     $.ajax({
         type: method,  //提交方式
         url: url,//路径
@@ -16,7 +16,7 @@ function ajaxRequest(url, param, method, callBack) {
         contentType: "application/json", //必须有
         dataType: "json",
         success: function (ret) {//返回数据根据结果进行相应的处理
-            console.log("ret:" + JSON.stringify(ret));
+            // console.log("ret:" + JSON.stringify(ret));
             callBack(ret)
         },
         error: function (err) {

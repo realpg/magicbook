@@ -125,14 +125,12 @@
                 // Use Ajax to submit form data
                 $("body").mLoading();
                 $.post("{{ URL::asset('sign/in')}}", $form.serialize(), function (ret) {
-                    console.log('sign in ret is :' + JSON.stringify(ret))
                     $("body").mLoading("hide");
                     if (ret.result) {
                         //表单提交事件触发时，如果复选框是勾选状态则保存cookie
                         if ($('#remember').is(':checked')) {
                             setCookie('mbl', $('#mobile').val(), 7); //保存帐号到cookie，有效期7天
                             setCookie('pswd', $('#password').val(), 7); //保存密码到cookie，有效期7天
-                            console.log('cookie is : ' + JSON.stringify(getCookie('cs')))
                             if (getCookie('mbl') && getCookie('pswd')) {
                                 layer.msg('登录成功', {icon: 1, time: 3000});
                                 {{--window.location.href = "{{URL::asset('center')}}";--}}

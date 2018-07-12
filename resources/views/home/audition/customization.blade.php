@@ -457,7 +457,6 @@
                     },
                     success: function (ret) {
                         $("body").mLoading("hide");
-                        console.log('prepay is : '+JSON.stringify(ret))
                         //返回数据根据结果进行相应的处理
                         if (ret.code == 0) {
                             $('#custom-content').hide();
@@ -490,7 +489,7 @@
             $("body").mLoading();
             prepay('{{URL::asset('')}}', param, function (ret) {
                 $("body").mLoading("hide");
-                console.log("prepay is : "+JSON.stringify(ret))
+                // console.log("prepay is : "+JSON.stringify(ret))
                 if (ret.result == true) {
                     $('#custom-content').hide();
                     $('#custom-pay').show();
@@ -528,10 +527,8 @@
                         orderId: orderId,
                         _token: "{{ csrf_token() }}"
                     }
-                    console.log('getQrcodeState param is : '+JSON.stringify(param))
 
                     getQrcodeState('{{URL::asset('')}}', param, function (ret) {
-                        console.log('getQrcodeState is : '+JSON.stringify(ret))
                         if (ret.result == true) {
                             var data=ret.ret;
                             if(data.code==0){

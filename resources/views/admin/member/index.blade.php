@@ -151,7 +151,6 @@
             id_array=id_array+$(this).val()+',';  // 每一个被选中项的值
         });
         id_array=id_array.substring(0,id_array.length-1)
-        console.log('id_array is : '+JSON.stringify(id_array));
         if(id_array){
             $.ajax({
                 url: '{{$url}}auth/exportUser/',

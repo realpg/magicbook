@@ -229,7 +229,6 @@
 
             submitFree('{{URL::asset('')}}', param, function (ret) {
                 $("body").mLoading("hide");
-                console.log('submitFree is : '+JSON.stringify(ret))
                 if (ret.result == true) {
                     $('#rqcode').html('<img src="'+ret.ret.image+'" class="width-100" />')
                     $('#copy').attr('data-clipboard-text',ret.ret.url)

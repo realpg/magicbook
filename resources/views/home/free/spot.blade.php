@@ -61,7 +61,6 @@
         function playMusic(audio,id){
             var player = $("#player")[0]; /*jquery对象转换成js对象*/
             var player_src=$("#player").attr("src")  //正在播放的音频文件
-            console.log("正在播放的音频文件 is : " + JSON.stringify(player_src)+" ; 要播放的音频文件 is : " + JSON.stringify(audio))
             if(player_src==audio){
                 if (player.paused){ /*如果已经暂停*/
                     player.play(); /*播放*/
@@ -76,7 +75,6 @@
                 $("#player").attr("src",audio);
                 var player = $("#player")[0]; /*jquery对象转换成js对象*/
                 var player_src2=$("#player").attr("src")
-                console.log("要更换的音频文件 is : " + JSON.stringify(player_src2))
                 player.play(); /*播放*/
                 $(".style-play-icon").attr("src","{{URL::asset('img/spot_player.png')}}")
                 $("#play-"+id).attr("src","{{URL::asset('img/spot_stop.png')}}")

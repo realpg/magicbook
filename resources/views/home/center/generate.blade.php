@@ -258,7 +258,6 @@
         }
         if(id_array){
             delMorePurchase('{{URL::asset('')}}', param, function (ret) {
-                console.log('delMorePurchase is : '+JSON.stringify(ret))
                 if (ret.result == true) {
                     layer.msg('删除成功', {icon: 1, time: 1000});
                     window.location.reload();

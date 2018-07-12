@@ -98,7 +98,6 @@
                 _token: "{{ csrf_token() }}"
             }
             getChainCities('{{URL::asset('')}}', param, function (ret) {
-                console.log("getChainCountries is : "+JSON.stringify(ret))
                 if (ret.result == true) {
                     var data=ret.ret
                     $('#city').html('');
@@ -118,7 +117,6 @@
                     _token: "{{ csrf_token() }}"
                 }
                 addCity('{{URL::asset('')}}', param, function (ret) {
-                    console.log("addCity is : "+JSON.stringify(ret))
                     if (ret.result == true) {
                         layer.msg('添加城市成功', {icon: 1, time: 2000})
                         $('.btn-refresh').click();
